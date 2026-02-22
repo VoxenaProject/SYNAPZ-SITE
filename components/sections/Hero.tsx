@@ -27,7 +27,7 @@ function NeuralBackground() {
   ];
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="hidden md:block absolute inset-0 overflow-hidden pointer-events-none">
       <svg
         className="w-full h-full"
         viewBox="0 0 1000 560"
@@ -72,9 +72,9 @@ export default function Hero() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
         <NeuralBackground />
 
-        {/* Subtle ambient glow */}
-        <div className="absolute bottom-0 left-1/4 w-[500px] h-[280px] bg-[#7C3AED]/4 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-1/3 right-0 w-[300px] h-[200px] bg-[#06B6D4]/3 rounded-full blur-3xl pointer-events-none" />
+        {/* Subtle ambient glow — hidden on mobile (blur-3xl is GPU-expensive) */}
+        <div className="hidden md:block absolute bottom-0 left-1/4 w-[500px] h-[280px] bg-[#7C3AED]/4 rounded-full blur-3xl pointer-events-none" />
+        <div className="hidden md:block absolute top-1/3 right-0 w-[300px] h-[200px] bg-[#06B6D4]/3 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-6 pt-40 pb-24 text-center">
           {/* Pill badge */}
@@ -85,8 +85,8 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* H1 */}
-          <h1 className="animate-fade-in-d1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] mb-8 text-[#0F0F1A]">
+          {/* H1 — no animation: this is the LCP element, must render instantly */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] mb-8 text-[#0F0F1A]">
             Vos équipes perdent des heures
             <br />
             <span className="gradient-text">
@@ -94,8 +94,8 @@ export default function Hero() {
             </span>
           </h1>
 
-          {/* Subtitle */}
-          <p className="animate-fade-in-d2 text-[#64748B] text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+          {/* Subtitle — no animation delay for faster LCP context */}
+          <p className="text-[#64748B] text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
             On identifie vos pertes de temps. On les automatise en 72h.
             Si vous ne gagnez pas{" "}
             <span className="text-[#0F0F1A] font-semibold">5h/semaine</span>{" "}
