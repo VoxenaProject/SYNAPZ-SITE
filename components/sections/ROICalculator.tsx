@@ -256,11 +256,9 @@ export default function ROICalculator() {
                 </div>
               )}
 
-              <motion.button
+              <button
                 onClick={() => setModalOpen(true)}
                 className="w-full bg-[#7C3AED] text-white font-semibold text-base py-4 rounded-xl hover:bg-[#9D6FF0] transition-all shadow-lg shadow-[#7C3AED]/25 hover:shadow-xl hover:shadow-[#7C3AED]/35 cursor-pointer mt-4"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
               >
                 Vous perdez{" "}
                 <strong>{formatEuro(results.savedMoneyPerMonth)}/mois</strong>{" "}
@@ -269,7 +267,7 @@ export default function ROICalculator() {
                 <span className="text-sm font-normal opacity-90">
                   On peut vous aider à les récupérer — gratuitement. →
                 </span>
-              </motion.button>
+              </button>
             </motion.div>
           </div>
         </div>

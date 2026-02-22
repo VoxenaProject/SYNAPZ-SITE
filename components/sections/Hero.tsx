@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import BookingModal from "@/components/ui/BookingModal";
+import dynamic from "next/dynamic";
 
-const ease = [0.25, 0.1, 0.25, 1] as const;
+const BookingModal = dynamic(() => import("@/components/ui/BookingModal"));
 
 function NeuralBackground() {
   const nodes = [
@@ -73,63 +72,43 @@ export default function Hero() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
         <NeuralBackground />
 
-        {/* Subtle ambient glow — optimized blur */}
+        {/* Subtle ambient glow */}
         <div className="absolute bottom-0 left-1/4 w-[500px] h-[280px] bg-[#7C3AED]/4 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute top-1/3 right-0 w-[300px] h-[200px] bg-[#06B6D4]/3 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-6 pt-40 pb-24 text-center">
           {/* Pill badge */}
-          <motion.div
-            className="inline-flex items-center gap-2 bg-[#7C3AED]/8 border border-[#7C3AED]/15 rounded-full px-5 py-2 mb-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, ease }}
-          >
+          <div className="animate-fade-in inline-flex items-center gap-2 bg-[#7C3AED]/8 border border-[#7C3AED]/15 rounded-full px-5 py-2 mb-8">
             <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] animate-pulse" />
             <span className="text-[#7C3AED] text-xs font-semibold uppercase tracking-[0.05em]">
               Impulsions IA pour PME
             </span>
-          </motion.div>
+          </div>
 
           {/* H1 */}
-          <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] mb-8 text-[#0F0F1A]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.1, ease }}
-          >
+          <h1 className="animate-fade-in-d1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] mb-8 text-[#0F0F1A]">
             Vos équipes perdent des heures
             <br />
             <span className="gradient-text">
               sur des tâches qu&apos;une IA fait en 3 secondes.
             </span>
-          </motion.h1>
+          </h1>
 
           {/* Subtitle */}
-          <motion.p
-            className="text-[#64748B] text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2, ease }}
-          >
+          <p className="animate-fade-in-d2 text-[#64748B] text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
             On identifie vos pertes de temps. On les automatise en 72h.
             Si vous ne gagnez pas{" "}
             <span className="text-[#0F0F1A] font-semibold">5h/semaine</span>{" "}
             —{" "}
             <span className="text-[#7C3AED] font-semibold">vous ne payez rien.</span>
-          </motion.p>
+          </p>
 
           {/* 3 Stat badges */}
-          <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3, ease }}
-          >
+          <div className="animate-fade-in-d3 flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             {stats.map((stat, i) => (
               <div
                 key={i}
-                className="flex flex-col items-center border border-[#E2E8F0] rounded-xl px-7 py-4 bg-white/60 backdrop-blur-sm"
+                className="flex flex-col items-center border border-[#E2E8F0] rounded-xl px-7 py-4 bg-white/80"
               >
                 <span className="text-2xl font-extrabold gradient-text">
                   {stat.value}
@@ -139,15 +118,10 @@ export default function Hero() {
                 </span>
               </div>
             ))}
-          </motion.div>
+          </div>
 
           {/* CTA */}
-          <motion.div
-            className="flex flex-col items-center gap-3"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4, ease }}
-          >
+          <div className="animate-fade-in-d4 flex flex-col items-center gap-3">
             <button
               onClick={() => setModalOpen(true)}
               className="bg-[#7C3AED] text-white font-semibold text-lg px-10 py-4 rounded-xl hover:bg-[#6D28D9] transition-all shadow-lg shadow-[#7C3AED]/20 hover:shadow-xl hover:shadow-[#7C3AED]/30 cursor-pointer"
@@ -166,7 +140,7 @@ export default function Hero() {
                 Garanti : 5h récupérées/semaine ou remboursé
               </span>
             </div>
-          </motion.div>
+          </div>
 
           {/* Scroll indicator */}
           <div className="mt-24">

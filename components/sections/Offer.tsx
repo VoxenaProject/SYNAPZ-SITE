@@ -225,14 +225,12 @@ export default function Offer() {
                 5 nouvelles PME par mois.
               </span>
             </p>
-            <motion.button
+            <button
               onClick={() => setModalOpen(true)}
               className="bg-[#7C3AED] text-white font-semibold text-lg px-10 py-4 rounded-xl hover:bg-[#9D6FF0] transition-all shadow-lg shadow-[#7C3AED]/25 hover:shadow-xl hover:shadow-[#7C3AED]/35 cursor-pointer"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
             >
               Obtenir mon audit gratuit →
-            </motion.button>
+            </button>
           </motion.div>
         </div>
       </section>

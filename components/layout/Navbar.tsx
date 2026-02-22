@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import Image from "next/image";
-import BookingModal from "@/components/ui/BookingModal";
+import dynamic from "next/dynamic";
+
+const BookingModal = dynamic(() => import("@/components/ui/BookingModal"));
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -26,15 +27,12 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.nav
-        className={`fixed top-0 left-0 right-0 z-30 transition-all duration-300 ${
+      <nav
+        className={`fixed top-0 left-0 right-0 z-30 transition-all duration-300 animate-slide-down ${
           scrolled
-            ? "bg-white/95 backdrop-blur-md border-b border-[#E2E8F0] shadow-sm"
+            ? "bg-white/95 md:backdrop-blur-md border-b border-[#E2E8F0] shadow-sm"
             : "bg-transparent"
         }`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
@@ -63,14 +61,12 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className="hidden md:block">
-            <motion.button
+            <button
               onClick={() => setModalOpen(true)}
               className="bg-[#7C3AED] text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-[#9D6FF0] transition-all shadow-md shadow-[#7C3AED]/20 hover:shadow-[#7C3AED]/30 cursor-pointer"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
             >
               Audit gratuit →
-            </motion.button>
+            </button>
           </div>
 
           {/* Mobile burger */}
@@ -94,11 +90,7 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {menuOpen && (
-          <motion.div
-            className="md:hidden bg-white border-t border-[#E2E8F0] px-6 py-4 space-y-4 shadow-lg"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
+          <div className="md:hidden bg-white border-t border-[#E2E8F0] px-6 py-4 space-y-4 shadow-lg animate-fade-in">
             {links.map((link) => (
               <a
                 key={link.label}
@@ -118,9 +110,9 @@ export default function Navbar() {
             >
               Audit gratuit →
             </button>
-          </motion.div>
+          </div>
         )}
-      </motion.nav>
+      </nav>
 
       <BookingModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </>

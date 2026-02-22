@@ -152,14 +152,12 @@ export default function UseCases() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <motion.button
+          <button
             onClick={() => setModalOpen(true)}
             className="bg-[#7C3AED] text-white font-semibold text-base px-8 py-4 rounded-xl hover:bg-[#9D6FF0] transition-all shadow-lg shadow-[#7C3AED]/25 hover:shadow-xl hover:shadow-[#7C3AED]/35 cursor-pointer"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
           >
             Quelle Impulsion pour votre business ? →
-          </motion.button>
+          </button>
         </motion.div>
       </div>
     </section>
