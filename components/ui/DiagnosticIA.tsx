@@ -536,22 +536,100 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
 
             <div className="h-px bg-[#E2E8F0] my-6" />
 
-            {/* CTA */}
-            <div className="text-center">
-              <p className="text-[#64748B] text-sm mb-4">
-                Vous voulez savoir comment implémenter ces automatisations ?
-              </p>
-              <button
-                onClick={() => {
-                  GA.bookingModalOpened("diagnostic_results");
-                  setModalOpen(true);
-                }}
-                className="w-full bg-[#7C3AED] text-white font-semibold py-4 rounded-xl hover:bg-[#6D28D9] transition-all shadow-lg shadow-[#7C3AED]/20 cursor-pointer"
-              >
-                Réserver mon audit gratuit (30 min) →
-              </button>
-              <p className="text-[#94A3B8] text-xs mt-3">Gratuit · Sans engagement · Résultats en 72h</p>
-            </div>
+            {/* CTA — tier-specific conversion block */}
+            {tier === "critical" ? (
+              <>
+                <div className="bg-[#FFF7ED] border border-[#FDBA74] rounded-xl p-5 mb-5">
+                  <p className="text-[#9A3412] text-base font-bold mb-2">
+                    Vous perdez {formatEuro(savedMoneyMonth)} chaque mois
+                  </p>
+                  <p className="text-[#78350F]/60 text-sm leading-relaxed">
+                    Votre score de {score}/100 place votre entreprise parmi les PME avec le plus fort potentiel
+                    d&apos;automatisation. Chaque semaine sans action, ce sont {savedHoursWeek}h de travail
+                    et {formatEuro(Math.round(savedMoneyMonth / 4))} qui passent à la trappe.
+                  </p>
+                </div>
+                <div className="text-center">
+                  <button
+                    onClick={() => {
+                      GA.bookingModalOpened("diagnostic_results_critical");
+                      setModalOpen(true);
+                    }}
+                    className="w-full bg-[#7C3AED] text-white font-bold py-4 rounded-xl hover:bg-[#6D28D9] transition-all shadow-lg shadow-[#7C3AED]/25 cursor-pointer text-base"
+                  >
+                    Parler avec un expert SYNAPZ
+                  </button>
+                  <div className="mt-5 text-left space-y-2.5">
+                    <p className="text-[#0F0F1A] text-xs font-bold uppercase tracking-wider">Ce qu&apos;on fait en 30 min :</p>
+                    {[
+                      "On analyse vos 3 priorités et les gains concrets",
+                      "On vous montre les solutions adaptées à votre secteur",
+                      "Vous repartez avec un plan d'action chiffré",
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-2">
+                        <span className="text-[#7C3AED] text-sm font-bold shrink-0">›</span>
+                        <span className="text-[#64748B] text-sm">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-[#94A3B8] text-xs mt-4">Gratuit · Sans engagement · Créneaux limités cette semaine</p>
+                </div>
+              </>
+            ) : tier === "strong" ? (
+              <>
+                <div className="bg-[#F5F3FF] border border-[#DDD6FE] rounded-xl p-5 mb-5">
+                  <p className="text-[#5B21B6] text-base font-bold mb-2">
+                    {formatEuro(savedMoneyYear)}/an d&apos;économies identifiées
+                  </p>
+                  <p className="text-[#5B21B6]/60 text-sm leading-relaxed">
+                    Votre diagnostic révèle des opportunités concrètes. Un échange de 30 min
+                    avec nos experts suffit pour transformer ces chiffres en actions.
+                  </p>
+                </div>
+                <div className="text-center">
+                  <button
+                    onClick={() => {
+                      GA.bookingModalOpened("diagnostic_results_strong");
+                      setModalOpen(true);
+                    }}
+                    className="w-full bg-[#7C3AED] text-white font-bold py-4 rounded-xl hover:bg-[#6D28D9] transition-all shadow-lg shadow-[#7C3AED]/25 cursor-pointer text-base"
+                  >
+                    Réserver mon audit stratégique
+                  </button>
+                  <div className="mt-5 text-left space-y-2.5">
+                    <p className="text-[#0F0F1A] text-xs font-bold uppercase tracking-wider">Ce qu&apos;on fait en 30 min :</p>
+                    {[
+                      "On analyse vos 3 priorités et les gains concrets",
+                      "On vous montre les solutions adaptées à votre secteur",
+                      "Vous repartez avec un plan d'action chiffré",
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-2">
+                        <span className="text-[#7C3AED] text-sm font-bold shrink-0">›</span>
+                        <span className="text-[#64748B] text-sm">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-[#94A3B8] text-xs mt-4">Gratuit · Sans engagement · Résultats en 72h</p>
+                </div>
+              </>
+            ) : (
+              <div className="text-center">
+                <p className="text-[#64748B] text-sm mb-4 leading-relaxed">
+                  Même avec un potentiel modéré, des automatisations simples
+                  peuvent libérer du temps précieux pour votre équipe.
+                </p>
+                <button
+                  onClick={() => {
+                    GA.bookingModalOpened("diagnostic_results_moderate");
+                    setModalOpen(true);
+                  }}
+                  className="w-full bg-[#7C3AED] text-white font-semibold py-4 rounded-xl hover:bg-[#6D28D9] transition-all shadow-lg shadow-[#7C3AED]/20 cursor-pointer"
+                >
+                  En discuter avec un expert
+                </button>
+                <p className="text-[#94A3B8] text-xs mt-3">Gratuit · Sans engagement · 30 min</p>
+              </div>
+            )}
           </div>
         </div>
 

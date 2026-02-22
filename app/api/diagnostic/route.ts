@@ -230,19 +230,48 @@ export async function POST(req: NextRequest) {
             </table>
           </td></tr>
 
+          <!-- Urgency block (strong/critical only) -->
+          ${tier === "critical" ? `
+          <tr><td style="padding:28px 32px 0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FFF7ED; border:1px solid #FDBA74; border-radius:12px;">
+              <tr><td style="padding:20px 24px;">
+                <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#9A3412; font-size:16px; font-weight:700; margin:0 0 8px;">Vous perdez ${formatEuro(savedMoneyMonth)} chaque mois</p>
+                <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#9A3412; opacity:0.7; font-size:14px; margin:0; line-height:1.5;">Votre score de ${score}/100 confirme un potentiel exceptionnel. Chaque semaine sans action = ${savedHoursWeek}h et ${formatEuro(Math.round(savedMoneyMonth / 4))} perdus.</p>
+              </td></tr>
+            </table>
+          </td></tr>
+          ` : tier === "strong" ? `
+          <tr><td style="padding:28px 32px 0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F5F3FF; border:1px solid #DDD6FE; border-radius:12px;">
+              <tr><td style="padding:20px 24px;">
+                <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#5B21B6; font-size:16px; font-weight:700; margin:0 0 8px;">${formatEuro(savedMoneyYear)}/an d'&eacute;conomies identifi&eacute;es</p>
+                <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#5B21B6; opacity:0.7; font-size:14px; margin:0; line-height:1.5;">Votre diagnostic r&eacute;v&egrave;le des opportunit&eacute;s concr&egrave;tes. 30 min suffisent pour les transformer en plan d'action.</p>
+              </td></tr>
+            </table>
+          </td></tr>
+          ` : ""}
+
           <!-- CTA -->
-          <tr><td style="padding:36px 32px 0; text-align:center;">
+          <tr><td style="padding:${tier === "moderate" ? "36" : "24"}px 32px 0; text-align:center;">
             <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#64748B; font-size:15px; margin:0 0 20px; line-height:1.5;">
-              Vous voulez savoir exactement comment<br/>implémenter ces automatisations ?
+              ${tier === "critical"
+                ? "Nos experts transforment ces pertes en gains concrets."
+                : tier === "strong"
+                ? "Un audit de 30 min pour d&eacute;bloquer ces &eacute;conomies."
+                : "Vous voulez savoir comment automatiser vos t&acirc;ches r&eacute;p&eacute;titives ?"}
             </p>
             <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto;">
               <tr><td style="background:#7C3AED; border-radius:12px;">
-                <a href="https://calendly.com/daniele-synapz/strategie-meeting" class="cta-btn" style="display:inline-block; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#FFFFFF; font-weight:600; font-size:16px; text-decoration:none; padding:16px 36px; border-radius:12px;">
-                  Réserver mon audit gratuit (30 min) &rarr;
+                <a href="https://calendly.com/daniele-synapz/strategie-meeting" class="cta-btn" style="display:inline-block; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#FFFFFF; font-weight:700; font-size:16px; text-decoration:none; padding:16px 36px; border-radius:12px;">
+                  ${tier === "critical"
+                    ? "Parler avec un expert SYNAPZ &rarr;"
+                    : tier === "strong"
+                    ? "R&eacute;server mon audit strat&eacute;gique &rarr;"
+                    : "En discuter avec un expert &rarr;"}
                 </a>
               </td></tr>
             </table>
-            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#94A3B8; font-size:12px; margin:14px 0 0;">Gratuit &middot; Sans engagement &middot; Résultats en 72h</p>
+            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#94A3B8; font-size:12px; margin:14px 0 0;">Gratuit &middot; Sans engagement &middot; ${tier === "critical" ? "Cr&eacute;neaux limit&eacute;s cette semaine" : "R&eacute;sultats en 72h"}</p>
           </td></tr>
 
           <!-- Footer -->
