@@ -79,6 +79,38 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: true });
     }
 
+    // Build axes HTML block
+    const axesHtml = axes ? [
+      { label: "Volume de tâches automatisables", score: axes.volume.score, max: axes.volume.max },
+      { label: "Impact financier", score: axes.financial.score, max: axes.financial.max },
+      { label: "Maturité digitale", score: axes.readiness.score, max: axes.readiness.max },
+    ].map((a, i, arr) => {
+      const pct = Math.min(100, Math.round((a.score / a.max) * 100));
+      return `
+        <tr><td style="padding:0 0 ${i < arr.length - 1 ? "20" : "0"}px;">
+          <table width="100%" cellpadding="0" cellspacing="0"><tr>
+            <td style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:14px; font-weight:600; color:#0F0F1A; padding-bottom:6px;">${a.label}</td>
+            <td style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:14px; font-weight:700; color:#7C3AED; text-align:right; padding-bottom:6px;">${pct}%</td>
+          </tr></table>
+          <table width="100%" cellpadding="0" cellspacing="0"><tr>
+            <td style="background:#EDE9FE; border-radius:5px; height:10px; line-height:10px;">
+              <table width="${pct}%" cellpadding="0" cellspacing="0"><tr>
+                <td style="background:#7C3AED; border-radius:5px; height:10px; line-height:10px; font-size:1px;">&nbsp;</td>
+              </tr></table>
+            </td>
+          </tr></table>
+        </td></tr>`;
+    }).join("") : "";
+
+    // Build priorities HTML
+    const prioritiesHtml = priorities.map((p, i) => `
+      <tr><td style="padding:14px 0; ${i < priorities.length - 1 ? "border-bottom:1px solid #F1F5F9;" : ""}">
+        <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#7C3AED; font-weight:700; font-size:15px;">${i + 1}.</span>
+        <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#0F0F1A; font-weight:600; font-size:15px;"> ${p.title}</span>
+        <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#64748B; font-size:13px; margin:4px 0 0;">Gain estimé : ${p.gain}</p>
+      </td></tr>
+    `).join("");
+
     // Send report to lead
     await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -90,88 +122,125 @@ export async function POST(req: NextRequest) {
         from: "SYNAPZ <noreply@synapz.be>",
         to: [email],
         subject: `Votre Score IA : ${score}/100 — ${tierInfo.label} pour ${firstName}`,
-        html: `
-          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #FAFBFF;">
-            <div style="text-align: center; margin-bottom: 32px;">
-              <h1 style="color: #0F0F1A; font-size: 24px; margin: 0 0 8px;">Votre Diagnostic IA</h1>
-              <p style="color: #64748B; font-size: 14px; margin: 0;">Résultats personnalisés pour ${firstName}</p>
-            </div>
+        headers: {
+          "List-Unsubscribe": "<mailto:hello@synapz.be?subject=unsubscribe>",
+        },
+        html: `<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Votre Diagnostic IA — SYNAPZ</title>
+  <!--[if mso]><style>table,td{font-family:Helvetica,Arial,sans-serif!important;}</style><![endif]-->
+</head>
+<body style="margin:0; padding:0; background-color:#F1F5F9; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#F1F5F9;">
+    <tr>
+      <td align="center" style="padding:40px 16px;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px; width:100%; background:#FFFFFF; border-radius:16px; overflow:hidden; border:1px solid #E2E8F0;">
 
-            <div style="background: white; border: 1px solid #E2E8F0; border-radius: 16px; padding: 24px; margin-bottom: 16px; text-align: center;">
-              <div style="font-size: 48px; font-weight: 800; color: ${tierInfo.text}; margin-bottom: 8px;">${score}/100</div>
-              <div style="display: inline-block; background: ${tierInfo.bg}; color: ${tierInfo.text}; font-size: 12px; font-weight: 700; padding: 6px 16px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.05em;">
-                ${tierInfo.label}
-              </div>
-            </div>
+          <!-- Logo -->
+          <tr><td style="padding:36px 32px 0; text-align:center;">
+            <img src="https://synapz.be/logo/synapz-logo-dark.png" alt="SYNAPZ" width="130" height="28" style="display:block; margin:0 auto; border:0;" />
+          </td></tr>
 
-            ${axes ? `
-            <div style="background: white; border: 1px solid #E2E8F0; border-radius: 16px; padding: 24px; margin-bottom: 16px;">
-              <h3 style="color: #0F0F1A; font-size: 16px; margin: 0 0 16px;">Détail de votre score</h3>
-              ${[
-                { label: "Volume de tâches automatisables", score: axes.volume.score, max: axes.volume.max },
-                { label: "Impact financier", score: axes.financial.score, max: axes.financial.max },
-                { label: "Maturité digitale", score: axes.readiness.score, max: axes.readiness.max },
-              ].map(a => {
-                const pct = Math.min(100, Math.round((a.score / a.max) * 100));
-                return `
-                  <div style="margin-bottom: 12px;">
-                    <div style="margin-bottom: 4px;">
-                      <span style="color: #0F0F1A; font-size: 14px; font-weight: 600;">${a.label}</span>
-                      <span style="color: #7C3AED; font-size: 14px; font-weight: 700; float: right;">${pct}%</span>
-                    </div>
-                    <div style="background: #E2E8F0; border-radius: 4px; height: 8px; width: 100%;">
-                      <div style="background: #7C3AED; border-radius: 4px; height: 8px; width: ${pct}%;"></div>
-                    </div>
-                  </div>
-                `;
-              }).join("")}
-            </div>
-            ` : ""}
+          <!-- Title -->
+          <tr><td style="padding:28px 32px 0; text-align:center;">
+            <h1 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#0F0F1A; font-size:26px; font-weight:700; margin:0 0 8px; line-height:1.3;">Votre Diagnostic IA</h1>
+            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#64748B; font-size:15px; margin:0;">Résultats personnalisés pour ${firstName}</p>
+          </td></tr>
 
-            <div style="background: white; border: 1px solid #E2E8F0; border-radius: 16px; padding: 24px; margin-bottom: 16px;">
-              <h3 style="color: #0F0F1A; font-size: 16px; margin: 0 0 12px;">Économies potentielles estimées</h3>
-              <table style="width: 100%; border-collapse: collapse;">
-                <tr>
-                  <td style="padding: 8px 0; color: #64748B; font-size: 14px;">Heures récupérées/semaine</td>
-                  <td style="padding: 8px 0; text-align: right; font-weight: 700; color: #7C3AED; font-size: 18px;">${savedHoursWeek}h</td>
-                </tr>
-                <tr>
-                  <td style="padding: 8px 0; color: #64748B; font-size: 14px;">Économies mensuelles</td>
-                  <td style="padding: 8px 0; text-align: right; font-weight: 700; color: #7C3AED; font-size: 18px;">${formatEuro(savedMoneyMonth)}</td>
-                </tr>
-                <tr>
-                  <td style="padding: 8px 0; color: #64748B; font-size: 14px;">Économies annuelles</td>
-                  <td style="padding: 8px 0; text-align: right; font-weight: 700; color: #7C3AED; font-size: 22px;">${formatEuro(savedMoneyYear)}</td>
-                </tr>
-              </table>
-            </div>
-
-            <div style="background: white; border: 1px solid #E2E8F0; border-radius: 16px; padding: 24px; margin-bottom: 24px;">
-              <h3 style="color: #0F0F1A; font-size: 16px; margin: 0 0 16px;">Vos 3 priorités d'automatisation</h3>
-              ${priorities.map((p, i) => `
-                <div style="padding: 12px 0; ${i < priorities.length - 1 ? "border-bottom: 1px solid #F1F5F9;" : ""}">
-                  <strong style="color: #7C3AED;">${i + 1}.</strong>
-                  <strong style="color: #0F0F1A;"> ${p.title}</strong>
-                  <p style="color: #64748B; font-size: 13px; margin: 4px 0 0;">Gain estimé : ${p.gain}</p>
+          <!-- Score card -->
+          <tr><td style="padding:28px 32px 0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FAFAFF; border:1px solid #EDE9FE; border-radius:14px;">
+              <tr><td style="padding:32px 24px; text-align:center;">
+                <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:56px; font-weight:800; color:${tierInfo.text}; line-height:1; margin-bottom:12px;">${score}<span style="font-size:28px; font-weight:600; color:#94A3B8;">/100</span></div>
+                <div style="display:inline-block; background:${tierInfo.bg}; color:${tierInfo.text}; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:12px; font-weight:700; padding:8px 20px; border-radius:20px; text-transform:uppercase; letter-spacing:0.08em;">
+                  ${tierInfo.label}
                 </div>
-              `).join("")}
-            </div>
+              </td></tr>
+            </table>
+          </td></tr>
 
-            <div style="text-align: center; padding: 24px 0;">
-              <p style="color: #64748B; font-size: 14px; margin: 0 0 16px;">
-                Vous voulez savoir exactement comment implémenter ces automatisations ?
-              </p>
-              <a href="https://calendly.com/daniele-synapz/strategie-meeting" style="display: inline-block; background: #7C3AED; color: white; font-weight: 600; padding: 14px 32px; border-radius: 12px; text-decoration: none; font-size: 16px;">
-                Réserver mon audit gratuit (30 min) &rarr;
-              </a>
-              <p style="color: #94A3B8; font-size: 12px; margin: 12px 0 0;">Gratuit &middot; Sans engagement &middot; Résultats en 72h</p>
-            </div>
+          ${axes ? `
+          <!-- Axes breakdown -->
+          <tr><td style="padding:28px 32px 0;">
+            <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#0F0F1A; font-size:17px; font-weight:700; margin:0 0 20px;">Détail de votre score</h3>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+              ${axesHtml}
+            </table>
+          </td></tr>
+          ` : ""}
 
-            <div style="border-top: 1px solid #E2E8F0; padding-top: 16px; margin-top: 16px; text-align: center;">
-              <p style="color: #94A3B8; font-size: 11px; margin: 0;">SYNAPZ — Impulsions IA pour PME</p>
-            </div>
-          </div>
-        `,
+          <!-- Divider -->
+          <tr><td style="padding:28px 32px 0;">
+            <div style="height:1px; background:#E2E8F0;"></div>
+          </td></tr>
+
+          <!-- Financial impact -->
+          <tr><td style="padding:28px 32px 0;">
+            <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#0F0F1A; font-size:17px; font-weight:700; margin:0 0 16px;">Économies potentielles estimées</h3>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; padding:10px 0; color:#64748B; font-size:14px;">Heures récupérées/semaine</td>
+                <td style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; padding:10px 0; text-align:right; font-weight:700; color:#7C3AED; font-size:20px;">${savedHoursWeek}h</td>
+              </tr>
+              <tr>
+                <td style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; padding:10px 0; color:#64748B; font-size:14px; border-top:1px solid #F1F5F9;">Économies mensuelles</td>
+                <td style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; padding:10px 0; text-align:right; font-weight:700; color:#7C3AED; font-size:20px; border-top:1px solid #F1F5F9;">${formatEuro(savedMoneyMonth)}</td>
+              </tr>
+              <tr>
+                <td style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; padding:10px 0; color:#64748B; font-size:14px; border-top:1px solid #F1F5F9;">Économies annuelles</td>
+                <td style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; padding:10px 0; text-align:right; font-weight:800; color:#7C3AED; font-size:24px; border-top:1px solid #F1F5F9;">${formatEuro(savedMoneyYear)}</td>
+              </tr>
+            </table>
+          </td></tr>
+
+          <!-- Divider -->
+          <tr><td style="padding:28px 32px 0;">
+            <div style="height:1px; background:#E2E8F0;"></div>
+          </td></tr>
+
+          <!-- Priorities -->
+          <tr><td style="padding:28px 32px 0;">
+            <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#0F0F1A; font-size:17px; font-weight:700; margin:0 0 8px;">Vos 3 priorités d'automatisation</h3>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+              ${prioritiesHtml}
+            </table>
+          </td></tr>
+
+          <!-- CTA -->
+          <tr><td style="padding:36px 32px 0; text-align:center;">
+            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#64748B; font-size:15px; margin:0 0 20px; line-height:1.5;">
+              Vous voulez savoir exactement comment<br/>implémenter ces automatisations ?
+            </p>
+            <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto;">
+              <tr><td style="background:#7C3AED; border-radius:12px;">
+                <a href="https://calendly.com/daniele-synapz/strategie-meeting" style="display:inline-block; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#FFFFFF; font-weight:600; font-size:16px; text-decoration:none; padding:16px 36px; border-radius:12px;">
+                  Réserver mon audit gratuit (30 min) &rarr;
+                </a>
+              </td></tr>
+            </table>
+            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#94A3B8; font-size:12px; margin:14px 0 0;">Gratuit &middot; Sans engagement &middot; Résultats en 72h</p>
+          </td></tr>
+
+          <!-- Footer -->
+          <tr><td style="padding:36px 32px 32px; text-align:center;">
+            <div style="height:1px; background:#E2E8F0; margin-bottom:20px;"></div>
+            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#94A3B8; font-size:11px; line-height:1.6; margin:0;">
+              SYNAPZ SRL — Impulsions IA pour PME<br/>
+              TVA BE1018193756 &middot; Bruxelles, Belgique<br/>
+              Cet email a été envoyé suite à votre Diagnostic IA sur <a href="https://synapz.be" style="color:#94A3B8;">synapz.be</a>
+            </p>
+          </td></tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`,
       }),
     });
 
