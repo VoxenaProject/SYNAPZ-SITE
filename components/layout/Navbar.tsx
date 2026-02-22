@@ -29,7 +29,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-9 left-0 right-0 z-30 transition-all duration-300 animate-slide-down ${
+        className={`fixed top-0 md:top-9 left-0 right-0 z-30 transition-all duration-300 animate-slide-down ${
           scrolled
             ? "bg-white/95 md:backdrop-blur-md border-b border-[#E2E8F0] shadow-sm"
             : "bg-transparent"

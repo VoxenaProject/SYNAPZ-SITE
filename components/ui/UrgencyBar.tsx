@@ -32,7 +32,7 @@ export default function UrgencyBar() {
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-40 bg-[#F5F3FF] border-b border-[#7C3AED]/15 py-2 px-4 text-center">
+      <div className="fixed top-0 left-0 right-0 z-40 bg-[#F5F3FF] border-b border-[#7C3AED]/15 py-2 px-4 text-center hidden md:block">
         <button
           onClick={() => {
             GA.urgencyBarClicked();
