@@ -33,11 +33,16 @@ export async function upsertWebsiteLead({
     if (!supabase) return; // Supabase not configured — skip silently
 
     // Check if lead already exists
-    const { data: existing } = await supabase
+    const { data: existing, error: selectError } = await supabase
       .from("leads")
       .select("id, source, qualification_data")
       .eq("email", email)
       .single();
+
+    // PGRST116 = no rows found — that's fine, we'll insert
+    if (selectError && selectError.code !== "PGRST116") {
+      console.error("CRM select error:", selectError.message, selectError.code);
+    }
 
     if (existing) {
       // Merge qualification_data + upgrade source if warmer
@@ -59,12 +64,15 @@ export async function upsertWebsiteLead({
       if (sector) updates.sector = sector;
       if (size) updates.size = size;
 
-      await supabase.from("leads").update(updates).eq("id", existing.id);
+      const { error: updateError } = await supabase.from("leads").update(updates).eq("id", existing.id);
+      if (updateError) {
+        console.error("CRM update error:", updateError.message, updateError.code);
+      }
     } else {
       // Insert new lead
       const score = source === "diagnostic_ia" ? 80 : source === "roi_calculator" ? 65 : 40;
 
-      await supabase.from("leads").insert({
+      const { error: insertError } = await supabase.from("leads").insert({
         company_name: company_name || "",
         contact_name: contact_name || "",
         email,
@@ -79,6 +87,10 @@ export async function upsertWebsiteLead({
         follow_up_count: 0,
         email_open_count: 0,
       });
+
+      if (insertError) {
+        console.error("CRM insert error:", insertError.message, insertError.code);
+      }
     }
   } catch (err) {
     // Log but don't throw — CRM insert should never break the user-facing flow
