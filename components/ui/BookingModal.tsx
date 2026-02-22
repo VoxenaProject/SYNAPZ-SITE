@@ -184,6 +184,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                         width="100%"
                         height="630"
                         frameBorder="0"
+                        loading="lazy"
                         title="Réserver un call stratégie"
                         className="block"
                       />

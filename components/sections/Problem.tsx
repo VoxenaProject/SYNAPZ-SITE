@@ -4,8 +4,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import BookingModal from "@/components/ui/BookingModal";
 
-const ease = [0.25, 0.1, 0.25, 1] as const;
-
 function CrossIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -26,51 +24,39 @@ function CheckIcon() {
 
 function ClockIcon() {
   return (
-    <motion.svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-      initial={{ scale: 0 }} whileInView={{ scale: 1 }}
-      viewport={{ once: true }} transition={{ duration: 0.5, ease }}
-    >
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
       <circle cx="12" cy="12" r="9" stroke="#64748B" strokeWidth="1.5" />
       <path d="M12 7V12L15 14" stroke="#64748B" strokeWidth="1.5" strokeLinecap="round" />
-    </motion.svg>
+    </svg>
   );
 }
 
 function UsersIcon() {
   return (
-    <motion.svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-      initial={{ scale: 0 }} whileInView={{ scale: 1 }}
-      viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1, ease }}
-    >
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
       <path d="M16 11C17.66 11 19 9.66 19 8C19 6.34 17.66 5 16 5M20 17C20 15.5 18.5 14 16 13.5" stroke="#64748B" strokeWidth="1.5" strokeLinecap="round" />
       <path d="M8 11C9.66 11 11 9.66 11 8C11 6.34 9.66 5 8 5C6.34 5 5 6.34 5 8C5 9.66 6.34 11 8 11ZM3 19C3 17 5.34 15.5 8 15.5C10.66 15.5 13 17 13 19" stroke="#64748B" strokeWidth="1.5" strokeLinecap="round" />
-    </motion.svg>
+    </svg>
   );
 }
 
 function AlertIcon() {
   return (
-    <motion.svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-      initial={{ scale: 0 }} whileInView={{ scale: 1 }}
-      viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2, ease }}
-    >
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
       <path d="M12 2L2 20H22L12 2Z" stroke="#64748B" strokeWidth="1.5" strokeLinejoin="round" />
       <path d="M12 10V14" stroke="#64748B" strokeWidth="1.5" strokeLinecap="round" />
       <circle cx="12" cy="17" r="0.5" fill="#64748B" stroke="#64748B" />
-    </motion.svg>
+    </svg>
   );
 }
 
 function DoorIcon() {
   return (
-    <motion.svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-      initial={{ scale: 0 }} whileInView={{ scale: 1 }}
-      viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3, ease }}
-    >
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
       <rect x="4" y="2" width="12" height="20" rx="1" stroke="#64748B" strokeWidth="1.5" />
       <circle cx="13" cy="12" r="1" fill="#64748B" />
       <path d="M16 5L20 8L16 11" stroke="#64748B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </motion.svg>
+    </svg>
   );
 }
 
@@ -123,13 +109,13 @@ export default function Problem() {
     <section className="py-28 md:py-32 px-6 bg-white below-fold">
       <div className="max-w-5xl mx-auto">
 
-        {/* ── Part A: Hook + Before/After ── */}
+        {/* Part A: Hook + Before/After */}
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, ease }}
+          transition={{ duration: 0.5 }}
         >
           <p className="text-[#7C3AED] text-[11px] font-semibold uppercase tracking-[0.05em] mb-5">
             La réalité
@@ -152,10 +138,10 @@ export default function Problem() {
           {/* Before */}
           <motion.div
             className="bg-[#FEF2F2] border border-red-200/60 rounded-2xl p-8"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, ease }}
+            transition={{ duration: 0.5 }}
           >
             <p className="text-sm font-semibold text-red-400 uppercase tracking-wider mb-1">Avant</p>
             <h3 className="text-lg font-bold text-red-900 mb-6">Projets IA traditionnels</h3>
@@ -172,10 +158,10 @@ export default function Problem() {
           {/* After */}
           <motion.div
             className="bg-[#7C3AED]/5 border border-[#7C3AED]/20 rounded-2xl p-8 relative"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1, ease }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             <div className="absolute top-4 right-4 bg-[#7C3AED] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
               Recommandé
@@ -193,13 +179,13 @@ export default function Problem() {
           </motion.div>
         </div>
 
-        {/* ── Part B: Cost of Inaction ── */}
+        {/* Part B: Cost of Inaction */}
         <motion.div
           className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, ease }}
+          transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#0F0F1A]">
             Ce que vous coûte{" "}
@@ -212,10 +198,10 @@ export default function Problem() {
             <motion.div
               key={i}
               className="bg-white border border-[#E2E8F0] rounded-2xl p-8 hover:shadow-lg transition-all duration-300"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.08, ease }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
             >
               <div className="flex items-start gap-4">
                 <div className="w-11 h-11 rounded-xl bg-[#F5F7FF] flex items-center justify-center shrink-0">
@@ -240,19 +226,17 @@ export default function Problem() {
         {/* CTA */}
         <motion.div
           className="text-center mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
         >
-          <motion.button
+          <button
             onClick={() => setModalOpen(true)}
             className="bg-[#7C3AED] text-white font-semibold text-base px-8 py-4 rounded-xl hover:bg-[#9D6FF0] transition-all shadow-lg shadow-[#7C3AED]/25 hover:shadow-xl hover:shadow-[#7C3AED]/35 cursor-pointer"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
           >
             Éviter tout ça — Obtenir mon audit gratuit →
-          </motion.button>
+          </button>
         </motion.div>
       </div>
     </section>

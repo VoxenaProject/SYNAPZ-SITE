@@ -42,8 +42,8 @@ export default function FAQ() {
       <div className="max-w-3xl mx-auto">
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
@@ -62,8 +62,8 @@ export default function FAQ() {
             <motion.div
               key={i}
               className="bg-white border border-[#E2E8F0] rounded-2xl overflow-hidden hover:border-[#7C3AED]/30 transition-colors shadow-sm"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.05 * i }}
             >

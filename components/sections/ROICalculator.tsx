@@ -6,62 +6,28 @@ import BookingModal from "@/components/ui/BookingModal";
 
 function ClockSVG() {
   return (
-    <motion.svg width="28" height="28" viewBox="0 0 24 24" fill="none"
-      initial={{ scale: 0 }} whileInView={{ scale: 1 }}
-      viewport={{ once: true }} transition={{ type: "spring" }}
-    >
-      <motion.circle cx="12" cy="12" r="9"
-        stroke="#7C3AED" strokeWidth="1.8"
-        initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }} transition={{ duration: 0.7 }}
-      />
-      <motion.path d="M12 7V12L15 14"
-        stroke="#7C3AED" strokeWidth="1.8" strokeLinecap="round"
-        initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.6 }}
-      />
-    </motion.svg>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="9" stroke="#7C3AED" strokeWidth="1.8" />
+      <path d="M12 7V12L15 14" stroke="#7C3AED" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
   );
 }
 
 function EuroSVG() {
   return (
-    <motion.svg width="28" height="28" viewBox="0 0 24 24" fill="none"
-      initial={{ scale: 0 }} whileInView={{ scale: 1 }}
-      viewport={{ once: true }} transition={{ type: "spring", delay: 0.1 }}
-    >
-      <motion.circle cx="12" cy="12" r="9"
-        stroke="#7C3AED" strokeWidth="1.8"
-        initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}
-      />
-      <motion.path
-        d="M15 8.5C13.5 7.5 11.5 7.5 10 8.5C8.5 9.5 7.5 11 7.5 12.5C7.5 14 8.5 15.5 10 16.5C11.5 17.5 13.5 17.5 15 16.5M7 11H14M7 13.5H14"
-        stroke="#7C3AED" strokeWidth="1.6" strokeLinecap="round"
-        initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.5 }}
-      />
-    </motion.svg>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="9" stroke="#7C3AED" strokeWidth="1.8" />
+      <path d="M15 8.5C13.5 7.5 11.5 7.5 10 8.5C8.5 9.5 7.5 11 7.5 12.5C7.5 14 8.5 15.5 10 16.5C11.5 17.5 13.5 17.5 15 16.5M7 11H14M7 13.5H14" stroke="#7C3AED" strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
   );
 }
 
 function TrendSVG() {
   return (
-    <motion.svg width="28" height="28" viewBox="0 0 24 24" fill="none"
-      initial={{ scale: 0 }} whileInView={{ scale: 1 }}
-      viewport={{ once: true }} transition={{ type: "spring", delay: 0.2 }}
-    >
-      <motion.path d="M3 17L9 11L13 15L21 7"
-        stroke="#7C3AED" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
-        initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}
-      />
-      <motion.path d="M16 7H21V12"
-        stroke="#7C3AED" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
-        initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.9 }}
-      />
-    </motion.svg>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+      <path d="M3 17L9 11L13 15L21 7" stroke="#7C3AED" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M16 7H21V12" stroke="#7C3AED" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }
 
@@ -131,8 +97,8 @@ export default function ROICalculator() {
         <div className="max-w-5xl mx-auto">
           <motion.div
             className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
@@ -153,8 +119,8 @@ export default function ROICalculator() {
             {/* Sliders */}
             <motion.div
               className="bg-white border border-[#E2E8F0] rounded-2xl p-8 space-y-8 shadow-sm"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
@@ -246,8 +212,8 @@ export default function ROICalculator() {
             {/* Results */}
             <motion.div
               className="space-y-4"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
@@ -256,10 +222,9 @@ export default function ROICalculator() {
                 { SVG: EuroSVG, value: formatEuro(results.savedMoneyPerMonth), label: "économisés par mois" },
                 { SVG: TrendSVG, value: formatEuro(results.savedMoneyPerYear), label: "économisés par an" },
               ].map((result, i) => (
-                <motion.div
+                <div
                   key={i}
                   className="bg-white border border-[#E2E8F0] rounded-2xl p-6 flex items-center gap-5 shadow-sm"
-                  layout
                 >
                   <div className="w-12 h-12 rounded-xl bg-[#F5F7FF] flex items-center justify-center flex-shrink-0">
                     <result.SVG />
@@ -276,7 +241,7 @@ export default function ROICalculator() {
                     </motion.div>
                     <div className="text-[#64748B] text-sm">{result.label}</div>
                   </div>
-                </motion.div>
+                </div>
               ))}
 
               {results.fullTimeEquivalentMonths > 0 && (

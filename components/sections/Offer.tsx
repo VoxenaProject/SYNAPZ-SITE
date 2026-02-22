@@ -6,62 +6,27 @@ import BookingModal from "@/components/ui/BookingModal";
 
 function SearchSVG() {
   return (
-    <motion.svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-      <motion.circle cx="11" cy="11" r="7"
-        stroke="#7C3AED" strokeWidth="1.8"
-        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      />
-      <motion.line x1="16.5" y1="16.5" x2="21" y2="21"
-        stroke="#7C3AED" strokeWidth="1.8" strokeLinecap="round"
-        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
-        transition={{ duration: 0.4, delay: 0.9 }}
-      />
-      <motion.line x1="8" y1="11" x2="14" y2="11"
-        stroke="#7C3AED" strokeWidth="1.5" strokeLinecap="round"
-        animate={{ x1: [8, 8, 8], y1: [9, 13, 9] }}
-        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-      />
-    </motion.svg>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+      <circle cx="11" cy="11" r="7" stroke="#7C3AED" strokeWidth="1.8" />
+      <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="#7C3AED" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
   );
 }
 
 function BoltSVG() {
   return (
-    <motion.svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-      <motion.path
-        d="M13 2L4.5 13.5H11.5L10.5 22L20 10.5H13L13 2Z"
-        stroke="#7C3AED" strokeWidth="1.8" strokeLinejoin="round" fill="none"
-        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      />
-      <motion.path
-        d="M13 2L4.5 13.5H11.5L10.5 22L20 10.5H13L13 2Z"
-        fill="#7C3AED" fillOpacity={0}
-        animate={{ fillOpacity: [0, 0.15, 0] }}
-        transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-      />
-    </motion.svg>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+      <path d="M13 2L4.5 13.5H11.5L10.5 22L20 10.5H13L13 2Z" stroke="#7C3AED" strokeWidth="1.8" strokeLinejoin="round" fill="#7C3AED" fillOpacity={0.1} />
+    </svg>
   );
 }
 
 function ShieldCheckSVG() {
   return (
-    <motion.svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-      <motion.path
-        d="M12 2L4 6V12C4 16.5 7.5 20.6 12 22C16.5 20.6 20 16.5 20 12V6L12 2Z"
-        fill="#7C3AED" fillOpacity={0.1}
-        stroke="#7C3AED" strokeWidth="1.8" strokeLinejoin="round"
-        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      />
-      <motion.path
-        d="M9 12L11 14L15 10"
-        stroke="#7C3AED" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
-        transition={{ duration: 0.4, delay: 0.9 }}
-      />
-    </motion.svg>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2L4 6V12C4 16.5 7.5 20.6 12 22C16.5 20.6 20 16.5 20 12V6L12 2Z" fill="#7C3AED" fillOpacity={0.1} stroke="#7C3AED" strokeWidth="1.8" strokeLinejoin="round" />
+      <path d="M9 12L11 14L15 10" stroke="#7C3AED" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }
 
@@ -112,8 +77,8 @@ export default function Offer() {
           {/* Headline */}
           <motion.div
             className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
@@ -140,10 +105,10 @@ export default function Offer() {
                     ? "border-[#7C3AED]/50 bg-white shadow-lg shadow-[#7C3AED]/10"
                     : "border-[#E2E8F0] bg-white shadow-sm"
                 }`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 * i }}
+                transition={{ duration: 0.4, delay: 0.05 * i }}
               >
                 {/* Icon + Tag */}
                 <div className="flex items-center justify-between mb-6">
@@ -189,8 +154,8 @@ export default function Offer() {
           {/* Value stack — Hormozi */}
           <motion.div
             className="bg-white border border-[#E2E8F0] rounded-2xl p-8 mb-10 shadow-sm"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
@@ -222,8 +187,8 @@ export default function Offer() {
           {/* How it works — 3 steps */}
           <motion.div
             className="mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.35 }}
           >
@@ -249,8 +214,8 @@ export default function Offer() {
           {/* CTA */}
           <motion.div
             className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >

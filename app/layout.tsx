@@ -1,22 +1,32 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
-import CookieBanner from "@/components/ui/CookieBanner";
-import StickyMobileCTA from "@/components/ui/StickyMobileCTA";
-import WhatsAppWidget from "@/components/ui/WhatsAppWidget";
+import dynamic from "next/dynamic";
 import Analytics from "@/components/Analytics";
+
+const CookieBanner = dynamic(() => import("@/components/ui/CookieBanner"));
+const StickyMobileCTA = dynamic(() => import("@/components/ui/StickyMobileCTA"));
+const WhatsAppWidget = dynamic(() => import("@/components/ui/WhatsAppWidget"));
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
+  display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#7C3AED",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://synapz.be"),
@@ -80,6 +90,8 @@ export default function RootLayout({
       <head>
         <link rel="dns-prefetch" href="https://calendly.com" />
         <link rel="preconnect" href="https://calendly.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.clarity.ms" />
       </head>
       <body className={`${jakarta.variable} ${inter.variable} antialiased`}>
         {children}

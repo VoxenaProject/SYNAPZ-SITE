@@ -31,8 +31,8 @@ export default function Team() {
       <div className="max-w-4xl mx-auto">
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
@@ -55,8 +55,8 @@ export default function Team() {
             <motion.div
               key={i}
               className="bg-white border border-[#E2E8F0] rounded-2xl p-8 hover:border-[#7C3AED]/30 hover:shadow-md transition-all shadow-sm"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 * i }}
             >

@@ -21,7 +21,7 @@ export default function CTAFinal() {
       <section className="py-28 px-6 relative overflow-hidden bg-[#0F0F1A] below-fold">
         {/* Background gradients */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#7C3AED]/20 via-[#0F0F1A] to-[#06B6D4]/10 pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#7C3AED]/15 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#7C3AED]/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute inset-0 opacity-20 pointer-events-none"
           style={{
             backgroundImage: "linear-gradient(rgba(124,58,237,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(124,58,237,0.15) 1px, transparent 1px)",
@@ -34,8 +34,8 @@ export default function CTAFinal() {
             {/* Left — Copy */}
             <div>
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
@@ -51,8 +51,8 @@ export default function CTAFinal() {
 
               <motion.p
                 className="text-white/60 text-lg mb-8 max-w-lg"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
@@ -80,8 +80,8 @@ export default function CTAFinal() {
               {/* Contact options */}
               <motion.div
                 className="space-y-3"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
@@ -140,8 +140,8 @@ export default function CTAFinal() {
 
             {/* Right — Calendly embed */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
@@ -151,6 +151,7 @@ export default function CTAFinal() {
                   width="100%"
                   height="660"
                   frameBorder="0"
+                  loading="lazy"
                   title="Réserver un call stratégie"
                   className="block"
                 />

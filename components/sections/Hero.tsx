@@ -35,39 +35,25 @@ function NeuralBackground() {
         preserveAspectRatio="xMidYMid slice"
       >
         {connections.map(([from, to], i) => (
-          <motion.line
+          <line
             key={i}
             x1={nodes[from].x} y1={nodes[from].y}
             x2={nodes[to].x} y2={nodes[to].y}
             stroke="#7C3AED"
             strokeOpacity={0.06}
             strokeWidth={1}
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 2, delay: 0.5 + i * 0.08, ease: "easeOut" }}
           />
         ))}
         {nodes.map((node, i) => (
-          <motion.circle
+          <circle
             key={i}
             cx={node.x}
             cy={node.y}
             r={i === 6 ? 5 : 2.5}
             fill="#7C3AED"
             fillOpacity={i === 6 ? 0.2 : 0.1}
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: i === 6 ? 0.2 : 0.1 }}
-            transition={{ duration: 0.8, delay: 1.2 + i * 0.08, ease }}
           />
         ))}
-        <motion.circle
-          cx={480} cy={270} r={12}
-          fill="none"
-          stroke="#7C3AED"
-          strokeOpacity={0.08}
-          animate={{ r: [12, 24, 12], strokeOpacity: [0.08, 0, 0.08] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        />
       </svg>
     </div>
   );
@@ -87,17 +73,17 @@ export default function Hero() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
         <NeuralBackground />
 
-        {/* Subtle ambient glow */}
-        <div className="absolute bottom-0 left-1/4 w-[500px] h-[280px] bg-[#7C3AED]/4 rounded-full blur-[160px] pointer-events-none" />
-        <div className="absolute top-1/3 right-0 w-[300px] h-[200px] bg-[#06B6D4]/3 rounded-full blur-[120px] pointer-events-none" />
+        {/* Subtle ambient glow — optimized blur */}
+        <div className="absolute bottom-0 left-1/4 w-[500px] h-[280px] bg-[#7C3AED]/4 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/3 right-0 w-[300px] h-[200px] bg-[#06B6D4]/3 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-6 pt-40 pb-24 text-center">
           {/* Pill badge */}
           <motion.div
             className="inline-flex items-center gap-2 bg-[#7C3AED]/8 border border-[#7C3AED]/15 rounded-full px-5 py-2 mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease }}
           >
             <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] animate-pulse" />
             <span className="text-[#7C3AED] text-xs font-semibold uppercase tracking-[0.05em]">
@@ -108,9 +94,9 @@ export default function Hero() {
           {/* H1 */}
           <motion.h1
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] mb-8 text-[#0F0F1A]"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.1, ease }}
           >
             Vos équipes perdent des heures
             <br />
@@ -122,9 +108,9 @@ export default function Hero() {
           {/* Subtitle */}
           <motion.p
             className="text-[#64748B] text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25, ease }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2, ease }}
           >
             On identifie vos pertes de temps. On les automatise en 72h.
             Si vous ne gagnez pas{" "}
@@ -136,9 +122,9 @@ export default function Hero() {
           {/* 3 Stat badges */}
           <motion.div
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.35, ease }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3, ease }}
           >
             {stats.map((stat, i) => (
               <div
@@ -158,18 +144,16 @@ export default function Hero() {
           {/* CTA */}
           <motion.div
             className="flex flex-col items-center gap-3"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.45, ease }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4, ease }}
           >
-            <motion.button
+            <button
               onClick={() => setModalOpen(true)}
               className="bg-[#7C3AED] text-white font-semibold text-lg px-10 py-4 rounded-xl hover:bg-[#6D28D9] transition-all shadow-lg shadow-[#7C3AED]/20 hover:shadow-xl hover:shadow-[#7C3AED]/30 cursor-pointer"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
             >
               Obtenir mon audit gratuit →
-            </motion.button>
+            </button>
             <span className="text-[#94A3B8] text-sm">
               30 min · Gratuit · Sans engagement
             </span>
@@ -185,18 +169,9 @@ export default function Hero() {
           </motion.div>
 
           {/* Scroll indicator */}
-          <motion.div
-            className="mt-24"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.8, duration: 0.8 }}
-          >
-            <motion.div
-              className="w-px h-14 bg-gradient-to-b from-[#7C3AED]/40 to-transparent mx-auto"
-              animate={{ scaleY: [1, 0.4, 1] }}
-              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </motion.div>
+          <div className="mt-24">
+            <div className="w-px h-14 bg-gradient-to-b from-[#7C3AED]/40 to-transparent mx-auto animate-pulse" />
+          </div>
         </div>
       </section>
 

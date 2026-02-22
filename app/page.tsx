@@ -1,13 +1,15 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
-import Problem from "@/components/sections/Problem";
-import UseCases from "@/components/sections/UseCases";
-import Offer from "@/components/sections/Offer";
-import ROICalculator from "@/components/sections/ROICalculator";
-import Team from "@/components/sections/Team";
-import FAQ from "@/components/sections/FAQ";
-import CTAFinal from "@/components/sections/CTAFinal";
+
+const Problem = dynamic(() => import("@/components/sections/Problem"));
+const UseCases = dynamic(() => import("@/components/sections/UseCases"));
+const Offer = dynamic(() => import("@/components/sections/Offer"));
+const ROICalculator = dynamic(() => import("@/components/sections/ROICalculator"));
+const Team = dynamic(() => import("@/components/sections/Team"));
+const FAQ = dynamic(() => import("@/components/sections/FAQ"));
+const CTAFinal = dynamic(() => import("@/components/sections/CTAFinal"));
 
 const organizationSchema = {
   "@context": "https://schema.org",

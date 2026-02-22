@@ -68,8 +68,8 @@ export default function UseCases() {
         {/* Header */}
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease }}
         >
@@ -93,8 +93,8 @@ export default function UseCases() {
             <motion.div
               key={i}
               className="bg-white border border-[#E2E8F0] rounded-2xl p-7 hover:border-[#7C3AED]/25 hover:shadow-md transition-all duration-300 flex flex-col"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.08, ease }}
             >
@@ -147,8 +147,8 @@ export default function UseCases() {
         {/* CTA */}
         <motion.div
           className="text-center mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
