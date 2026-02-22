@@ -127,7 +127,7 @@ export default function ROICalculator() {
 
   return (
     <>
-      <section className="py-24 px-6 bg-[#F5F7FF]">
+      <section className="py-28 px-6 bg-[#F5F7FF] below-fold">
         <div className="max-w-5xl mx-auto">
           <motion.div
             className="text-center mb-16"
@@ -197,6 +197,7 @@ export default function ROICalculator() {
                 <input type="range" min={1} max={50} value={employees}
                   onChange={(e) => handleSliderChange(setEmployees, Number(e.target.value))}
                   className={sliderClass}
+                  aria-label={`Nombre d'employés : ${employees}`}
                 />
                 <div className="flex justify-between text-xs text-[#64748B] mt-1">
                   <span>1</span><span>50</span>
@@ -213,6 +214,7 @@ export default function ROICalculator() {
                 <input type="range" min={1} max={20} value={hoursPerWeek}
                   onChange={(e) => handleSliderChange(setHoursPerWeek, Number(e.target.value))}
                   className={sliderClass}
+                  aria-label={`Heures par semaine en tâches répétitives : ${hoursPerWeek}h`}
                 />
                 <div className="flex justify-between text-xs text-[#64748B] mt-1">
                   <span>1h</span><span>20h</span>
@@ -229,6 +231,7 @@ export default function ROICalculator() {
                 <input type="range" min={10} max={100} step={5} value={hourlyRate}
                   onChange={(e) => handleSliderChange(setHourlyRate, Number(e.target.value))}
                   className={sliderClass}
+                  aria-label={`Coût horaire moyen : ${hourlyRate}€ par heure`}
                 />
                 <div className="flex justify-between text-xs text-[#64748B] mt-1">
                   <span>10€</span><span>100€</span>

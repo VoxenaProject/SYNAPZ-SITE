@@ -107,7 +107,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="approche" className="py-24 px-6 bg-white">
+    <section id="approche" className="py-28 px-6 bg-white">
       <div className="max-w-4xl mx-auto">
         <motion.div
           className="text-center mb-20"

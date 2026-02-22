@@ -8,13 +8,16 @@ export default function Footer() {
         <Image
           src="/logo/synapz-logo-dark.svg"
           alt="SYNAPZ"
-          width={120}
-          height={30}
+          width={128}
+          height={28}
         />
         <p className="text-[#64748B] text-sm text-center">
-          © 2025 SYNAPZ (VVI CONSULTING) · TVA BE1018193756 · synapz.be
+          © 2026 SYNAPZ · TVA BE1018193756 · synapz.be
         </p>
         <div className="flex items-center gap-6 text-sm text-[#64748B]">
+          <Link href="/blog" className="hover:text-[#0F0F1A] transition-colors">
+            Blog
+          </Link>
           <Link href="/mentions-legales" className="hover:text-[#0F0F1A] transition-colors">
             Mentions légales
           </Link>

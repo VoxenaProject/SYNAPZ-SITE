@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import CookieBanner from "@/components/ui/CookieBanner";
+import StickyMobileCTA from "@/components/ui/StickyMobileCTA";
+import WhatsAppWidget from "@/components/ui/WhatsAppWidget";
+import Analytics from "@/components/Analytics";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -16,7 +19,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SYNAPZ — Agence IA pour PME | Automatisation & Résultats Garantis",
+  metadataBase: new URL("https://synapz.be"),
+  title: {
+    template: "%s | SYNAPZ",
+    default: "SYNAPZ — Agence IA pour PME | Automatisation & Résultats Garantis",
+  },
   description:
     "On automatise votre PME avec l'IA. Audit gratuit en 30 minutes. Résultats en 72h. Satisfait ou 0€ — c'est notre engagement.",
   keywords: [
@@ -24,8 +31,22 @@ export const metadata: Metadata = {
     "automatisation PME",
     "intelligence artificielle Belgique",
     "automatisation processus",
+    "agence automatisation IA",
     "SYNAPZ",
   ],
+  authors: [{ name: "SYNAPZ" }],
+  creator: "SYNAPZ",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "SYNAPZ — On automatise votre PME. Vous payez si ça marche.",
     description:
@@ -34,6 +55,15 @@ export const metadata: Metadata = {
     siteName: "SYNAPZ",
     locale: "fr_BE",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SYNAPZ — Agence IA pour PME | Résultats en 72h",
+    description:
+      "On automatise votre PME avec l'IA. Audit gratuit. Résultats en 72h. Satisfait ou 0€.",
+  },
+  alternates: {
+    canonical: "https://synapz.be",
   },
   icons: {
     icon: "/favicon.svg",
@@ -47,9 +77,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
+      <head>
+        <link rel="dns-prefetch" href="https://calendly.com" />
+        <link rel="preconnect" href="https://calendly.com" />
+      </head>
       <body className={`${jakarta.variable} ${inter.variable} antialiased`}>
         {children}
+        <StickyMobileCTA />
+        <WhatsAppWidget />
         <CookieBanner />
+        <Analytics />
       </body>
     </html>
   );

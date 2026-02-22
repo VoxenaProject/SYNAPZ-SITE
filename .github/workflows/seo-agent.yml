@@ -1,0 +1,51 @@
+name: SEO Agent — Auto Publish
+
+on:
+  schedule:
+    - cron: '0 8 * * 2'   # Mardi 8:00 UTC = 9:00 CET
+    - cron: '0 8 * * 5'   # Vendredi 8:00 UTC = 9:00 CET
+  workflow_dispatch:        # Trigger manuel possible
+
+jobs:
+  generate-article:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - run: npm ci
+
+      - name: Generate 1 article
+        run: npx tsx scripts/seo-agent/generate-article.ts --batch --count 1 --priority 2
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Check if new article was generated
+        id: check
+        run: |
+          if git diff --quiet content/blog/ 2>/dev/null && [ -z "$(git ls-files --others --exclude-standard content/blog/)" ]; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push
+        if: steps.check.outputs.has_changes == 'true'
+        run: |
+          git config user.name "SYNAPZ SEO Agent"
+          git config user.email "seo@synapz.be"
+          git add content/blog/
+          SLUG=$(git diff --cached --name-only | head -1 | sed 's|content/blog/||;s|\.mdx||')
+          git commit -m "$(cat <<EOF
+          New SEO article: ${SLUG}
+
+          Automated by SYNAPZ SEO Agent
+          EOF
+          )"
+          git push

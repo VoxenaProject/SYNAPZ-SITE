@@ -4,7 +4,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import BookingModal from "@/components/ui/BookingModal";
 
-// Animated neural network — signature SYNAPZ background
+const ease = [0.25, 0.1, 0.25, 1] as const;
+
 function NeuralBackground() {
   const nodes = [
     { x: 120, y: 160 },
@@ -39,11 +40,11 @@ function NeuralBackground() {
             x1={nodes[from].x} y1={nodes[from].y}
             x2={nodes[to].x} y2={nodes[to].y}
             stroke="#7C3AED"
-            strokeOpacity={0.1}
-            strokeWidth={1.5}
+            strokeOpacity={0.06}
+            strokeWidth={1}
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
-            transition={{ duration: 1.6, delay: 0.3 + i * 0.06, ease: "easeOut" }}
+            transition={{ duration: 2, delay: 0.5 + i * 0.08, ease: "easeOut" }}
           />
         ))}
         {nodes.map((node, i) => (
@@ -51,180 +52,149 @@ function NeuralBackground() {
             key={i}
             cx={node.x}
             cy={node.y}
-            r={i === 6 ? 6 : 3.5}
+            r={i === 6 ? 5 : 2.5}
             fill="#7C3AED"
-            fillOpacity={i === 6 ? 0.35 : 0.18}
+            fillOpacity={i === 6 ? 0.2 : 0.1}
             initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: [0, 1.3, 1], opacity: [0, 0.5, i === 6 ? 0.35 : 0.18] }}
-            transition={{ duration: 0.5, delay: 0.9 + i * 0.07 }}
+            animate={{ scale: 1, opacity: i === 6 ? 0.2 : 0.1 }}
+            transition={{ duration: 0.8, delay: 1.2 + i * 0.08, ease }}
           />
         ))}
-        {/* Pulsing center node */}
         <motion.circle
           cx={480} cy={270} r={12}
           fill="none"
           stroke="#7C3AED"
-          strokeOpacity={0.15}
-          animate={{ r: [12, 22, 12], strokeOpacity: [0.15, 0, 0.15] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          strokeOpacity={0.08}
+          animate={{ r: [12, 24, 12], strokeOpacity: [0.08, 0, 0.08] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         />
       </svg>
     </div>
   );
 }
 
-function BoltSVG() {
-  return (
-    <motion.svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: 0.9, type: "spring" }}
-    >
-      <motion.path
-        d="M13 2L4.5 13.5H11.5L10.5 22L20 10.5H13L13 2Z"
-        fill="#7C3AED"
-        initial={{ pathLength: 0 }}
-        animate={{ pathLength: 1 }}
-        transition={{ duration: 0.6, delay: 1 }}
-      />
-    </motion.svg>
-  );
-}
-
-function ShieldSVG() {
-  return (
-    <motion.svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: 1.1, type: "spring" }}
-    >
-      <motion.path
-        d="M12 2L4 6V12C4 16.5 7.5 20.6 12 22C16.5 20.6 20 16.5 20 12V6L12 2Z"
-        fill="#7C3AED" fillOpacity={0.15}
-        stroke="#7C3AED" strokeWidth="1.5" strokeLinejoin="round"
-        initial={{ pathLength: 0 }}
-        animate={{ pathLength: 1 }}
-        transition={{ duration: 0.8, delay: 1.2 }}
-      />
-      <motion.path
-        d="M9 12L11 14L15 10"
-        stroke="#7C3AED" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
-        initial={{ pathLength: 0 }}
-        animate={{ pathLength: 1 }}
-        transition={{ duration: 0.4, delay: 1.7 }}
-      />
-    </motion.svg>
-  );
-}
+const stats = [
+  { value: "72h", label: "premier résultat livré" },
+  { value: "0€", label: "pour commencer" },
+  { value: "5h/sem", label: "minimum garanti" },
+];
 
 export default function Hero() {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <>
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white grid-bg">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
         <NeuralBackground />
 
-        {/* Soft ambient glow */}
-        <div className="absolute bottom-0 left-1/4 w-[500px] h-[280px] bg-[#7C3AED]/6 rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute top-1/3 right-0 w-[300px] h-[200px] bg-[#06B6D4]/5 rounded-full blur-[100px] pointer-events-none" />
+        {/* Subtle ambient glow */}
+        <div className="absolute bottom-0 left-1/4 w-[500px] h-[280px] bg-[#7C3AED]/4 rounded-full blur-[160px] pointer-events-none" />
+        <div className="absolute top-1/3 right-0 w-[300px] h-[200px] bg-[#06B6D4]/3 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-6 pt-24 pb-20 text-center">
-          {/* Qualification tag */}
-          <motion.p
-            className="text-[#64748B] text-sm md:text-base mb-6 font-medium"
+        <div className="relative z-10 max-w-5xl mx-auto px-6 pt-40 pb-24 text-center">
+          {/* Pill badge */}
+          <motion.div
+            className="inline-flex items-center gap-2 bg-[#7C3AED]/8 border border-[#7C3AED]/15 rounded-full px-5 py-2 mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7, ease }}
           >
-            Pour les dirigeants de PME qui perdent du temps sur des tâches répétitives
-          </motion.p>
+            <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] animate-pulse" />
+            <span className="text-[#7C3AED] text-xs font-semibold uppercase tracking-[0.05em]">
+              Impulsions IA pour PME
+            </span>
+          </motion.div>
 
           {/* H1 */}
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-[64px] font-extrabold leading-[1.1] mb-6 text-[#0F0F1A]"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] mb-8 text-[#0F0F1A]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
+            transition={{ duration: 0.8, delay: 0.1, ease }}
           >
-            Automatisez vos tâches répétitives.
+            Vos équipes perdent des heures
             <br />
             <span className="gradient-text">
-              Résultats en 72h — garanti.
+              sur des tâches qu&apos;une IA fait en 3 secondes.
             </span>
           </motion.h1>
 
           {/* Subtitle */}
           <motion.p
-            className="text-[#64748B] text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="text-[#64748B] text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25 }}
+            transition={{ duration: 0.7, delay: 0.25, ease }}
           >
-            Un call de 30 minutes. On identifie vos 3 plus grandes pertes de
-            temps. On les automatise. Si vous ne récupérez pas au moins{" "}
+            On identifie vos pertes de temps. On les automatise en 72h.
+            Si vous ne gagnez pas{" "}
             <span className="text-[#0F0F1A] font-semibold">5h/semaine</span>{" "}
-            d&apos;ici 30 jours —{" "}
+            —{" "}
             <span className="text-[#7C3AED] font-semibold">vous ne payez rien.</span>
           </motion.p>
 
-          {/* Trust badges */}
+          {/* 3 Stat badges */}
           <motion.div
-            className="flex flex-wrap items-center justify-center gap-4 mb-10 text-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-          >
-            <div className="flex items-center gap-2.5 bg-white border border-[#E2E8F0] shadow-sm rounded-full px-5 py-2.5">
-              <BoltSVG />
-              <span className="text-[#64748B]">
-                Premiers résultats en{" "}
-                <span className="text-[#0F0F1A] font-semibold">72h</span>
-              </span>
-            </div>
-            <div className="flex items-center gap-2.5 bg-white border border-[#E2E8F0] shadow-sm rounded-full px-5 py-2.5">
-              <ShieldSVG />
-              <span className="text-[#64748B]">
-                <span className="text-[#0F0F1A] font-semibold">5h/semaine garanties</span>{" "}
-                — ou 0€
-              </span>
-            </div>
-          </motion.div>
-
-          {/* CTAs */}
-          <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
+            transition={{ duration: 0.7, delay: 0.35, ease }}
+          >
+            {stats.map((stat, i) => (
+              <div
+                key={i}
+                className="flex flex-col items-center border border-[#E2E8F0] rounded-xl px-7 py-4 bg-white/60 backdrop-blur-sm"
+              >
+                <span className="text-2xl font-extrabold gradient-text">
+                  {stat.value}
+                </span>
+                <span className="text-[10px] text-[#64748B] uppercase tracking-wider mt-1 font-medium">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* CTA */}
+          <motion.div
+            className="flex flex-col items-center gap-3"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.45, ease }}
           >
             <motion.button
               onClick={() => setModalOpen(true)}
-              className="bg-[#7C3AED] text-white font-semibold text-lg px-8 py-4 rounded-xl hover:bg-[#9D6FF0] transition-all shadow-lg shadow-[#7C3AED]/25 hover:shadow-xl hover:shadow-[#7C3AED]/35 cursor-pointer"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              className="bg-[#7C3AED] text-white font-semibold text-lg px-10 py-4 rounded-xl hover:bg-[#6D28D9] transition-all shadow-lg shadow-[#7C3AED]/20 hover:shadow-xl hover:shadow-[#7C3AED]/30 cursor-pointer"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               Obtenir mon audit gratuit →
             </motion.button>
-            <a
-              href="#approche"
-              className="text-[#64748B] hover:text-[#0F0F1A] transition-colors font-medium text-base underline-offset-4 hover:underline"
-            >
-              Voir comment ça marche ↓
-            </a>
+            <span className="text-[#94A3B8] text-sm">
+              30 min · Gratuit · Sans engagement
+            </span>
+            <div className="flex items-center gap-2 mt-2">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path d="M12 2L4 6V12C4 14.5 7.5 16 12 16C16.5 16 20 14.5 20 12V6L12 2Z" stroke="#7C3AED" strokeWidth="1.2" strokeLinejoin="round" transform="scale(0.7) translate(1,1)" />
+                <path d="M5.5 8L7 9.5L10.5 6" stroke="#7C3AED" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span className="text-[#7C3AED] text-xs font-medium">
+                Garanti : 5h récupérées/semaine ou remboursé
+              </span>
+            </div>
           </motion.div>
 
           {/* Scroll indicator */}
           <motion.div
-            className="mt-20"
+            className="mt-24"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.4 }}
+            transition={{ delay: 1.8, duration: 0.8 }}
           >
             <motion.div
-              className="w-0.5 h-12 bg-gradient-to-b from-[#7C3AED] to-transparent mx-auto rounded-full"
-              animate={{ scaleY: [1, 0.5, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
+              className="w-px h-14 bg-gradient-to-b from-[#7C3AED]/40 to-transparent mx-auto"
+              animate={{ scaleY: [1, 0.4, 1] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
             />
           </motion.div>
         </div>

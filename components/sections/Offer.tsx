@@ -81,10 +81,10 @@ const offerItems = [
   {
     step: "02",
     tag: "VALEUR : 2.000€",
-    title: "Le Mini-Projet",
+    title: "L'Impulsion IA",
     subtitle: "Offert — 0€",
     description:
-      "On implémente la première automatisation. Vous la voyez fonctionner dans votre business en 72 heures. Zéro ligne de code, zéro outil à installer, zéro formation.",
+      "On déploie votre première Impulsion IA. Vous la voyez fonctionner dans votre business en 72 heures. Zéro ligne de code, zéro outil à installer, zéro formation.",
     bonus: "Vous voyez les résultats. Ensuite vous décidez.",
     Icon: BoltSVG,
     highlight: false,
@@ -107,7 +107,7 @@ export default function Offer() {
 
   return (
     <>
-      <section id="offre" className="py-24 px-6 bg-[#F5F7FF]">
+      <section id="offre" className="py-28 px-6 bg-[#F5F7FF] below-fold">
         <div className="max-w-5xl mx-auto">
           {/* Headline */}
           <motion.div
@@ -200,7 +200,7 @@ export default function Offer() {
                 <span className="line-through">500€</span>
               </div>
               <div className="flex justify-between text-[#64748B]">
-                <span>Mini-projet automatisation</span>
+                <span>Première Impulsion IA</span>
                 <span className="line-through">2.000€</span>
               </div>
               <div className="flex justify-between text-[#64748B]">
@@ -219,6 +219,33 @@ export default function Offer() {
             </div>
           </motion.div>
 
+          {/* How it works — 3 steps */}
+          <motion.div
+            className="mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.35 }}
+          >
+            <p className="text-center text-[#7C3AED] text-xs font-semibold uppercase tracking-widest mb-8">
+              Comment ça marche
+            </p>
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                { step: "01", title: "Vous parlez", desc: "30 min de call — on cartographie vos processus", effort: "30 min de votre agenda" },
+                { step: "02", title: "On livre", desc: "On déploie votre première Impulsion IA", effort: "72h de notre côté" },
+                { step: "03", title: "Vous récupérez", desc: "Votre temps libre dès J+3, garanti", effort: "Zéro effort" },
+              ].map((s, i) => (
+                <div key={i} className="text-center">
+                  <span className="text-[#7C3AED] font-extrabold text-2xl">{s.step}</span>
+                  <h4 className="text-[#0F0F1A] font-bold text-lg mt-2">{s.title}</h4>
+                  <p className="text-[#64748B] text-sm mt-1">{s.desc}</p>
+                  <p className="text-[#94A3B8] text-xs mt-2 italic">Votre effort : {s.effort}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
           {/* CTA */}
           <motion.div
             className="text-center"
@@ -230,9 +257,8 @@ export default function Offer() {
             <p className="text-[#64748B] text-sm mb-6">
               On ne travaille qu&apos;avec{" "}
               <span className="text-[#0F0F1A] font-semibold">
-                5 nouvelles PME par mois
-              </span>{" "}
-              pour garantir la qualité.
+                5 nouvelles PME par mois.
+              </span>
             </p>
             <motion.button
               onClick={() => setModalOpen(true)}
@@ -240,7 +266,7 @@ export default function Offer() {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
-              Réserver mon audit gratuit →
+              Obtenir mon audit gratuit →
             </motion.button>
           </motion.div>
         </div>

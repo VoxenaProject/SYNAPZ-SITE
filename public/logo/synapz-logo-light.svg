@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none">
+  <!-- Synapse Icon — compact 3-node network -->
+  <g transform="translate(24, 24)">
+    <!-- Connecting lines -->
+    <line x1="0" y1="0" x2="14" y2="-14" stroke="#9D6FF0" stroke-width="2" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="-14" y2="-14" stroke="#06B6D4" stroke-width="2" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="0" y2="16" stroke="#9D6FF0" stroke-width="2" stroke-linecap="round"/>
+    <!-- Cross-connections (network feel) -->
+    <line x1="14" y1="-14" x2="-14" y2="-14" stroke="#9D6FF0" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
+    <line x1="14" y1="-14" x2="0" y2="16" stroke="#06B6D4" stroke-width="1.2" stroke-linecap="round" opacity="0.3"/>
+    <line x1="-14" y1="-14" x2="0" y2="16" stroke="#9D6FF0" stroke-width="1.2" stroke-linecap="round" opacity="0.3"/>
+    <!-- Outer nodes -->
+    <circle cx="14" cy="-14" r="3.2" fill="#9D6FF0"/>
+    <circle cx="-14" cy="-14" r="3.2" fill="#06B6D4"/>
+    <circle cx="0" cy="16" r="3.2" fill="#9D6FF0"/>
+    <!-- Central node (larger, with glow) -->
+    <circle cx="0" cy="0" r="6" fill="#9D6FF0" opacity="0.15"/>
+    <circle cx="0" cy="0" r="4.5" fill="#9D6FF0"/>
+    <circle cx="0" cy="0" r="2" fill="#FFFFFF"/>
+  </g>
+  <!-- SYNAPZ wordmark -->
+  <text x="52" y="32" font-family="'Plus Jakarta Sans', 'Avenir Next', system-ui, sans-serif" font-weight="800" font-size="24" letter-spacing="1.5">
+    <tspan fill="#FFFFFF">SYNAP</tspan><tspan fill="#06B6D4">Z</tspan>
+  </text>
+</svg>

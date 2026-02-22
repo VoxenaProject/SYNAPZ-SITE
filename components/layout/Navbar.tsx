@@ -17,10 +17,11 @@ export default function Navbar() {
   }, []);
 
   const links = [
-    { label: "Approche", href: "#approche" },
-    { label: "Offre", href: "#offre" },
-    { label: "Équipe", href: "#equipe" },
-    { label: "FAQ", href: "#faq" },
+    { label: "Approche", href: "/#approche" },
+    { label: "Offre", href: "/#offre" },
+    { label: "Équipe", href: "/#equipe" },
+    { label: "FAQ", href: "/#faq" },
+    { label: "Blog", href: "/blog" },
   ];
 
   return (
@@ -37,12 +38,12 @@ export default function Navbar() {
       >
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
+          <a href="/" className="flex items-center gap-2 group">
             <Image
               src="/logo/synapz-logo-dark.svg"
               alt="SYNAPZ"
-              width={140}
-              height={34}
+              width={146}
+              height={32}
               priority
             />
           </a>
@@ -76,6 +77,8 @@ export default function Navbar() {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden p-2"
+            aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={menuOpen}
           >
             <div
               className={`w-6 h-0.5 bg-[#0F0F1A] mb-1.5 transition-all ${menuOpen ? "rotate-45 translate-y-2" : ""}`}

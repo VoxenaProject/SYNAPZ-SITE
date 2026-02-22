@@ -49,7 +49,7 @@ function Cell({ value, isSynapz }: { value: string | boolean; isSynapz: boolean 
 
 export default function Comparison() {
   return (
-    <section className="py-24 px-6 bg-white">
+    <section className="py-28 px-6 bg-white">
       <div className="max-w-5xl mx-auto">
         <motion.div
           className="text-center mb-16"

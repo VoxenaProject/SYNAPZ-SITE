@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import BookingModal from "@/components/ui/BookingModal";
 
 const faqs = [
   {
     question: "C'est vraiment gratuit au départ ?",
     answer:
-      "Complètement. L'audit (500€ de valeur) et le mini-projet (2.000€ de valeur) sont offerts. Vous ne payez que si vous décidez de continuer — et seulement si vous êtes satisfait des résultats. Si dans les 30 jours vous n'avez pas récupéré au moins 5h/semaine, on continue gratuitement ou on vous rembourse. Vous choisissez.",
+      "Complètement. L'audit (500€ de valeur) et la première Impulsion IA (2.000€ de valeur) sont offerts. Vous ne payez que si vous décidez de continuer — et seulement si vous êtes satisfait des résultats. Si dans les 30 jours vous n'avez pas récupéré au moins 5h/semaine, on continue gratuitement ou on vous rembourse. Vous choisissez.",
   },
   {
     question: "On a besoin d'une équipe technique en interne ?",
@@ -22,7 +23,7 @@ const faqs = [
   {
     question: "Combien de temps avant de voir des résultats ?",
     answer:
-      "La première automatisation est en production en 72 heures après le mini-projet. Pas en 3 mois. Pas en 6 mois. 72 heures. Vous voyez le résultat fonctionner dans votre business avant même de nous faire confiance sur le long terme.",
+      "Votre première Impulsion IA est en production en 72 heures. Pas en 3 mois. Pas en 6 mois. 72 heures. Vous voyez le résultat fonctionner dans votre business avant même de nous faire confiance sur le long terme.",
   },
   {
     question: "On est une petite PME de 5 personnes, c'est pour nous ?",
@@ -33,9 +34,11 @@ const faqs = [
 
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <section id="faq" className="py-24 px-6 bg-white">
+    <>
+    <section id="faq" className="py-28 px-6 bg-white">
       <div className="max-w-3xl mx-auto">
         <motion.div
           className="text-center mb-16"
@@ -67,8 +70,10 @@ export default function FAQ() {
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 cursor-pointer"
+                aria-expanded={open === i}
+                aria-controls={`faq-answer-${i}`}
               >
-                <span className="text-[#0F0F1A] font-semibold text-base">
+                <span id={`faq-question-${i}`} className="text-[#0F0F1A] font-semibold text-base">
                   {faq.question}
                 </span>
                 <motion.span
@@ -82,6 +87,9 @@ export default function FAQ() {
               <AnimatePresence>
                 {open === i && (
                   <motion.div
+                    id={`faq-answer-${i}`}
+                    role="region"
+                    aria-labelledby={`faq-question-${i}`}
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
@@ -96,7 +104,26 @@ export default function FAQ() {
             </motion.div>
           ))}
         </div>
+
+        {/* CTA */}
+        <motion.div
+          className="text-center mt-10"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <button
+            onClick={() => setModalOpen(true)}
+            className="text-[#7C3AED] font-semibold text-sm hover:text-[#9D6FF0] transition-colors cursor-pointer"
+          >
+            Encore une question ? Parlons-en →
+          </button>
+        </motion.div>
       </div>
     </section>
+
+    <BookingModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+    </>
   );
 }

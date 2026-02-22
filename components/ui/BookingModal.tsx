@@ -2,14 +2,13 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import BookingAgent from "@/components/ui/BookingAgent";
 
 interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-type View = "home" | "booking" | "form";
+type View = "home" | "calendly" | "form";
 
 export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   const [view, setView] = useState<View>("home");
@@ -69,7 +68,9 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
           >
-            <div className="bg-white border border-[#E2E8F0] rounded-2xl w-full max-w-xl shadow-2xl shadow-black/10 overflow-hidden max-h-[90vh] overflow-y-auto">
+            <div className={`bg-white border border-[#E2E8F0] rounded-2xl shadow-2xl shadow-black/10 overflow-hidden max-h-[90vh] overflow-y-auto transition-all duration-300 ${
+              view === "calendly" ? "w-full max-w-3xl" : "w-full max-w-xl"
+            }`}>
               <div className="p-8">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
@@ -84,7 +85,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                         </p>
                       </>
                     )}
-                    {view === "booking" && (
+                    {view === "calendly" && (
                       <>
                         <h3 className="text-2xl font-extrabold text-[#0F0F1A]">
                           Réserver un call
@@ -113,11 +114,11 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   </button>
                 </div>
 
-                {/* Home view — 4 contact options */}
+                {/* Home view — contact options */}
                 {view === "home" && (
                   <div className="grid grid-cols-2 gap-3">
                     <button
-                      onClick={() => setView("booking")}
+                      onClick={() => setView("calendly")}
                       className="flex flex-col items-center gap-2 p-4 rounded-xl border border-[#E2E8F0] hover:border-[#7C3AED]/50 hover:bg-[#7C3AED]/5 transition-all text-center group cursor-pointer"
                     >
                       <span className="text-2xl">📅</span>
@@ -174,9 +175,26 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   </div>
                 )}
 
-                {/* Booking agent view */}
-                {view === "booking" && (
-                  <BookingAgent onBack={() => setView("home")} />
+                {/* Calendly embed view */}
+                {view === "calendly" && (
+                  <div>
+                    <div className="rounded-xl overflow-hidden border border-[#E2E8F0]">
+                      <iframe
+                        src="https://calendly.com/daniele-synapz/strategie-meeting"
+                        width="100%"
+                        height="630"
+                        frameBorder="0"
+                        title="Réserver un call stratégie"
+                        className="block"
+                      />
+                    </div>
+                    <button
+                      onClick={() => setView("home")}
+                      className="w-full mt-4 border border-[#E2E8F0] text-[#64748B] font-medium py-2.5 rounded-lg text-sm hover:bg-[#F5F7FF] transition-colors cursor-pointer"
+                    >
+                      ← Retour
+                    </button>
+                  </div>
                 )}
 
                 {/* Contact form view */}

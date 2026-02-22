@@ -44,6 +44,20 @@ h1, h2, h3, h4 {
   font-weight: 800;
 }
 
+/* Premium tracking — Apple-style tight headings */
+h1 { letter-spacing: -0.03em; }
+h2 { letter-spacing: -0.02em; }
+h3 { letter-spacing: -0.01em; }
+
+/* Smooth scroll offset for fixed navbar */
+section { scroll-margin-top: 80px; }
+
+/* Glow divider between sub-sections */
+.glow-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.25), transparent);
+}
+
 /* Gradient text utility */
 .gradient-text {
   background: linear-gradient(135deg, #9D6FF0 0%, #7C3AED 50%, #06B6D4 100%);
@@ -63,6 +77,19 @@ h1, h2, h3, h4 {
     linear-gradient(rgba(124, 58, 237, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(124, 58, 237, 0.05) 1px, transparent 1px);
   background-size: 60px 60px;
+}
+
+/* Performance — defer rendering of below-fold sections */
+.below-fold {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+/* Focus ring for accessibility */
+:focus-visible {
+  outline: 2px solid #7C3AED;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* Scrollbar */
