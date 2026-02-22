@@ -421,6 +421,16 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
             </button>
 
+            {/* Email confirmation banner */}
+            <div className="bg-[#F0FDF4] border border-[#BBF7D0] rounded-xl px-4 py-3 mb-6 text-center">
+              <p className="text-[#15803D] text-sm font-medium">
+                Rapport envoyé à {email}
+              </p>
+              <p className="text-[#64748B] text-xs mt-1">
+                Pensez à vérifier vos spams si vous ne le trouvez pas
+              </p>
+            </div>
+
             {/* Score */}
             <div className="text-center mb-6">
               <p className="text-[#94A3B8] text-xs uppercase tracking-widest mb-3">Votre Score IA</p>

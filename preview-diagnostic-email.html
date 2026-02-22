@@ -4,17 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="color-scheme" content="light only" />
+  <meta name="supported-color-schemes" content="light only" />
   <title>Preview — Email Diagnostic IA</title>
+  <!--[if mso]><style>table,td{font-family:Helvetica,Arial,sans-serif!important;}</style><![endif]-->
+  <style>
+    :root { color-scheme: light only; }
+    body, .body-bg { background-color: #F1F5F9 !important; }
+    .email-card { background-color: #FFFFFF !important; }
+    [data-ogsc] body, [data-ogsb] body { background-color: #F1F5F9 !important; }
+    [data-ogsc] .email-card { background-color: #FFFFFF !important; }
+    [data-ogsc] h1, [data-ogsc] h3 { color: #0F0F1A !important; }
+    [data-ogsc] .score-card { background-color: #FAFAFF !important; }
+    [data-ogsc] .footer-text { color: #94A3B8 !important; }
+    [data-ogsc] .cta-btn { background-color: #7C3AED !important; color: #FFFFFF !important; }
+    @media (prefers-color-scheme: dark) {
+      body, .body-bg { background-color: #F1F5F9 !important; }
+      .email-card { background-color: #FFFFFF !important; }
+      h1, h3 { color: #0F0F1A !important; }
+      .score-card { background-color: #FAFAFF !important; }
+    }
+  </style>
 </head>
-<body style="margin:0; padding:0; background-color:#F1F5F9; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;">
+<body class="body-bg" style="margin:0; padding:0; background-color:#F1F5F9; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;">
   <!-- ===== EMAIL ENVOYÉ AU VISITEUR après le Diagnostic IA ===== -->
   <!-- Expéditeur: SYNAPZ <noreply@synapz.be> -->
   <!-- Objet: Votre Score IA : 72/100 — Fort potentiel pour Dejvi -->
 
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#F1F5F9;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="body-bg" style="background-color:#F1F5F9;">
     <tr>
       <td align="center" style="padding:40px 16px;">
-        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px; width:100%; background:#FFFFFF; border-radius:16px; overflow:hidden; border:1px solid #E2E8F0;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" class="email-card" style="max-width:600px; width:100%; background:#FFFFFF; border-radius:16px; overflow:hidden; border:1px solid #E2E8F0;">
 
           <!-- Logo -->
           <tr><td style="padding:36px 32px 0; text-align:center;">
@@ -29,7 +49,7 @@
 
           <!-- Score card -->
           <tr><td style="padding:28px 32px 0;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FAFAFF; border:1px solid #EDE9FE; border-radius:14px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="score-card" style="background:#FAFAFF; border:1px solid #EDE9FE; border-radius:14px;">
               <tr><td style="padding:32px 24px; text-align:center;">
                 <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:56px; font-weight:800; color:#7C3AED; line-height:1; margin-bottom:12px;">72<span style="font-size:28px; font-weight:600; color:#94A3B8;">/100</span></div>
                 <div style="display:inline-block; background:#EDE9FE; color:#7C3AED; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:12px; font-weight:700; padding:8px 20px; border-radius:20px; text-transform:uppercase; letter-spacing:0.08em;">
@@ -150,7 +170,7 @@
             </p>
             <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto;">
               <tr><td style="background:#7C3AED; border-radius:12px;">
-                <a href="https://calendly.com/daniele-synapz/strategie-meeting" style="display:inline-block; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#FFFFFF; font-weight:600; font-size:16px; text-decoration:none; padding:16px 36px; border-radius:12px;">
+                <a href="https://calendly.com/daniele-synapz/strategie-meeting" class="cta-btn" style="display:inline-block; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#FFFFFF; font-weight:600; font-size:16px; text-decoration:none; padding:16px 36px; border-radius:12px;">
                   Réserver mon audit gratuit (30 min) &rarr;
                 </a>
               </td></tr>
@@ -161,7 +181,7 @@
           <!-- Footer -->
           <tr><td style="padding:36px 32px 32px; text-align:center;">
             <div style="height:1px; background:#E2E8F0; margin-bottom:20px;"></div>
-            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#94A3B8; font-size:11px; line-height:1.6; margin:0;">
+            <p class="footer-text" style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#94A3B8; font-size:11px; line-height:1.6; margin:0;">
               SYNAPZ SRL — Impulsions IA pour PME<br/>
               TVA BE1018193756 &middot; Bruxelles, Belgique<br/>
               Cet email a été envoyé suite à votre Diagnostic IA sur <a href="https://synapz.be" style="color:#94A3B8;">synapz.be</a>
