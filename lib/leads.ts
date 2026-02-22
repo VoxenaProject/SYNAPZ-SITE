@@ -34,7 +34,7 @@ export async function upsertWebsiteLead({
 
     // Check if lead already exists
     const { data: existing, error: selectError } = await supabase
-      .from("LEADS")
+      .from("leads")
       .select("id, source, qualification_data")
       .eq("email", email)
       .single();
