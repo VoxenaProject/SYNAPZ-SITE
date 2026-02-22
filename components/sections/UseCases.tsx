@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import BookingModal from "@/components/ui/BookingModal";
+import { GA } from "@/lib/analytics";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
@@ -153,7 +154,7 @@ export default function UseCases() {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <button
-            onClick={() => setModalOpen(true)}
+            onClick={() => { GA.bookingModalOpened("usecases"); setModalOpen(true); }}
             className="bg-[#7C3AED] text-white font-semibold text-base px-8 py-4 rounded-xl hover:bg-[#9D6FF0] transition-all shadow-lg shadow-[#7C3AED]/25 hover:shadow-xl hover:shadow-[#7C3AED]/35 cursor-pointer"
           >
             Quelle Impulsion pour votre business ? →

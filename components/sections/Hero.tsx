@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
+import { GA } from "@/lib/analytics";
 
 const BookingModal = dynamic(() => import("@/components/ui/BookingModal"));
 
@@ -76,7 +77,7 @@ export default function Hero() {
         <div className="hidden md:block absolute bottom-0 left-1/4 w-[500px] h-[280px] bg-[#7C3AED]/4 rounded-full blur-3xl pointer-events-none" />
         <div className="hidden md:block absolute top-1/3 right-0 w-[300px] h-[200px] bg-[#06B6D4]/3 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 pt-40 pb-24 text-center">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 pt-48 pb-24 text-center">
           {/* Pill badge */}
           <div className="animate-fade-in inline-flex items-center gap-2 bg-[#7C3AED]/8 border border-[#7C3AED]/15 rounded-full px-5 py-2 mb-8">
             <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] animate-pulse" />
@@ -123,7 +124,7 @@ export default function Hero() {
           {/* CTA */}
           <div className="animate-fade-in-d4 flex flex-col items-center gap-3">
             <button
-              onClick={() => setModalOpen(true)}
+              onClick={() => { GA.bookingModalOpened("hero"); setModalOpen(true); }}
               className="bg-[#7C3AED] text-white font-semibold text-lg px-10 py-4 rounded-xl hover:bg-[#6D28D9] transition-all shadow-lg shadow-[#7C3AED]/20 hover:shadow-xl hover:shadow-[#7C3AED]/30 cursor-pointer"
             >
               Obtenir mon audit gratuit →

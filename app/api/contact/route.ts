@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { upsertWebsiteLead } from "@/lib/leads";
 
 export async function POST(req: NextRequest) {
   try {
@@ -11,6 +12,15 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+
+    // Upsert lead into CRM (runs in both dev and prod)
+    await upsertWebsiteLead({
+      source: "contact_form",
+      email,
+      contact_name: name,
+      company_name: company,
+      qualification_data: { message: message || "" },
+    });
 
     // Log in dev mode
     if (process.env.NODE_ENV === "development") {

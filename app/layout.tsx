@@ -7,6 +7,7 @@ import Analytics from "@/components/Analytics";
 const CookieBanner = dynamic(() => import("@/components/ui/CookieBanner"));
 const StickyMobileCTA = dynamic(() => import("@/components/ui/StickyMobileCTA"));
 const WhatsAppWidget = dynamic(() => import("@/components/ui/WhatsAppWidget"));
+const SocialProofToasts = dynamic(() => import("@/components/ui/SocialProofToasts"));
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -97,6 +98,7 @@ export default function RootLayout({
         {children}
         <StickyMobileCTA />
         <WhatsAppWidget />
+        <SocialProofToasts />
         <CookieBanner />
         <Analytics />
       </body>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import BookingModal from "@/components/ui/BookingModal";
+import { GA } from "@/lib/analytics";
 
 const faqs = [
   {
@@ -114,7 +115,7 @@ export default function FAQ() {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <button
-            onClick={() => setModalOpen(true)}
+            onClick={() => { GA.bookingModalOpened("faq"); setModalOpen(true); }}
             className="text-[#7C3AED] font-semibold text-sm hover:text-[#9D6FF0] transition-colors cursor-pointer"
           >
             Encore une question ? Parlons-en →

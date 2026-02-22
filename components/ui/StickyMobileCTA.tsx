@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import BookingModal from "@/components/ui/BookingModal";
+import { GA } from "@/lib/analytics";
 
 export default function StickyMobileCTA() {
   const [visible, setVisible] = useState(false);
@@ -32,7 +33,7 @@ export default function StickyMobileCTA() {
           >
             <div className="bg-[#7C3AED] shadow-[0_-4px_20px_rgba(124,58,237,0.3)]">
               <button
-                onClick={() => setModalOpen(true)}
+                onClick={() => { GA.bookingModalOpened("sticky_mobile"); setModalOpen(true); }}
                 className="w-full h-14 flex items-center justify-center gap-2 text-white font-semibold text-sm cursor-pointer"
               >
                 <span>Obtenir mon audit gratuit</span>

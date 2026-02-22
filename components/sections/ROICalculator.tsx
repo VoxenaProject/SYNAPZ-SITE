@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import BookingModal from "@/components/ui/BookingModal";
+import ROIEmailGate from "@/components/ui/ROIEmailGate";
+import { GA, getLocalFlag, SESSION_KEYS } from "@/lib/analytics";
 
 function ClockSVG() {
   return (
@@ -64,6 +66,14 @@ export default function ROICalculator() {
   const [hourlyRate, setHourlyRate] = useState(30);
   const [activePreset, setActivePreset] = useState<string>("pme");
   const [modalOpen, setModalOpen] = useState(false);
+  const [emailGateUnlocked, setEmailGateUnlocked] = useState(false);
+  const hasTrackedStart = useRef(false);
+
+  useEffect(() => {
+    if (getLocalFlag(SESSION_KEYS.ROI_GATE_UNLOCKED)) {
+      setEmailGateUnlocked(true);
+    }
+  }, []);
 
   function applyPreset(preset: typeof PRESETS[number]) {
     setEmployees(preset.employees);
@@ -73,6 +83,10 @@ export default function ROICalculator() {
   }
 
   function handleSliderChange(setter: (v: number) => void, value: number) {
+    if (!hasTrackedStart.current) {
+      GA.roiCalculatorStarted();
+      hasTrackedStart.current = true;
+    }
     setter(value);
     setActivePreset("custom");
   }
@@ -217,57 +231,71 @@ export default function ROICalculator() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              {[
-                { SVG: ClockSVG, value: `${results.savedHoursPerMonth}h`, label: "récupérées par mois" },
-                { SVG: EuroSVG, value: formatEuro(results.savedMoneyPerMonth), label: "économisés par mois" },
-                { SVG: TrendSVG, value: formatEuro(results.savedMoneyPerYear), label: "économisés par an" },
-              ].map((result, i) => (
-                <div
-                  key={i}
-                  className="bg-white border border-[#E2E8F0] rounded-2xl p-6 flex items-center gap-5 shadow-sm"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-[#F5F7FF] flex items-center justify-center flex-shrink-0">
-                    <result.SVG />
-                  </div>
-                  <div>
-                    <motion.div
-                      key={result.value}
-                      className="text-3xl font-extrabold gradient-text"
-                      initial={{ scale: 0.9, opacity: 0.5 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.2 }}
+              {emailGateUnlocked ? (
+                <>
+                  {[
+                    { SVG: ClockSVG, value: `${results.savedHoursPerMonth}h`, label: "récupérées par mois" },
+                    { SVG: EuroSVG, value: formatEuro(results.savedMoneyPerMonth), label: "économisés par mois" },
+                    { SVG: TrendSVG, value: formatEuro(results.savedMoneyPerYear), label: "économisés par an" },
+                  ].map((result, i) => (
+                    <div
+                      key={i}
+                      className="bg-white border border-[#E2E8F0] rounded-2xl p-6 flex items-center gap-5 shadow-sm"
                     >
-                      {result.value}
-                    </motion.div>
-                    <div className="text-[#64748B] text-sm">{result.label}</div>
-                  </div>
-                </div>
-              ))}
+                      <div className="w-12 h-12 rounded-xl bg-[#F5F7FF] flex items-center justify-center flex-shrink-0">
+                        <result.SVG />
+                      </div>
+                      <div>
+                        <motion.div
+                          key={result.value}
+                          className="text-3xl font-extrabold gradient-text"
+                          initial={{ scale: 0.9, opacity: 0.5 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          {result.value}
+                        </motion.div>
+                        <div className="text-[#64748B] text-sm">{result.label}</div>
+                      </div>
+                    </div>
+                  ))}
 
-              {results.fullTimeEquivalentMonths > 0 && (
-                <div className="bg-[#7C3AED]/8 border border-[#7C3AED]/20 rounded-2xl p-6">
-                  <p className="text-[#64748B] text-sm">
-                    Soit l&apos;équivalent de{" "}
-                    <span className="text-[#0F0F1A] font-bold">
-                      {results.fullTimeEquivalentMonths} mois
-                    </span>{" "}
-                    d&apos;un employé à temps plein.
-                  </p>
-                </div>
+                  {results.fullTimeEquivalentMonths > 0 && (
+                    <div className="bg-[#7C3AED]/8 border border-[#7C3AED]/20 rounded-2xl p-6">
+                      <p className="text-[#64748B] text-sm">
+                        Soit l&apos;équivalent de{" "}
+                        <span className="text-[#0F0F1A] font-bold">
+                          {results.fullTimeEquivalentMonths} mois
+                        </span>{" "}
+                        d&apos;un employé à temps plein.
+                      </p>
+                    </div>
+                  )}
+
+                  <button
+                    onClick={() => { GA.roiCalculatorCompleted(results.savedMoneyPerMonth); GA.bookingModalOpened("roi_calculator"); setModalOpen(true); }}
+                    className="w-full bg-[#7C3AED] text-white font-semibold text-base py-4 rounded-xl hover:bg-[#9D6FF0] transition-all shadow-lg shadow-[#7C3AED]/25 hover:shadow-xl hover:shadow-[#7C3AED]/35 cursor-pointer mt-4"
+                  >
+                    Vous perdez{" "}
+                    <strong>{formatEuro(results.savedMoneyPerMonth)}/mois</strong>{" "}
+                    en tâches automatisables.
+                    <br />
+                    <span className="text-sm font-normal opacity-90">
+                      On peut vous aider à les récupérer — gratuitement. →
+                    </span>
+                  </button>
+                </>
+              ) : (
+                <ROIEmailGate
+                  savedHours={results.savedHoursPerMonth}
+                  savedMoneyPerMonth={results.savedMoneyPerMonth}
+                  savedMoneyPerYear={results.savedMoneyPerYear}
+                  employees={employees}
+                  hoursPerWeek={hoursPerWeek}
+                  hourlyRate={hourlyRate}
+                  onUnlocked={() => setEmailGateUnlocked(true)}
+                />
               )}
-
-              <button
-                onClick={() => setModalOpen(true)}
-                className="w-full bg-[#7C3AED] text-white font-semibold text-base py-4 rounded-xl hover:bg-[#9D6FF0] transition-all shadow-lg shadow-[#7C3AED]/25 hover:shadow-xl hover:shadow-[#7C3AED]/35 cursor-pointer mt-4"
-              >
-                Vous perdez{" "}
-                <strong>{formatEuro(results.savedMoneyPerMonth)}/mois</strong>{" "}
-                en tâches automatisables.
-                <br />
-                <span className="text-sm font-normal opacity-90">
-                  On peut vous aider à les récupérer — gratuitement. →
-                </span>
-              </button>
             </motion.div>
           </div>
         </div>

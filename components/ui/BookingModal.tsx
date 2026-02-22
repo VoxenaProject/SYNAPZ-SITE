@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { GA, SESSION_KEYS, setSessionFlag } from "@/lib/analytics";
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -16,6 +17,13 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     name: "", email: "", company: "", message: "",
   });
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  // Track modal open + set session flag for cross-module coordination
+  useEffect(() => {
+    if (isOpen) {
+      setSessionFlag(SESSION_KEYS.BOOKING_MODAL_OPENED);
+    }
+  }, [isOpen]);
 
   function handleClose() {
     onClose();
@@ -37,6 +45,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
       });
       if (res.ok) {
         setStatus("sent");
+        GA.contactFormSubmitted();
         setTimeout(() => {
           handleClose();
         }, 2500);
@@ -118,7 +127,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                 {view === "home" && (
                   <div className="grid grid-cols-2 gap-3">
                     <button
-                      onClick={() => setView("calendly")}
+                      onClick={() => { setView("calendly"); GA.calendlyLoaded(); }}
                       className="flex flex-col items-center gap-2 p-4 rounded-xl border border-[#E2E8F0] hover:border-[#7C3AED]/50 hover:bg-[#7C3AED]/5 transition-all text-center group cursor-pointer"
                     >
                       <span className="text-2xl">📅</span>
@@ -134,6 +143,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       href="https://wa.me/32483596627"
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => GA.whatsappClicked("dejvi", "modal")}
                       className="flex flex-col items-center gap-2 p-4 rounded-xl border border-[#E2E8F0] hover:border-[#25D366] hover:bg-[#25D366]/5 transition-all text-center group"
                     >
                       <span className="text-2xl">💬</span>
@@ -149,6 +159,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       href="https://wa.me/32488448370"
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => GA.whatsappClicked("daniele", "modal")}
                       className="flex flex-col items-center gap-2 p-4 rounded-xl border border-[#E2E8F0] hover:border-[#25D366] hover:bg-[#25D366]/5 transition-all text-center group"
                     >
                       <span className="text-2xl">💬</span>

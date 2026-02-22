@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { GA } from "@/lib/analytics";
 
 const BookingModal = dynamic(() => import("@/components/ui/BookingModal"));
 
@@ -28,7 +29,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-30 transition-all duration-300 animate-slide-down ${
+        className={`fixed top-9 left-0 right-0 z-30 transition-all duration-300 animate-slide-down ${
           scrolled
             ? "bg-white/95 md:backdrop-blur-md border-b border-[#E2E8F0] shadow-sm"
             : "bg-transparent"
@@ -62,7 +63,7 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden md:block">
             <button
-              onClick={() => setModalOpen(true)}
+              onClick={() => { GA.bookingModalOpened("navbar"); setModalOpen(true); }}
               className="bg-[#7C3AED] text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-[#9D6FF0] transition-all shadow-md shadow-[#7C3AED]/20 hover:shadow-[#7C3AED]/30 cursor-pointer"
             >
               Audit gratuit →
@@ -104,6 +105,7 @@ export default function Navbar() {
             <button
               onClick={() => {
                 setMenuOpen(false);
+                GA.bookingModalOpened("navbar_mobile");
                 setModalOpen(true);
               }}
               className="w-full bg-[#7C3AED] text-white font-semibold px-5 py-3 rounded-lg hover:bg-[#9D6FF0] transition-colors text-sm cursor-pointer"

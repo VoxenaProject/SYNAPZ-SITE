@@ -12,6 +12,7 @@
     "seo:dry-run": "tsx scripts/seo-agent/generate-article.ts --batch --count 3 --dry-run"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.97.0",
     "framer-motion": "^12.34.3",
     "gray-matter": "^4.0.3",
     "next": "16.1.6",

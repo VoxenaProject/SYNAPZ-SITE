@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { GA } from "@/lib/analytics";
 
 export default function WhatsAppWidget() {
   const [show, setShow] = useState(false);
@@ -56,6 +57,7 @@ export default function WhatsAppWidget() {
             href="https://wa.me/32483596627"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => GA.whatsappClicked("dejvi", "floating_widget")}
             className="flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-lg shadow-[#25D366]/30 hover:shadow-xl hover:shadow-[#25D366]/40 hover:scale-105 transition-all"
             aria-label="Nous contacter sur WhatsApp"
           >

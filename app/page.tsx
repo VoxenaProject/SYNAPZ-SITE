@@ -2,8 +2,10 @@ import dynamic from "next/dynamic";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
+import ConversionLayer from "@/components/ui/ConversionLayer";
 
 const Problem = dynamic(() => import("@/components/sections/Problem"));
+const DiagnosticTeaser = dynamic(() => import("@/components/sections/DiagnosticTeaser"));
 const UseCases = dynamic(() => import("@/components/sections/UseCases"));
 const Offer = dynamic(() => import("@/components/sections/Offer"));
 const ROICalculator = dynamic(() => import("@/components/sections/ROICalculator"));
@@ -93,18 +95,21 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <Navbar />
-      <main>
-        <Hero />
-        <Problem />
-        <UseCases />
-        <Offer />
-        <ROICalculator />
-        <Team />
-        <FAQ />
-        <CTAFinal />
-      </main>
-      <Footer />
+      <ConversionLayer>
+        <Navbar />
+        <main>
+          <Hero />
+          <Problem />
+          <DiagnosticTeaser />
+          <UseCases />
+          <Offer />
+          <ROICalculator />
+          <Team />
+          <FAQ />
+          <CTAFinal />
+        </main>
+        <Footer />
+      </ConversionLayer>
     </>
   );
 }

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import BookingModal from "@/components/ui/BookingModal";
+import { GA } from "@/lib/analytics";
 
 function SearchSVG() {
   return (
@@ -226,7 +227,7 @@ export default function Offer() {
               </span>
             </p>
             <button
-              onClick={() => setModalOpen(true)}
+              onClick={() => { GA.bookingModalOpened("offer"); setModalOpen(true); }}
               className="bg-[#7C3AED] text-white font-semibold text-lg px-10 py-4 rounded-xl hover:bg-[#9D6FF0] transition-all shadow-lg shadow-[#7C3AED]/25 hover:shadow-xl hover:shadow-[#7C3AED]/35 cursor-pointer"
             >
               Obtenir mon audit gratuit →

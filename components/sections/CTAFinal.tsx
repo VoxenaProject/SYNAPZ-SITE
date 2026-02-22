@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import BookingModal from "@/components/ui/BookingModal";
+import { GA } from "@/lib/analytics";
 
 function getNextMonth(): string {
   const months = [
@@ -89,6 +90,7 @@ export default function CTAFinal() {
                   href="https://wa.me/32483596627"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => GA.whatsappClicked("dejvi", "cta_final")}
                   className="flex items-center gap-3 bg-white/5 border border-white/10 hover:border-[#25D366] text-white font-medium px-5 py-3.5 rounded-xl transition-all w-full max-w-xs"
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366">
@@ -104,6 +106,7 @@ export default function CTAFinal() {
                   href="https://wa.me/32488448370"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => GA.whatsappClicked("daniele", "cta_final")}
                   className="flex items-center gap-3 bg-white/5 border border-white/10 hover:border-[#25D366] text-white font-medium px-5 py-3.5 rounded-xl transition-all w-full max-w-xs"
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366">
@@ -116,7 +119,7 @@ export default function CTAFinal() {
                 </a>
 
                 <button
-                  onClick={() => setModalOpen(true)}
+                  onClick={() => { GA.bookingModalOpened("cta_final"); setModalOpen(true); }}
                   className="flex items-center gap-3 bg-white/5 border border-white/10 hover:border-[#7C3AED]/60 text-white font-medium px-5 py-3.5 rounded-xl transition-all w-full max-w-xs cursor-pointer"
                 >
                   <span className="text-lg">📩</span>
