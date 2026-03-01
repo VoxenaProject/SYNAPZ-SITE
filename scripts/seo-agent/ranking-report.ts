@@ -15,7 +15,7 @@ import {
 
 const CONTENT_DIR = path.join(process.cwd(), "content/blog");
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const TO_EMAIL = "hello@synapz.be";
+const TO_EMAIL = "dejvi_prifti@hotmail.com";
 
 const TARGET_KEYWORDS = [
   "agence IA Belgique",
