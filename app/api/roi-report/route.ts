@@ -111,7 +111,7 @@ export async function POST(req: NextRequest) {
               <a href="https://calendly.com/daniele-synapz/strategie-meeting" style="display: inline-block; background: #7C3AED; color: white; font-weight: 600; padding: 14px 32px; border-radius: 12px; text-decoration: none; font-size: 16px;">
                 Réserver mon audit gratuit (30 min) &rarr;
               </a>
-              <p style="color: #94A3B8; font-size: 12px; margin: 12px 0 0;">Gratuit &middot; Sans engagement &middot; Résultats en 72h</p>
+              <p style="color: #94A3B8; font-size: 12px; margin: 12px 0 0;">Gratuit &middot; Sans engagement &middot; Résultats en 1 semaine</p>
             </div>
 
             <div style="border-top: 1px solid #E2E8F0; padding-top: 16px; margin-top: 16px; text-align: center;">

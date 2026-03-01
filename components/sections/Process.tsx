@@ -1,74 +1,38 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useReveal } from "@/lib/useReveal";
 
 function MicSVG() {
   return (
-    <motion.svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-      initial={{ scale: 0 }} whileInView={{ scale: 1 }}
-      viewport={{ once: true }} transition={{ type: "spring", delay: 0.2 }}
-    >
-      <motion.rect x="9" y="3" width="6" height="10" rx="3"
-        stroke="#7C3AED" strokeWidth="1.8"
-        initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <rect x="9" y="3" width="6" height="10" rx="3" stroke="#7C3AED" strokeWidth="1.8" />
+      <path
+        d="M5 11C5 14.87 8.13 18 12 18C15.87 18 19 14.87 19 11"
+        stroke="#7C3AED"
+        strokeWidth="1.8"
+        strokeLinecap="round"
       />
-      <motion.path d="M5 11C5 14.87 8.13 18 12 18C15.87 18 19 14.87 19 11"
-        stroke="#7C3AED" strokeWidth="1.8" strokeLinecap="round"
-        initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.5 }}
-      />
-      <motion.line x1="12" y1="18" x2="12" y2="22"
-        stroke="#7C3AED" strokeWidth="1.8" strokeLinecap="round"
-        initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }} transition={{ duration: 0.3, delay: 0.8 }}
-      />
-    </motion.svg>
+      <line x1="12" y1="18" x2="12" y2="22" stroke="#7C3AED" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
   );
 }
 
 function CodeSVG() {
   return (
-    <motion.svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-      initial={{ scale: 0 }} whileInView={{ scale: 1 }}
-      viewport={{ once: true }} transition={{ type: "spring", delay: 0.2 }}
-    >
-      <motion.path d="M8 8L3 12L8 16"
-        stroke="#7C3AED" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
-        initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.2 }}
-      />
-      <motion.path d="M16 8L21 12L16 16"
-        stroke="#7C3AED" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
-        initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.4 }}
-      />
-      <motion.line x1="14" y1="4" x2="10" y2="20"
-        stroke="#7C3AED" strokeWidth="1.8" strokeLinecap="round"
-        initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.6 }}
-      />
-    </motion.svg>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path d="M8 8L3 12L8 16" stroke="#7C3AED" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M16 8L21 12L16 16" stroke="#7C3AED" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      <line x1="14" y1="4" x2="10" y2="20" stroke="#7C3AED" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
   );
 }
 
 function CheckCircleSVG() {
   return (
-    <motion.svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-      initial={{ scale: 0 }} whileInView={{ scale: 1 }}
-      viewport={{ once: true }} transition={{ type: "spring", delay: 0.2 }}
-    >
-      <motion.circle cx="12" cy="12" r="9"
-        stroke="#7C3AED" strokeWidth="1.8" fill="#7C3AED" fillOpacity={0.08}
-        initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}
-      />
-      <motion.path d="M8 12L11 15L16 9"
-        stroke="#7C3AED" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-        initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.7 }}
-      />
-    </motion.svg>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="9" stroke="#7C3AED" strokeWidth="1.8" fill="#7C3AED" fillOpacity={0.08} />
+      <path d="M8 12L11 15L16 9" stroke="#7C3AED" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }
 
@@ -86,60 +50,57 @@ const steps = [
   {
     number: "02",
     title: "On livre.",
-    duration: "72h",
+    duration: "1 semaine",
     description:
-      "On construit l'automatisation. On vous la présente. Vous approuvez. Elle est en production.",
-    detail: "Zéro compétence technique. Zéro outil à installer. Zéro formation.",
+      "On construit votre solution. On vous la présente. Vous approuvez. Elle est en production — gratuitement.",
+    detail: "Zéro compétence technique. Zéro outil à installer. Zéro formation. Zéro facture à ce stade.",
     effort: "Votre effort : 15 minutes pour valider.",
     Icon: CodeSVG,
   },
   {
     number: "03",
     title: "Vous récupérez votre temps.",
-    duration: "dès J+3",
+    duration: "dès J+7",
     description:
       "Le système tourne en arrière-plan. Vous ne faites plus rien. On mesure les résultats avec vous à J+30.",
-    detail: "Si vous n'avez pas récupéré 5h/semaine, on continue gratuitement.",
+    detail: "Si la valeur n'est pas au rendez-vous, vous ne payez rien. C'est aussi simple que ça.",
     effort: "Votre effort : zéro.",
     Icon: CheckCircleSVG,
   },
 ];
 
 export default function Process() {
+  const headerRef = useReveal<HTMLDivElement>();
+  const step0Ref = useReveal<HTMLDivElement>();
+  const step1Ref = useReveal<HTMLDivElement>();
+  const step2Ref = useReveal<HTMLDivElement>();
+  const stepRefs = [step0Ref, step1Ref, step2Ref];
+
   return (
-    <section id="approche" className="py-28 px-6 bg-white">
-      <div className="max-w-4xl mx-auto">
-        <motion.div
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+    <section id="approche" className="py-32 md:py-40 px-6 bg-[#0c0c20]">
+      <div className="max-w-[1100px] mx-auto">
+        <div ref={headerRef} className="reveal text-center mb-20">
           <p className="text-[#7C3AED] text-sm font-semibold uppercase tracking-widest mb-4">
             Notre approche
           </p>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#0F0F1A] mb-4">
-            Trois étapes.
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
+            Trois &eacute;tapes.
             <br />
-            <span className="gradient-text">Zéro effort de votre côté.</span>
+            <span className="gradient-text">Z&eacute;ro effort de votre c&ocirc;t&eacute;.</span>
           </h2>
-        </motion.div>
+        </div>
 
         <div className="relative">
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-[#E2E8F0] -translate-x-1/2 hidden md:block" />
+          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-white/[0.06] -translate-x-1/2 hidden md:block" />
 
           <div className="space-y-16">
             {steps.map((step, i) => (
-              <motion.div
+              <div
                 key={i}
-                className={`flex flex-col md:flex-row gap-8 items-start ${
+                ref={stepRefs[i]}
+                className={`reveal reveal-d${i + 1} flex flex-col md:flex-row gap-8 items-start ${
                   i % 2 === 1 ? "md:flex-row-reverse" : ""
                 }`}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 * i }}
               >
                 <div className={`flex-1 ${i % 2 === 1 ? "md:text-right" : ""}`}>
                   <div className={`flex items-center gap-3 mb-4 ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
@@ -147,18 +108,18 @@ export default function Process() {
                       {step.duration}
                     </span>
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-extrabold text-[#0F0F1A] mb-3">
+                  <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-3">
                     {step.title}
                   </h3>
-                  <p className="text-[#64748B] leading-relaxed mb-3">
+                  <p className="text-[#94a3b8] leading-relaxed mb-3">
                     {step.description}
                   </p>
-                  <p className="text-[#64748B] text-sm leading-relaxed mb-4">
+                  <p className="text-[#64748b] text-sm leading-relaxed mb-4">
                     {step.detail}
                   </p>
-                  <div className="inline-flex items-center gap-2 bg-[#F5F7FF] border border-[#E2E8F0] rounded-lg px-4 py-2">
-                    <span className="text-[#7C3AED]">→</span>
-                    <span className="text-[#0F0F1A] text-sm font-semibold">
+                  <div className="inline-flex items-center gap-2 bg-[#060612] border border-white/[0.06] rounded-lg px-4 py-2">
+                    <span className="text-[#7C3AED]">&rarr;</span>
+                    <span className="text-white text-sm font-semibold">
                       {step.effort}
                     </span>
                   </div>
@@ -166,7 +127,7 @@ export default function Process() {
 
                 {/* Circle with icon + number */}
                 <div className="relative flex items-center justify-center w-16 h-16 flex-shrink-0 mx-auto md:mx-0">
-                  <div className="w-16 h-16 rounded-full bg-white border-2 border-[#7C3AED] shadow-md shadow-[#7C3AED]/15 flex flex-col items-center justify-center gap-0.5 z-10">
+                  <div className="w-16 h-16 rounded-full bg-[#0c0c20] border-2 border-[#7C3AED] shadow-md shadow-[#7C3AED]/15 flex flex-col items-center justify-center gap-0.5 z-10">
                     <step.Icon />
                     <span className="text-[10px] font-extrabold gradient-text leading-none">
                       {step.number}
@@ -175,7 +136,7 @@ export default function Process() {
                 </div>
 
                 <div className="flex-1 hidden md:block" />
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

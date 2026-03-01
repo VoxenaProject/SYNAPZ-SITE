@@ -271,7 +271,7 @@ export async function POST(req: NextRequest) {
                 </a>
               </td></tr>
             </table>
-            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#94A3B8; font-size:12px; margin:14px 0 0;">Gratuit &middot; Sans engagement &middot; ${tier === "critical" ? "Cr&eacute;neaux limit&eacute;s cette semaine" : "R&eacute;sultats en 72h"}</p>
+            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:#94A3B8; font-size:12px; margin:14px 0 0;">Gratuit &middot; Sans engagement &middot; ${tier === "critical" ? "Cr&eacute;neaux limit&eacute;s cette semaine" : "R&eacute;sultats en 1 semaine"}</p>
           </td></tr>
 
           <!-- Footer -->

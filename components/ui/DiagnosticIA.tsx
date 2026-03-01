@@ -338,9 +338,9 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
     new Intl.NumberFormat("fr-BE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n);
 
   const tierConfig = {
-    moderate: { color: "#0891B2", bg: "#E0F2FE", label: "Potentiel modéré" },
-    strong: { color: "#7C3AED", bg: "#EDE9FE", label: "Fort potentiel" },
-    critical: { color: "#D97706", bg: "#FEF3C7", label: "Potentiel critique" },
+    moderate: { color: "#0891B2", bg: "rgba(8,145,178,0.12)", label: "Potentiel modéré" },
+    strong: { color: "#7C3AED", bg: "rgba(124,58,237,0.12)", label: "Fort potentiel" },
+    critical: { color: "#D97706", bg: "rgba(217,119,6,0.12)", label: "Potentiel critique" },
   };
 
   const tc = tierConfig[tier];
@@ -350,13 +350,13 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
-        <div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-8">
-          <button onClick={onClose} className="absolute top-4 right-4 text-[#94A3B8] hover:text-[#0F0F1A] cursor-pointer" aria-label="Fermer">
+        <div className="relative bg-[#0c0c20] border border-white/[0.06] rounded-2xl shadow-2xl shadow-black/30 max-w-lg w-full max-h-[90vh] overflow-y-auto p-8">
+          <button onClick={onClose} className="absolute top-4 right-4 text-[#64748b] hover:text-white cursor-pointer" aria-label="Fermer">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
           </button>
 
           {/* Progress bar */}
-          <div className="w-full h-1.5 bg-[#E2E8F0] rounded-full mb-8">
+          <div className="w-full h-1.5 bg-white/[0.06] rounded-full mb-8">
             <div className="h-full bg-[#7C3AED] rounded-full transition-all duration-500" style={{ width: `${progress}%` }} />
           </div>
 
@@ -367,10 +367,10 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
                 <circle cx="12" cy="12" r="9" stroke="#7C3AED" strokeWidth="1.8" />
               </svg>
             </div>
-            <h3 className="text-xl font-extrabold text-[#0F0F1A] mb-2">
+            <h3 className="text-xl font-extrabold text-white mb-2">
               Votre diagnostic est prêt !
             </h3>
-            <p className="text-[#64748B] text-sm mb-6">
+            <p className="text-[#94a3b8] text-sm mb-6">
               Où l&apos;envoyer ?
             </p>
 
@@ -381,7 +381,7 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
                 placeholder="Votre prénom"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
-                className="w-full border border-[#E2E8F0] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20"
+                className="w-full border border-white/[0.06] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20"
               />
               <input
                 type="email"
@@ -389,7 +389,7 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
                 placeholder="Votre email professionnel"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full border border-[#E2E8F0] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20"
+                className="w-full border border-white/[0.06] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20"
               />
               <button
                 type="submit"
@@ -398,7 +398,7 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
               >
                 {loading ? "Envoi..." : "Recevoir mon diagnostic →"}
               </button>
-              <p className="text-[#94A3B8] text-xs text-center">
+              <p className="text-[#64748b] text-xs text-center">
                 On vous l&apos;envoie instantanément. Zéro spam.
               </p>
             </form>
@@ -416,28 +416,28 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
       <>
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
-          <div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-8">
-            <button onClick={onClose} className="absolute top-4 right-4 text-[#94A3B8] hover:text-[#0F0F1A] cursor-pointer" aria-label="Fermer">
+          <div className="relative bg-[#0c0c20] border border-white/[0.06] rounded-2xl shadow-2xl shadow-black/30 max-w-lg w-full max-h-[90vh] overflow-y-auto p-8">
+            <button onClick={onClose} className="absolute top-4 right-4 text-[#64748b] hover:text-white cursor-pointer" aria-label="Fermer">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
             </button>
 
             {/* Email confirmation banner */}
-            <div className="bg-[#F0FDF4] border border-[#BBF7D0] rounded-xl px-4 py-3 mb-6 text-center">
-              <p className="text-[#15803D] text-sm font-medium">
+            <div className="bg-emerald-900/20 border border-emerald-500/20 rounded-xl px-4 py-3 mb-6 text-center">
+              <p className="text-emerald-400 text-sm font-medium">
                 Rapport envoyé à {email}
               </p>
-              <p className="text-[#64748B] text-xs mt-1">
+              <p className="text-[#64748b] text-xs mt-1">
                 Pensez à vérifier vos spams si vous ne le trouvez pas
               </p>
             </div>
 
             {/* Score */}
             <div className="text-center mb-6">
-              <p className="text-[#94A3B8] text-xs uppercase tracking-widest mb-3">Votre Score IA</p>
+              <p className="text-[#64748b] text-xs uppercase tracking-widest mb-3">Votre Score IA</p>
               <div className="text-5xl font-extrabold mb-3" style={{ color: tc.color }}>{score}/100</div>
 
               {/* Progress bar */}
-              <div className="w-full h-3 bg-[#E2E8F0] rounded-full mb-3">
+              <div className="w-full h-3 bg-white/[0.06] rounded-full mb-3">
                 <div className="h-full rounded-full transition-all duration-1000" style={{ width: `${score}%`, background: tc.color }} />
               </div>
 
@@ -447,7 +447,7 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
 
               {/* Axis breakdown */}
               <div className="mt-6 space-y-3 text-left">
-                <p className="text-[#94A3B8] text-[10px] uppercase tracking-widest font-medium">Détail par axe</p>
+                <p className="text-[#64748b] text-[10px] uppercase tracking-widest font-medium">Détail par axe</p>
                 {([
                   {
                     key: "volume" as const,
@@ -479,71 +479,71 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
                   return (
                     <div key={axis.key}>
                       <div className="flex items-center justify-between mb-1">
-                        <span className="text-[#0F0F1A] text-xs font-semibold">{axis.label}</span>
+                        <span className="text-white text-xs font-semibold">{axis.label}</span>
                         <span className="text-[#7C3AED] text-xs font-bold">{pct}%</span>
                       </div>
-                      <div className="w-full h-2 bg-[#E2E8F0] rounded-full">
+                      <div className="w-full h-2 bg-white/[0.06] rounded-full">
                         <div
                           className="h-full rounded-full transition-all duration-1000"
                           style={{ width: `${pct}%`, background: "linear-gradient(90deg, #9D6FF0, #7C3AED)" }}
                         />
                       </div>
-                      <p className="text-[#94A3B8] text-[11px] mt-1">{axis.getComment(pct)}</p>
+                      <p className="text-[#64748b] text-[11px] mt-1">{axis.getComment(pct)}</p>
                     </div>
                   );
                 })}
               </div>
             </div>
 
-            <div className="h-px bg-[#E2E8F0] my-6" />
+            <div className="h-px bg-white/[0.06] my-6" />
 
             {/* Financial impact */}
             <div className="mb-6">
-              <p className="text-[#64748B] text-xs uppercase tracking-wider mb-3 font-medium">Économies potentielles estimées</p>
+              <p className="text-[#94a3b8] text-xs uppercase tracking-wider mb-3 font-medium">Économies potentielles estimées</p>
               <div className="grid grid-cols-3 gap-3">
                 <div className="text-center">
                   <div className="text-xl font-extrabold gradient-text">{savedHoursWeek}h</div>
-                  <div className="text-[10px] text-[#94A3B8] uppercase mt-1">par semaine</div>
+                  <div className="text-[10px] text-[#64748b] uppercase mt-1">par semaine</div>
                 </div>
                 <div className="text-center">
                   <div className="text-xl font-extrabold gradient-text">{formatEuro(savedMoneyMonth)}</div>
-                  <div className="text-[10px] text-[#94A3B8] uppercase mt-1">par mois</div>
+                  <div className="text-[10px] text-[#64748b] uppercase mt-1">par mois</div>
                 </div>
                 <div className="text-center">
                   <div className="text-xl font-extrabold gradient-text">{formatEuro(savedMoneyYear)}</div>
-                  <div className="text-[10px] text-[#94A3B8] uppercase mt-1">par an</div>
+                  <div className="text-[10px] text-[#64748b] uppercase mt-1">par an</div>
                 </div>
               </div>
             </div>
 
-            <div className="h-px bg-[#E2E8F0] my-6" />
+            <div className="h-px bg-white/[0.06] my-6" />
 
             {/* Priorities */}
             <div className="mb-6">
-              <p className="text-[#64748B] text-xs uppercase tracking-wider mb-3 font-medium">Vos 3 priorités d&apos;automatisation</p>
+              <p className="text-[#94a3b8] text-xs uppercase tracking-wider mb-3 font-medium">Vos 3 priorités d&apos;automatisation</p>
               <div className="space-y-3">
                 {priorities.map((p, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <span className="text-[#7C3AED] font-extrabold text-sm mt-0.5">{i + 1}.</span>
                     <div>
-                      <p className="text-[#0F0F1A] font-semibold text-sm">{p.title}</p>
-                      <p className="text-[#64748B] text-xs">Gain estimé : {p.gain}</p>
+                      <p className="text-white font-semibold text-sm">{p.title}</p>
+                      <p className="text-[#94a3b8] text-xs">Gain estimé : {p.gain}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="h-px bg-[#E2E8F0] my-6" />
+            <div className="h-px bg-white/[0.06] my-6" />
 
             {/* CTA — tier-specific conversion block */}
             {tier === "critical" ? (
               <>
-                <div className="bg-[#FFF7ED] border border-[#FDBA74] rounded-xl p-5 mb-5">
-                  <p className="text-[#9A3412] text-base font-bold mb-2">
+                <div className="bg-amber-900/20 border border-amber-500/20 rounded-xl p-5 mb-5">
+                  <p className="text-amber-300 text-base font-bold mb-2">
                     Vous perdez {formatEuro(savedMoneyMonth)} chaque mois
                   </p>
-                  <p className="text-[#78350F]/60 text-sm leading-relaxed">
+                  <p className="text-amber-200/60 text-sm leading-relaxed">
                     Votre score de {score}/100 place votre entreprise parmi les PME avec le plus fort potentiel
                     d&apos;automatisation. Chaque semaine sans action, ce sont {savedHoursWeek}h de travail
                     et {formatEuro(Math.round(savedMoneyMonth / 4))} qui passent à la trappe.
@@ -560,7 +560,7 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
                     Parler avec un expert SYNAPZ
                   </button>
                   <div className="mt-5 text-left space-y-2.5">
-                    <p className="text-[#0F0F1A] text-xs font-bold uppercase tracking-wider">Ce qu&apos;on fait en 30 min :</p>
+                    <p className="text-white text-xs font-bold uppercase tracking-wider">Ce qu&apos;on fait en 30 min :</p>
                     {[
                       "On analyse vos 3 priorités et les gains concrets",
                       "On vous montre les solutions adaptées à votre secteur",
@@ -568,20 +568,20 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
                     ].map((item, i) => (
                       <div key={i} className="flex items-start gap-2">
                         <span className="text-[#7C3AED] text-sm font-bold shrink-0">›</span>
-                        <span className="text-[#64748B] text-sm">{item}</span>
+                        <span className="text-[#94a3b8] text-sm">{item}</span>
                       </div>
                     ))}
                   </div>
-                  <p className="text-[#94A3B8] text-xs mt-4">Gratuit · Sans engagement · Créneaux limités cette semaine</p>
+                  <p className="text-[#64748b] text-xs mt-4">Gratuit · Sans engagement · Créneaux limités cette semaine</p>
                 </div>
               </>
             ) : tier === "strong" ? (
               <>
-                <div className="bg-[#F5F3FF] border border-[#DDD6FE] rounded-xl p-5 mb-5">
-                  <p className="text-[#5B21B6] text-base font-bold mb-2">
+                <div className="bg-[#7C3AED]/[0.08] border border-[#7C3AED]/20 rounded-xl p-5 mb-5">
+                  <p className="text-[#9D6FF0] text-base font-bold mb-2">
                     {formatEuro(savedMoneyYear)}/an d&apos;économies identifiées
                   </p>
-                  <p className="text-[#5B21B6]/60 text-sm leading-relaxed">
+                  <p className="text-[#9D6FF0]/60 text-sm leading-relaxed">
                     Votre diagnostic révèle des opportunités concrètes. Un échange de 30 min
                     avec nos experts suffit pour transformer ces chiffres en actions.
                   </p>
@@ -597,7 +597,7 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
                     Réserver mon audit stratégique
                   </button>
                   <div className="mt-5 text-left space-y-2.5">
-                    <p className="text-[#0F0F1A] text-xs font-bold uppercase tracking-wider">Ce qu&apos;on fait en 30 min :</p>
+                    <p className="text-white text-xs font-bold uppercase tracking-wider">Ce qu&apos;on fait en 30 min :</p>
                     {[
                       "On analyse vos 3 priorités et les gains concrets",
                       "On vous montre les solutions adaptées à votre secteur",
@@ -605,16 +605,16 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
                     ].map((item, i) => (
                       <div key={i} className="flex items-start gap-2">
                         <span className="text-[#7C3AED] text-sm font-bold shrink-0">›</span>
-                        <span className="text-[#64748B] text-sm">{item}</span>
+                        <span className="text-[#94a3b8] text-sm">{item}</span>
                       </div>
                     ))}
                   </div>
-                  <p className="text-[#94A3B8] text-xs mt-4">Gratuit · Sans engagement · Résultats en 72h</p>
+                  <p className="text-[#64748b] text-xs mt-4">Gratuit · Sans engagement · Résultats en 1 semaine</p>
                 </div>
               </>
             ) : (
               <div className="text-center">
-                <p className="text-[#64748B] text-sm mb-4 leading-relaxed">
+                <p className="text-[#94a3b8] text-sm mb-4 leading-relaxed">
                   Même avec un potentiel modéré, des automatisations simples
                   peuvent libérer du temps précieux pour votre équipe.
                 </p>
@@ -627,7 +627,7 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
                 >
                   En discuter avec un expert
                 </button>
-                <p className="text-[#94A3B8] text-xs mt-3">Gratuit · Sans engagement · 30 min</p>
+                <p className="text-[#64748b] text-xs mt-3">Gratuit · Sans engagement · 30 min</p>
               </div>
             )}
           </div>
@@ -651,21 +651,21 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-8">
-        <button onClick={onClose} className="absolute top-4 right-4 text-[#94A3B8] hover:text-[#0F0F1A] cursor-pointer" aria-label="Fermer">
+      <div className="relative bg-[#0c0c20] border border-white/[0.06] rounded-2xl shadow-2xl shadow-black/30 max-w-lg w-full max-h-[90vh] overflow-y-auto p-8">
+        <button onClick={onClose} className="absolute top-4 right-4 text-[#64748b] hover:text-white cursor-pointer" aria-label="Fermer">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
         </button>
 
         {/* Progress */}
         <div className="flex items-center justify-between mb-2">
-          <span className="text-[#94A3B8] text-xs font-medium">{currentQuestion.module}</span>
-          <span className="text-[#94A3B8] text-xs">{step + 1}/{QUESTIONS.length}</span>
+          <span className="text-[#64748b] text-xs font-medium">{currentQuestion.module}</span>
+          <span className="text-[#64748b] text-xs">{step + 1}/{QUESTIONS.length}</span>
         </div>
-        <div className="w-full h-1.5 bg-[#E2E8F0] rounded-full mb-8">
+        <div className="w-full h-1.5 bg-white/[0.06] rounded-full mb-8">
           <div className="h-full bg-[#7C3AED] rounded-full transition-all duration-500" style={{ width: `${progress}%` }} />
         </div>
 
-        <h3 className="text-lg font-extrabold text-[#0F0F1A] mb-6">
+        <h3 className="text-lg font-extrabold text-white mb-6">
           {currentQuestion.question}
         </h3>
 
@@ -680,9 +680,9 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
                   onClick={() => handleSingleSelect(opt.value)}
                   className="w-full text-left px-4 py-3 rounded-xl border-2 transition-all cursor-pointer text-sm font-medium"
                   style={{
-                    borderColor: selected ? "#7C3AED" : "#E2E8F0",
-                    background: selected ? "#7C3AED0D" : "white",
-                    color: selected ? "#7C3AED" : "#0F0F1A",
+                    borderColor: selected ? "#7C3AED" : "rgba(255,255,255,0.06)",
+                    background: selected ? "rgba(124,58,237,0.08)" : "transparent",
+                    color: selected ? "#7C3AED" : "#e2e8f0",
                   }}
                 >
                   {opt.label}
@@ -696,7 +696,7 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
         {currentQuestion.type === "multi" && (
           <>
             {currentQuestion.max && (
-              <p className="text-[#94A3B8] text-xs mb-3">Sélectionnez jusqu&apos;à {currentQuestion.max} réponses</p>
+              <p className="text-[#64748b] text-xs mb-3">Sélectionnez jusqu&apos;à {currentQuestion.max} réponses</p>
             )}
             <div className="space-y-2">
               {currentQuestion.options.map((opt) => {
@@ -707,12 +707,12 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
                     onClick={() => handleMultiToggle(opt.value)}
                     className="w-full text-left px-4 py-3 rounded-xl border-2 transition-all cursor-pointer text-sm font-medium flex items-center gap-3"
                     style={{
-                      borderColor: selected ? "#7C3AED" : "#E2E8F0",
+                      borderColor: selected ? "#7C3AED" : "rgba(255,255,255,0.06)",
                       background: selected ? "#7C3AED0D" : "white",
                       color: selected ? "#7C3AED" : "#0F0F1A",
                     }}
                   >
-                    <span className="w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0" style={{ borderColor: selected ? "#7C3AED" : "#CBD5E1", background: selected ? "#7C3AED" : "transparent" }}>
+                    <span className="w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0" style={{ borderColor: selected ? "#7C3AED" : "rgba(255,255,255,0.15)", background: selected ? "#7C3AED" : "transparent" }}>
                       {selected && (
                         <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M4 8L7 11L12 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
                       )}
@@ -740,9 +740,9 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
               step={currentQuestion.step}
               value={(answers[currentQuestion.id] as number) ?? currentQuestion.defaultValue}
               onChange={(e) => setAnswer(currentQuestion.id, Number(e.target.value))}
-              className="w-full h-2 bg-[#E2E8F0] rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#7C3AED] [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:shadow-[#7C3AED]/30"
+              className="w-full h-2 bg-white/[0.08] rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#7C3AED] [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:shadow-[#7C3AED]/30"
             />
-            <div className="flex justify-between text-xs text-[#64748B] mt-2">
+            <div className="flex justify-between text-xs text-[#94a3b8] mt-2">
               <span>{currentQuestion.min}{currentQuestion.unit}</span>
               <span>{currentQuestion.max}{currentQuestion.unit}+</span>
             </div>
@@ -754,7 +754,7 @@ export default function DiagnosticIA({ isOpen, onClose }: DiagnosticIAProps) {
           <button
             onClick={handleBack}
             disabled={step === 0}
-            className="text-[#94A3B8] text-sm font-medium hover:text-[#0F0F1A] disabled:opacity-30 transition-colors cursor-pointer"
+            className="text-[#64748b] text-sm font-medium hover:text-white disabled:opacity-30 transition-colors cursor-pointer"
           >
             ← Retour
           </button>

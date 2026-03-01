@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { useReveal } from "@/lib/useReveal";
 import BookingModal from "@/components/ui/BookingModal";
 import { GA } from "@/lib/analytics";
-
-const ease = [0.25, 0.1, 0.25, 1] as const;
 
 const impulses = [
   {
@@ -27,30 +25,14 @@ const impulses = [
   {
     category: "Support",
     title: "Réponses automatiques aux questions fréquentes",
-    desc: "Chatbot intelligent, FAQ dynamique, escalade vers l'humain",
+    desc: "Chatbot intelligent, FAQ dynamique, escalade vers l\u2019humain",
     quote: "Résultat moyen : 70% des demandes traitées automatiquement",
     delay: "1 semaine",
     impact: "-70% de tickets",
   },
   {
-    category: "Marketing",
-    title: "Génération de contenu automatisée",
-    desc: "Posts LinkedIn, newsletters, visuels — créés et planifiés par l'IA",
-    quote: "Résultat moyen : 5h/semaine économisées sur le contenu",
-    delay: "1 semaine",
-    impact: "5h/sem. économisées",
-  },
-  {
-    category: "RH",
-    title: "Onboarding et gestion administrative",
-    desc: "Documents générés, welcome packs, réponses RH automatisées",
-    quote: "Résultat moyen : onboarding réduit de 3 jours à 30 minutes",
-    delay: "2 semaines",
-    impact: "Équipe RH libérée",
-  },
-  {
     category: "Opérations",
-    title: "Synchronisation d'outils et reporting",
+    title: "Synchronisation d\u2019outils et reporting",
     desc: "Connexion CRM/ERP/Sheets, dashboards automatiques en temps réel",
     quote: "Résultat moyen : rapports générés en temps réel, 0 saisie manuelle",
     delay: "1 semaine",
@@ -60,57 +42,48 @@ const impulses = [
 
 export default function UseCases() {
   const [modalOpen, setModalOpen] = useState(false);
+  const revealRef = useReveal<HTMLDivElement>();
 
   return (
     <>
-    <section className="py-28 md:py-32 px-6 bg-[#F5F7FF] below-fold">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-32 md:py-40 px-6 bg-[#0c0c20] below-fold">
+      <div ref={revealRef} className="max-w-[1100px] mx-auto">
 
         {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease }}
-        >
+        <div className="text-center mb-16 reveal">
           <p className="text-[#7C3AED] text-[11px] font-semibold uppercase tracking-[0.05em] mb-5">
             Nos Impulsions IA
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#0F0F1A] leading-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
             Une Impulsion. Un problème résolu.
             <br />
             <span className="gradient-text">En quelques jours, pas en 6 mois.</span>
           </h2>
-          <p className="text-[#64748B] text-lg mt-6 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[#94a3b8] text-lg mt-6 max-w-2xl mx-auto leading-relaxed">
             Chaque Impulsion est une micro-automatisation IA ciblée sur un problème
             métier concret. Pas besoin d&apos;équipe data ou de budget à 5 chiffres.
           </p>
-        </motion.div>
+        </div>
 
         {/* Cards grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 gap-5">
           {impulses.map((imp, i) => (
-            <motion.div
+            <div
               key={i}
-              className="bg-white border border-[#E2E8F0] rounded-2xl p-7 hover:border-[#7C3AED]/25 hover:shadow-md transition-all duration-300 flex flex-col"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.08, ease }}
+              className={`bg-[#060612] border border-white/[0.06] rounded-2xl p-7 hover:border-[#7C3AED]/25 transition-all duration-300 flex flex-col reveal reveal-d${Math.min(i + 1, 5)}`}
             >
               {/* Category pill */}
-              <span className="inline-flex self-start bg-[#7C3AED]/8 text-[#7C3AED] rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider">
+              <span className="inline-flex self-start bg-[#7C3AED]/[0.08] text-[#7C3AED] rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider">
                 {imp.category}
               </span>
 
               {/* Title */}
-              <h3 className="text-lg font-bold text-[#0F0F1A] mt-3 leading-snug">
+              <h3 className="text-lg font-bold text-white mt-3 leading-snug">
                 {imp.title}
               </h3>
 
               {/* Description */}
-              <p className="text-sm text-[#64748B] mt-2 leading-relaxed">
+              <p className="text-sm text-[#94a3b8] mt-2 leading-relaxed">
                 {imp.desc}
               </p>
 
@@ -123,17 +96,17 @@ export default function UseCases() {
               <div className="flex-1" />
 
               {/* Separator + metrics */}
-              <div className="border-t border-[#E2E8F0] mt-6 pt-4 flex justify-between">
+              <div className="border-t border-white/[0.06] mt-6 pt-4 flex justify-between">
                 <div>
-                  <p className="text-[10px] uppercase text-[#94A3B8] tracking-wider font-medium">
+                  <p className="text-[10px] uppercase text-[#64748b] tracking-wider font-medium">
                     Délai
                   </p>
-                  <p className="text-sm font-semibold text-[#0F0F1A] mt-0.5">
+                  <p className="text-sm font-semibold text-white mt-0.5">
                     {imp.delay}
                   </p>
                 </div>
                 <div className="text-right">
-                  <p className="text-[10px] uppercase text-[#94A3B8] tracking-wider font-medium">
+                  <p className="text-[10px] uppercase text-[#64748b] tracking-wider font-medium">
                     Impact
                   </p>
                   <p className="text-sm font-semibold text-[#7C3AED] mt-0.5">
@@ -141,25 +114,19 @@ export default function UseCases() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* CTA */}
-        <motion.div
-          className="text-center mt-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
+        <div className="text-center mt-12 reveal reveal-d3">
           <button
             onClick={() => { GA.bookingModalOpened("usecases"); setModalOpen(true); }}
             className="bg-[#7C3AED] text-white font-semibold text-base px-8 py-4 rounded-xl hover:bg-[#9D6FF0] transition-all shadow-lg shadow-[#7C3AED]/25 hover:shadow-xl hover:shadow-[#7C3AED]/35 cursor-pointer"
           >
             Quelle Impulsion pour votre business ? →
           </button>
-        </motion.div>
+        </div>
       </div>
     </section>
 

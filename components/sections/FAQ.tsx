@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import BookingModal from "@/components/ui/BookingModal";
 import { GA } from "@/lib/analytics";
+import { useReveal } from "@/lib/useReveal";
 
 const faqs = [
   {
     question: "C'est vraiment gratuit au départ ?",
     answer:
-      "Complètement. L'audit (500€ de valeur) et la première Impulsion IA (2.000€ de valeur) sont offerts. Vous ne payez que si vous décidez de continuer — et seulement si vous êtes satisfait des résultats. Si dans les 30 jours vous n'avez pas récupéré au moins 5h/semaine, on continue gratuitement ou on vous rembourse. Vous choisissez.",
+      "Complètement. L'audit (500\u20AC de valeur) et la première Impulsion IA (2.000\u20AC de valeur) sont offerts. Vous ne payez que si vous décidez de continuer — et seulement si vous êtes satisfait des résultats. Si dans les 30 jours vous n'avez pas récupéré au moins 5h/semaine, on continue gratuitement ou on vous rembourse. Vous choisissez.",
   },
   {
     question: "On a besoin d'une équipe technique en interne ?",
@@ -24,7 +25,7 @@ const faqs = [
   {
     question: "Combien de temps avant de voir des résultats ?",
     answer:
-      "Votre première Impulsion IA est en production en 72 heures. Pas en 3 mois. Pas en 6 mois. 72 heures. Vous voyez le résultat fonctionner dans votre business avant même de nous faire confiance sur le long terme.",
+      "Votre première solution IA est en production en 1 semaine. Pas en 3 mois. Pas en 6 mois. 1 semaine. Et vous ne payez rien tant que vous n'avez pas vu les résultats fonctionner dans votre business.",
   },
   {
     question: "On est une petite PME de 5 personnes, c'est pour nous ?",
@@ -36,37 +37,28 @@ const faqs = [
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   const [modalOpen, setModalOpen] = useState(false);
+  const sectionRef = useReveal<HTMLElement>();
 
   return (
     <>
-    <section id="faq" className="py-28 px-6 bg-white">
-      <div className="max-w-3xl mx-auto">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+    <section id="faq" ref={sectionRef} className="py-32 md:py-40 px-6 bg-[#060612]">
+      <div className="max-w-[1100px] mx-auto">
+        <div className="reveal text-center mb-16">
           <p className="text-[#7C3AED] text-sm font-semibold uppercase tracking-widest mb-4">
             FAQ
           </p>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#0F0F1A]">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white">
             Vos questions.
             <br />
             <span className="gradient-text">Nos réponses directes.</span>
           </h2>
-        </motion.div>
+        </div>
 
-        <div className="space-y-3">
+        <div className="space-y-3 max-w-3xl mx-auto">
           {faqs.map((faq, i) => (
-            <motion.div
+            <div
               key={i}
-              className="bg-white border border-[#E2E8F0] rounded-2xl overflow-hidden hover:border-[#7C3AED]/30 transition-colors shadow-sm"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.05 * i }}
+              className={`reveal reveal-d${Math.min(i + 1, 5)} bg-[#0c0c20] border border-white/[0.06] rounded-2xl overflow-hidden hover:border-[#7C3AED]/25 transition-colors`}
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}
@@ -74,16 +66,15 @@ export default function FAQ() {
                 aria-expanded={open === i}
                 aria-controls={`faq-answer-${i}`}
               >
-                <span id={`faq-question-${i}`} className="text-[#0F0F1A] font-semibold text-base">
+                <span id={`faq-question-${i}`} className="text-white font-semibold text-base">
                   {faq.question}
                 </span>
-                <motion.span
-                  className="text-[#7C3AED] flex-shrink-0 text-xl leading-none"
-                  animate={{ rotate: open === i ? 45 : 0 }}
-                  transition={{ duration: 0.2 }}
+                <span
+                  className="text-[#7C3AED] flex-shrink-0 text-xl leading-none transition-transform duration-200"
+                  style={{ transform: open === i ? "rotate(45deg)" : "rotate(0deg)" }}
                 >
                   +
-                </motion.span>
+                </span>
               </button>
               <AnimatePresence>
                 {open === i && (
@@ -96,31 +87,25 @@ export default function FAQ() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.25 }}
                   >
-                    <div className="px-6 pb-5 text-[#64748B] text-sm leading-relaxed border-t border-[#E2E8F0] pt-4">
+                    <div className="px-6 pb-5 text-[#94a3b8] text-sm leading-relaxed border-t border-white/[0.06] pt-4">
                       {faq.answer}
                     </div>
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* CTA */}
-        <motion.div
-          className="text-center mt-10"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
+        <div className="reveal reveal-d3 text-center mt-10">
           <button
             onClick={() => { GA.bookingModalOpened("faq"); setModalOpen(true); }}
             className="text-[#7C3AED] font-semibold text-sm hover:text-[#9D6FF0] transition-colors cursor-pointer"
           >
-            Encore une question ? Parlons-en →
+            Encore une question ? Parlons-en &rarr;
           </button>
-        </motion.div>
+        </div>
       </div>
     </section>
 

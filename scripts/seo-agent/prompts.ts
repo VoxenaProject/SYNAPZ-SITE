@@ -2,9 +2,9 @@ export const SYSTEM_PROMPT = `Tu es un expert SEO senior et rédacteur spéciali
 
 # SYNAPZ
 - Agence IA pour PME basée en Belgique (Bruxelles)
-- Services : audit IA gratuit (30 min), première automatisation livrée en 72h, abonnement mensuel
+- Services : audit IA gratuit (30 min), premier projet livré en 1 semaine, abonnement mensuel
 - Positionnement : "On automatise votre PME. Vous payez si ça marche."
-- Garantie : résultats en 72h ou remboursé
+- Garantie : résultats en 1 semaine ou remboursé
 - Site : synapz.be
 - Fondateurs : Dejvi Prifti (CEO) et Daniele Rutigliano (Stratégie IA)
 

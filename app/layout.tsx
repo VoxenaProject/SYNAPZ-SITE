@@ -7,7 +7,6 @@ import Analytics from "@/components/Analytics";
 const CookieBanner = dynamic(() => import("@/components/ui/CookieBanner"));
 const StickyMobileCTA = dynamic(() => import("@/components/ui/StickyMobileCTA"));
 const WhatsAppWidget = dynamic(() => import("@/components/ui/WhatsAppWidget"));
-const SocialProofToasts = dynamic(() => import("@/components/ui/SocialProofToasts"));
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -26,24 +25,32 @@ const inter = Inter({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#7C3AED",
+  themeColor: "#060612",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://synapz.be"),
   title: {
     template: "%s | SYNAPZ",
-    default: "SYNAPZ — Agence IA pour PME | Automatisation & Résultats Garantis",
+    default: "SYNAPZ | Agence IA pour PME en Belgique",
   },
   description:
-    "On automatise votre PME avec l'IA. Audit gratuit en 30 minutes. Résultats en 72h. Satisfait ou 0€ — c'est notre engagement.",
+    "SYNAPZ automatise votre PME avec l'IA. On identifie, on livre, vous payez uniquement si satisfait. Résultats en 1 semaine.",
   keywords: [
+    "SYNAPZ",
     "agence IA",
     "automatisation PME",
     "intelligence artificielle Belgique",
     "automatisation processus",
     "agence automatisation IA",
-    "SYNAPZ",
+    "agence automatisation IA Belgique",
+    "intégrer IA dans PME",
+    "agence IA Bruxelles",
+    "automatisation processus PME",
+    "audit IA gratuit",
+    "transformation digitale PME Belgique",
+    "consultant IA PME",
+    "automatisation tâches répétitives",
   ],
   authors: [{ name: "SYNAPZ" }],
   creator: "SYNAPZ",
@@ -59,19 +66,27 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "SYNAPZ — On automatise votre PME. Vous payez si ça marche.",
+    title: "SYNAPZ | On automatise votre PME. Vous payez si ça marche.",
     description:
-      "Audit IA gratuit (30 min) + premier projet livré en 72h. Garantie résultats ou 0€.",
+      "Audit IA gratuit (30 min) + premier projet livré en 1 semaine. Vous payez uniquement si satisfait.",
     url: "https://synapz.be",
     siteName: "SYNAPZ",
     locale: "fr_BE",
     type: "website",
+    images: [
+      {
+        url: "https://synapz.be/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "SYNAPZ — Agence IA pour PME en Belgique",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SYNAPZ — Agence IA pour PME | Résultats en 72h",
+    title: "SYNAPZ | Partenaire Tech pour PME — Résultats en 1 semaine",
     description:
-      "On automatise votre PME avec l'IA. Audit gratuit. Résultats en 72h. Satisfait ou 0€.",
+      "SYNAPZ automatise votre PME avec l'IA. On livre gratuitement. Vous payez uniquement si satisfait.",
   },
   alternates: {
     canonical: "https://synapz.be",
@@ -87,18 +102,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="fr-BE">
       <head>
-        <link rel="dns-prefetch" href="https://calendly.com" />
-        <link rel="preconnect" href="https://calendly.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.clarity.ms" />
       </head>
       <body className={`${jakarta.variable} ${inter.variable} antialiased`}>
         {children}
         <StickyMobileCTA />
         <WhatsAppWidget />
-        <SocialProofToasts />
         <CookieBanner />
         <Analytics />
       </body>

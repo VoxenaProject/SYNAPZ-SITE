@@ -5,7 +5,7 @@ function H2(props: ComponentPropsWithoutRef<"h2">) {
   return (
     <h2
       id={props.id}
-      className="text-2xl font-extrabold text-[#0F0F1A] mt-12 mb-4 font-[family-name:var(--font-jakarta)] scroll-mt-24"
+      className="text-2xl font-extrabold text-white mt-12 mb-4 font-[family-name:var(--font-jakarta)] scroll-mt-24"
       {...props}
     />
   );
@@ -15,22 +15,22 @@ function H3(props: ComponentPropsWithoutRef<"h3">) {
   return (
     <h3
       id={props.id}
-      className="text-xl font-bold text-[#0F0F1A] mt-8 mb-3 font-[family-name:var(--font-jakarta)] scroll-mt-24"
+      className="text-xl font-bold text-white mt-8 mb-3 font-[family-name:var(--font-jakarta)] scroll-mt-24"
       {...props}
     />
   );
 }
 
 function Paragraph(props: ComponentPropsWithoutRef<"p">) {
-  return <p className="text-[#334155] text-base leading-relaxed mb-4" {...props} />;
+  return <p className="text-[#94a3b8] text-base leading-relaxed mb-4" {...props} />;
 }
 
 function UnorderedList(props: ComponentPropsWithoutRef<"ul">) {
-  return <ul className="list-disc list-inside space-y-2 mb-6 text-[#334155]" {...props} />;
+  return <ul className="list-disc list-inside space-y-2 mb-6 text-[#94a3b8]" {...props} />;
 }
 
 function OrderedList(props: ComponentPropsWithoutRef<"ol">) {
-  return <ol className="list-decimal list-inside space-y-2 mb-6 text-[#334155]" {...props} />;
+  return <ol className="list-decimal list-inside space-y-2 mb-6 text-[#94a3b8]" {...props} />;
 }
 
 function ListItem(props: ComponentPropsWithoutRef<"li">) {
@@ -41,7 +41,7 @@ function Anchor(props: ComponentPropsWithoutRef<"a">) {
   const { href, children, ...rest } = props;
   if (href?.startsWith("/")) {
     return (
-      <Link href={href} className="text-[#7C3AED] font-medium underline underline-offset-2 hover:text-[#6D28D9] transition-colors" {...rest}>
+      <Link href={href} className="text-[#7C3AED] font-medium underline underline-offset-2 hover:text-[#9D6FF0] transition-colors" {...rest}>
         {children}
       </Link>
     );
@@ -51,7 +51,7 @@ function Anchor(props: ComponentPropsWithoutRef<"a">) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-[#7C3AED] font-medium underline underline-offset-2 hover:text-[#6D28D9] transition-colors"
+      className="text-[#7C3AED] font-medium underline underline-offset-2 hover:text-[#9D6FF0] transition-colors"
       {...rest}
     >
       {children}
@@ -62,7 +62,7 @@ function Anchor(props: ComponentPropsWithoutRef<"a">) {
 function Blockquote(props: ComponentPropsWithoutRef<"blockquote">) {
   return (
     <blockquote
-      className="border-l-4 border-[#7C3AED] pl-4 py-2 my-6 bg-[#F5F7FF] rounded-r-lg italic text-[#64748B]"
+      className="border-l-4 border-l-[#7C3AED] pl-4 py-2 my-6 bg-[#7C3AED]/[0.05] rounded-r-lg italic text-[#94a3b8]"
       {...props}
     />
   );
@@ -79,7 +79,7 @@ function Table(props: ComponentPropsWithoutRef<"table">) {
 function Th(props: ComponentPropsWithoutRef<"th">) {
   return (
     <th
-      className="bg-[#0F0F1A] text-white text-left px-4 py-3 font-semibold text-sm first:rounded-tl-lg last:rounded-tr-lg"
+      className="bg-[#12122a] text-white text-left px-4 py-3 font-semibold text-sm first:rounded-tl-lg last:rounded-tr-lg"
       {...props}
     />
   );
@@ -87,22 +87,22 @@ function Th(props: ComponentPropsWithoutRef<"th">) {
 
 function Td(props: ComponentPropsWithoutRef<"td">) {
   return (
-    <td className="border-b border-[#E2E8F0] px-4 py-3 text-[#334155]" {...props} />
+    <td className="border-b border-white/[0.06] px-4 py-3 text-[#94a3b8]" {...props} />
   );
 }
 
 function Strong(props: ComponentPropsWithoutRef<"strong">) {
-  return <strong className="font-bold text-[#0F0F1A]" {...props} />;
+  return <strong className="font-bold text-white" {...props} />;
 }
 
 function Hr() {
-  return <hr className="my-8 border-t border-[#E2E8F0]" />;
+  return <hr className="my-8 border-t border-white/[0.06]" />;
 }
 
 function Code(props: ComponentPropsWithoutRef<"code">) {
   return (
     <code
-      className="bg-[#F1F5F9] text-[#7C3AED] px-1.5 py-0.5 rounded text-sm font-mono"
+      className="bg-[#060612] text-[#7C3AED] px-1.5 py-0.5 rounded text-sm font-mono border border-white/[0.06]"
       {...props}
     />
   );
@@ -110,7 +110,7 @@ function Code(props: ComponentPropsWithoutRef<"code">) {
 
 export function Callout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-[#F5F7FF] border border-[#7C3AED]/20 rounded-xl p-6 my-6">
+    <div className="bg-[#7C3AED]/[0.05] border border-[#7C3AED]/20 rounded-xl p-6 my-6">
       {children}
     </div>
   );
@@ -124,7 +124,7 @@ export function CTABox({ text = "Obtenir mon audit gratuit", href = "/#offre" }:
       </p>
       <a
         href={href}
-        className="inline-block bg-white text-[#7C3AED] font-bold px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors"
+        className="inline-block bg-white text-[#7C3AED] font-bold px-6 py-3 rounded-lg hover:bg-white/90 transition-colors"
       >
         {text} →
       </a>

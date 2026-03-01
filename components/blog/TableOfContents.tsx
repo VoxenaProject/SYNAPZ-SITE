@@ -48,10 +48,10 @@ export default function TableOfContents({ content }: { content: string }) {
 
   return (
     <nav className="hidden lg:block sticky top-24 max-h-[calc(100vh-120px)] overflow-y-auto">
-      <p className="text-xs font-bold text-[#0F0F1A] uppercase tracking-wider mb-4">
+      <p className="text-xs font-bold text-white uppercase tracking-wider mb-4">
         Sommaire
       </p>
-      <ul className="space-y-2 border-l-2 border-[#E2E8F0]">
+      <ul className="space-y-2 border-l-2 border-white/[0.06]">
         {headings.map((heading) => (
           <li key={heading.id}>
             <a
@@ -61,7 +61,7 @@ export default function TableOfContents({ content }: { content: string }) {
               } ${
                 activeId === heading.id
                   ? "text-[#7C3AED] font-medium border-l-2 border-[#7C3AED] -ml-[2px]"
-                  : "text-[#64748B] hover:text-[#0F0F1A]"
+                  : "text-[#64748b] hover:text-white"
               }`}
             >
               {heading.text}

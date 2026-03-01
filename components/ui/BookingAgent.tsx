@@ -21,7 +21,7 @@ const CONSULTANTS = {
     role: "CEO & Automatisation IA",
     initials: "DP",
     color: "#7C3AED",
-    description: "Construction des automatisations, livraison en 72h.",
+    description: "Construction des automatisations, livraison en 1 semaine.",
   },
   daniele: {
     key: "daniele" as ConsultantKey,

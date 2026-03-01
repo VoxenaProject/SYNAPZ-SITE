@@ -5,7 +5,6 @@ import dynamic from "next/dynamic";
 
 const DiagnosticIA = dynamic(() => import("@/components/ui/DiagnosticIA"));
 const ExitIntentPopup = dynamic(() => import("@/components/ui/ExitIntentPopup"));
-const UrgencyBar = dynamic(() => import("@/components/ui/UrgencyBar"));
 
 const DiagnosticContext = createContext<() => void>(() => {});
 
@@ -22,7 +21,6 @@ export default function ConversionLayer({ children }: { children: React.ReactNod
 
   return (
     <DiagnosticContext.Provider value={openDiagnostic}>
-      <UrgencyBar />
       {children}
       <ExitIntentPopup onStartDiagnostic={openDiagnostic} />
       <DiagnosticIA isOpen={diagnosticOpen} onClose={() => setDiagnosticOpen(false)} />

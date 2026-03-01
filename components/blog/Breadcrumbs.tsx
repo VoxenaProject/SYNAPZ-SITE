@@ -15,14 +15,14 @@ interface BreadcrumbsProps {
 
 export default function Breadcrumbs({ category, title }: BreadcrumbsProps) {
   return (
-    <nav aria-label="Fil d'ariane" className="text-sm text-[#64748B] mb-6">
+    <nav aria-label="Fil d'ariane" className="text-sm text-[#64748b] mb-6">
       <ol className="flex flex-wrap items-center gap-1.5">
         <li>
           <Link href="/" className="hover:text-[#7C3AED] transition-colors">
             Accueil
           </Link>
         </li>
-        <li aria-hidden="true" className="text-[#CBD5E1]">/</li>
+        <li aria-hidden="true" className="text-[#64748b]">/</li>
         <li>
           <Link href="/blog" className="hover:text-[#7C3AED] transition-colors">
             Blog
@@ -30,17 +30,17 @@ export default function Breadcrumbs({ category, title }: BreadcrumbsProps) {
         </li>
         {category && (
           <>
-            <li aria-hidden="true" className="text-[#CBD5E1]">/</li>
+            <li aria-hidden="true" className="text-[#64748b]">/</li>
             <li>
-              <span className="text-[#94A3B8]">
+              <span className="text-[#64748b]">
                 {CATEGORY_LABELS[category] || category}
               </span>
             </li>
           </>
         )}
-        <li aria-hidden="true" className="text-[#CBD5E1]">/</li>
+        <li aria-hidden="true" className="text-[#64748b]">/</li>
         <li>
-          <span className="text-[#0F0F1A] font-medium truncate max-w-[200px] inline-block align-bottom">
+          <span className="text-white font-medium truncate max-w-[200px] inline-block align-bottom">
             {title}
           </span>
         </li>

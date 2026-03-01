@@ -57,7 +57,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     }
   };
 
-  const inputClass = "w-full bg-[#F5F7FF] border border-[#E2E8F0] rounded-lg px-4 py-2.5 text-[#0F0F1A] text-sm focus:outline-none focus:border-[#7C3AED] transition-colors placeholder:text-[#94A3B8]";
+  const inputClass = "w-full bg-[#060612] border border-white/[0.06] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#7C3AED] transition-colors placeholder:text-[#64748b]";
 
   return (
     <AnimatePresence>
@@ -77,7 +77,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
           >
-            <div className={`bg-white border border-[#E2E8F0] rounded-2xl shadow-2xl shadow-black/10 overflow-hidden max-h-[90vh] overflow-y-auto transition-all duration-300 ${
+            <div className={`bg-[#0c0c20] border border-white/[0.06] rounded-2xl shadow-2xl shadow-black/30 overflow-hidden max-h-[90vh] overflow-y-auto transition-all duration-300 ${
               view === "calendly" ? "w-full max-w-3xl" : "w-full max-w-xl"
             }`}>
               <div className="p-8">
@@ -86,30 +86,30 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   <div>
                     {view === "home" && (
                       <>
-                        <h3 className="text-2xl font-extrabold text-[#0F0F1A]">
+                        <h3 className="text-2xl font-extrabold text-white">
                           Obtenir mon audit gratuit
                         </h3>
-                        <p className="text-[#64748B] text-sm mt-1">
+                        <p className="text-[#94a3b8] text-sm mt-1">
                           On revient vers vous en moins de 24h.
                         </p>
                       </>
                     )}
                     {view === "calendly" && (
                       <>
-                        <h3 className="text-2xl font-extrabold text-[#0F0F1A]">
+                        <h3 className="text-2xl font-extrabold text-white">
                           Réserver un call
                         </h3>
-                        <p className="text-[#64748B] text-sm mt-1">
+                        <p className="text-[#94a3b8] text-sm mt-1">
                           30 minutes — 100% gratuit
                         </p>
                       </>
                     )}
                     {view === "form" && (
                       <>
-                        <h3 className="text-2xl font-extrabold text-[#0F0F1A]">
+                        <h3 className="text-2xl font-extrabold text-white">
                           Nous écrire
                         </h3>
-                        <p className="text-[#64748B] text-sm mt-1">
+                        <p className="text-[#94a3b8] text-sm mt-1">
                           Réponse garantie sous 24h.
                         </p>
                       </>
@@ -117,7 +117,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   </div>
                   <button
                     onClick={handleClose}
-                    className="text-[#64748B] hover:text-[#0F0F1A] transition-colors text-2xl leading-none w-8 h-8 flex items-center justify-center rounded-lg hover:bg-[#F5F7FF] cursor-pointer"
+                    className="text-[#94a3b8] hover:text-white transition-colors text-2xl leading-none w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/[0.05] cursor-pointer"
                   >
                     ✕
                   </button>
@@ -128,14 +128,14 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   <div className="grid grid-cols-2 gap-3">
                     <button
                       onClick={() => { setView("calendly"); GA.calendlyLoaded(); }}
-                      className="flex flex-col items-center gap-2 p-4 rounded-xl border border-[#E2E8F0] hover:border-[#7C3AED]/50 hover:bg-[#7C3AED]/5 transition-all text-center group cursor-pointer"
+                      className="flex flex-col items-center gap-2 p-4 rounded-xl border border-white/[0.06] hover:border-[#7C3AED]/50 hover:bg-[#7C3AED]/5 transition-all text-center group cursor-pointer"
                     >
                       <span className="text-2xl">📅</span>
                       <div>
-                        <div className="text-xs font-semibold text-[#0F0F1A] group-hover:text-[#7C3AED] transition-colors">
+                        <div className="text-xs font-semibold text-white group-hover:text-[#7C3AED] transition-colors">
                           Réserver un call
                         </div>
-                        <div className="text-[10px] text-[#94A3B8]">30 min — gratuit</div>
+                        <div className="text-[10px] text-[#64748b]">30 min — gratuit</div>
                       </div>
                     </button>
 
@@ -144,14 +144,14 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => GA.whatsappClicked("dejvi", "modal")}
-                      className="flex flex-col items-center gap-2 p-4 rounded-xl border border-[#E2E8F0] hover:border-[#25D366] hover:bg-[#25D366]/5 transition-all text-center group"
+                      className="flex flex-col items-center gap-2 p-4 rounded-xl border border-white/[0.06] hover:border-[#25D366] hover:bg-[#25D366]/5 transition-all text-center group"
                     >
                       <span className="text-2xl">💬</span>
                       <div>
-                        <div className="text-xs font-semibold text-[#0F0F1A] group-hover:text-[#25D366] transition-colors">
+                        <div className="text-xs font-semibold text-white group-hover:text-[#25D366] transition-colors">
                           WhatsApp Dejvi
                         </div>
-                        <div className="text-[10px] text-[#94A3B8]">CEO · Automatisation</div>
+                        <div className="text-[10px] text-[#64748b]">CEO · Automatisation</div>
                       </div>
                     </a>
 
@@ -160,27 +160,27 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => GA.whatsappClicked("daniele", "modal")}
-                      className="flex flex-col items-center gap-2 p-4 rounded-xl border border-[#E2E8F0] hover:border-[#25D366] hover:bg-[#25D366]/5 transition-all text-center group"
+                      className="flex flex-col items-center gap-2 p-4 rounded-xl border border-white/[0.06] hover:border-[#25D366] hover:bg-[#25D366]/5 transition-all text-center group"
                     >
                       <span className="text-2xl">💬</span>
                       <div>
-                        <div className="text-xs font-semibold text-[#0F0F1A] group-hover:text-[#25D366] transition-colors">
+                        <div className="text-xs font-semibold text-white group-hover:text-[#25D366] transition-colors">
                           WhatsApp Daniele
                         </div>
-                        <div className="text-[10px] text-[#94A3B8]">Stratégie IA · Conseil</div>
+                        <div className="text-[10px] text-[#64748b]">Stratégie IA · Conseil</div>
                       </div>
                     </a>
 
                     <button
                       onClick={() => setView("form")}
-                      className="flex flex-col items-center gap-2 p-4 rounded-xl border border-[#E2E8F0] hover:border-[#7C3AED]/50 hover:bg-[#7C3AED]/5 transition-all text-center group cursor-pointer"
+                      className="flex flex-col items-center gap-2 p-4 rounded-xl border border-white/[0.06] hover:border-[#7C3AED]/50 hover:bg-[#7C3AED]/5 transition-all text-center group cursor-pointer"
                     >
                       <span className="text-2xl">📩</span>
                       <div>
-                        <div className="text-xs font-semibold text-[#0F0F1A] group-hover:text-[#7C3AED] transition-colors">
+                        <div className="text-xs font-semibold text-white group-hover:text-[#7C3AED] transition-colors">
                           Nous écrire
                         </div>
-                        <div className="text-[10px] text-[#94A3B8]">Formulaire rapide</div>
+                        <div className="text-[10px] text-[#64748b]">Formulaire rapide</div>
                       </div>
                     </button>
                   </div>
@@ -189,7 +189,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                 {/* Calendly embed view */}
                 {view === "calendly" && (
                   <div>
-                    <div className="rounded-xl overflow-hidden border border-[#E2E8F0]">
+                    <div className="rounded-xl overflow-hidden border border-white/[0.06]">
                       <iframe
                         src="https://calendly.com/daniele-synapz/strategie-meeting"
                         width="100%"
@@ -202,7 +202,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                     </div>
                     <button
                       onClick={() => setView("home")}
-                      className="w-full mt-4 border border-[#E2E8F0] text-[#64748B] font-medium py-2.5 rounded-lg text-sm hover:bg-[#F5F7FF] transition-colors cursor-pointer"
+                      className="w-full mt-4 border border-white/[0.06] text-[#94a3b8] font-medium py-2.5 rounded-lg text-sm hover:bg-white/[0.05] transition-colors cursor-pointer"
                     >
                       ← Retour
                     </button>
@@ -219,33 +219,33 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                         className="text-center py-8"
                       >
                         <div className="text-4xl mb-3">✅</div>
-                        <p className="text-[#0F0F1A] font-semibold text-lg">Message reçu !</p>
-                        <p className="text-[#64748B] text-sm mt-1">On revient vers vous sous 24h.</p>
+                        <p className="text-white font-semibold text-lg">Message reçu !</p>
+                        <p className="text-[#94a3b8] text-sm mt-1">On revient vers vous sous 24h.</p>
                       </motion.div>
                     ) : (
                       <form onSubmit={handleSubmit} className="space-y-4">
                         <div className="grid grid-cols-2 gap-4">
                           <div>
-                            <label className="block text-xs text-[#64748B] mb-1 font-medium">Prénom *</label>
+                            <label className="block text-xs text-[#94a3b8] mb-1 font-medium">Prénom *</label>
                             <input required type="text" value={formData.name}
                               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                               className={inputClass} placeholder="Dejvi" />
                           </div>
                           <div>
-                            <label className="block text-xs text-[#64748B] mb-1 font-medium">Entreprise</label>
+                            <label className="block text-xs text-[#94a3b8] mb-1 font-medium">Entreprise</label>
                             <input type="text" value={formData.company}
                               onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                               className={inputClass} placeholder="Ma PME" />
                           </div>
                         </div>
                         <div>
-                          <label className="block text-xs text-[#64748B] mb-1 font-medium">Email *</label>
+                          <label className="block text-xs text-[#94a3b8] mb-1 font-medium">Email *</label>
                           <input required type="email" value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             className={inputClass} placeholder="vous@entreprise.be" />
                         </div>
                         <div>
-                          <label className="block text-xs text-[#64748B] mb-1 font-medium">Message (optionnel)</label>
+                          <label className="block text-xs text-[#94a3b8] mb-1 font-medium">Message (optionnel)</label>
                           <textarea value={formData.message}
                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                             rows={3} className={`${inputClass} resize-none`}
@@ -253,7 +253,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                         </div>
                         <div className="flex gap-3">
                           <button type="button" onClick={() => setView("home")}
-                            className="flex-1 border border-[#E2E8F0] text-[#64748B] font-medium py-2.5 rounded-lg text-sm hover:bg-[#F5F7FF] transition-colors cursor-pointer">
+                            className="flex-1 border border-white/[0.06] text-[#94a3b8] font-medium py-2.5 rounded-lg text-sm hover:bg-white/[0.05] transition-colors cursor-pointer">
                             ← Retour
                           </button>
                           <button type="submit" disabled={status === "sending"}

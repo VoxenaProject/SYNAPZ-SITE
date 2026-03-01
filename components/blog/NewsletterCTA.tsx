@@ -7,11 +7,11 @@ export default function NewsletterCTA() {
         Votre PME perd du temps sur des tâches répétitives ?
       </h3>
       <p className="text-white/80 text-sm mb-5">
-        On identifie vos pertes de temps en 30 minutes. Résultats en 72h. Satisfait ou 0€.
+        On identifie vos pertes de temps en 30 minutes. Résultats en 1 semaine. Satisfait ou 0€.
       </p>
       <Link
         href="/#offre"
-        className="inline-block bg-white text-[#7C3AED] font-bold px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors text-sm"
+        className="inline-block bg-white text-[#7C3AED] font-bold px-6 py-3 rounded-lg hover:bg-white/90 transition-colors text-sm"
       >
         Obtenir mon audit gratuit →
       </Link>

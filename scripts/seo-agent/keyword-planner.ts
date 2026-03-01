@@ -145,7 +145,7 @@ export const ARTICLE_PLANS: ArticlePlan[] = [
     priority: 1,
   },
   {
-    keyword: "de l'audit à la première automatisation en 72h",
+    keyword: "de l'audit à la première automatisation en 1 semaine",
     type: "cluster",
     cluster: "audit-ia",
     category: "audit-ia",

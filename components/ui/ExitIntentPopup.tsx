@@ -95,11 +95,11 @@ export default function ExitIntentPopup({ onStartDiagnostic }: ExitIntentPopupPr
       />
 
       {/* Popup */}
-      <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 animate-fade-in">
+      <div className="relative bg-[#0c0c20] border border-white/[0.06] rounded-2xl shadow-2xl shadow-black/30 max-w-md w-full p-8 animate-fade-in">
         {/* Close */}
         <button
           onClick={handleNo}
-          className="absolute top-4 right-4 text-[#94A3B8] hover:text-[#0F0F1A] transition-colors cursor-pointer"
+          className="absolute top-4 right-4 text-[#64748b] hover:text-white transition-colors cursor-pointer"
           aria-label="Fermer"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -116,10 +116,10 @@ export default function ExitIntentPopup({ onStartDiagnostic }: ExitIntentPopupPr
             </svg>
           </div>
 
-          <h3 className="text-xl font-extrabold text-[#0F0F1A] mb-2">
+          <h3 className="text-xl font-extrabold text-white mb-2">
             Avant de partir...
           </h3>
-          <p className="text-[#64748B] text-base mb-6 leading-relaxed">
+          <p className="text-[#94a3b8] text-base mb-6 leading-relaxed">
             Votre PME perd-elle du temps
             sur des tâches répétitives ?
           </p>
@@ -127,19 +127,19 @@ export default function ExitIntentPopup({ onStartDiagnostic }: ExitIntentPopupPr
           <div className="space-y-3">
             <button
               onClick={handleYes}
-              className="w-full bg-[#7C3AED] text-white font-semibold py-3.5 rounded-xl hover:bg-[#6D28D9] transition-all shadow-lg shadow-[#7C3AED]/20 cursor-pointer"
+              className="w-full bg-[#7C3AED] text-white font-semibold py-3.5 rounded-xl hover:bg-[#9D6FF0] transition-all shadow-lg shadow-[#7C3AED]/25 cursor-pointer"
             >
               Oui, probablement
             </button>
             <button
               onClick={handleNo}
-              className="w-full text-[#94A3B8] font-medium py-3 rounded-xl hover:bg-[#F5F7FF] transition-all cursor-pointer text-sm"
+              className="w-full text-[#64748b] font-medium py-3 rounded-xl hover:bg-white/[0.05] transition-all cursor-pointer text-sm"
             >
               Non, tout est optimisé
             </button>
           </div>
 
-          <p className="text-[#94A3B8] text-xs mt-4">
+          <p className="text-[#64748b] text-xs mt-4">
             Si oui : découvrez combien en 3 minutes.
           </p>
         </div>

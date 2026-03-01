@@ -8,16 +8,16 @@ export const metadata: Metadata = {
 
 export default function PolitiqueDeConfidentialite() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#060612]">
       {/* Header */}
-      <div className="border-b border-[#E2E8F0] py-6 px-6">
+      <div className="border-b border-white/[0.06] py-6 px-6">
         <div className="max-w-3xl mx-auto flex items-center justify-between">
           <Link href="/" className="text-[#7C3AED] font-bold text-lg tracking-tight">
             SYNAPZ
           </Link>
           <Link
             href="/"
-            className="text-[#64748B] text-sm hover:text-[#0F0F1A] transition-colors"
+            className="text-[#64748b] text-sm hover:text-white transition-colors"
           >
             ← Retour au site
           </Link>
@@ -26,17 +26,17 @@ export default function PolitiqueDeConfidentialite() {
 
       {/* Content */}
       <div className="max-w-3xl mx-auto px-6 py-16">
-        <h1 className="text-3xl font-extrabold text-[#0F0F1A] mb-2">
+        <h1 className="text-3xl font-extrabold text-white mb-2">
           Politique de confidentialité
         </h1>
-        <p className="text-[#64748B] text-sm mb-12">
+        <p className="text-[#64748b] text-sm mb-12">
           Dernière mise à jour : 21 février 2025
         </p>
 
-        <div className="space-y-10 text-[#374151] leading-relaxed">
+        <div className="space-y-10 text-[#94a3b8] leading-relaxed">
 
           <section>
-            <h2 className="text-xl font-bold text-[#0F0F1A] mb-4">
+            <h2 className="text-xl font-bold text-white mb-4">
               1. Qui sommes-nous ?
             </h2>
             <p>
@@ -45,12 +45,12 @@ export default function PolitiqueDeConfidentialite() {
               <strong>SYNAPZ</strong>.
             </p>
             <ul className="mt-3 space-y-1 text-sm">
-              <li><span className="text-[#64748B]">Raison sociale :</span> VVI CONSULTING</li>
-              <li><span className="text-[#64748B]">Marque :</span> SYNAPZ</li>
-              <li><span className="text-[#64748B]">Numéro de TVA :</span> BE1018193756</li>
-              <li><span className="text-[#64748B]">Siège social :</span> Avenue du Château 10, 1081 Koekelberg, Belgique</li>
+              <li><span className="text-[#64748b]">Raison sociale :</span> VVI CONSULTING</li>
+              <li><span className="text-[#64748b]">Marque :</span> SYNAPZ</li>
+              <li><span className="text-[#64748b]">Numéro de TVA :</span> BE1018193756</li>
+              <li><span className="text-[#64748b]">Siège social :</span> Avenue du Château 10, 1081 Koekelberg, Belgique</li>
               <li>
-                <span className="text-[#64748B]">Contact :</span>{" "}
+                <span className="text-[#64748b]">Contact :</span>{" "}
                 <a href="mailto:hello@synapz.be" className="text-[#7C3AED] hover:underline">
                   hello@synapz.be
                 </a>
@@ -59,7 +59,7 @@ export default function PolitiqueDeConfidentialite() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-[#0F0F1A] mb-4">
+            <h2 className="text-xl font-bold text-white mb-4">
               2. Données collectées
             </h2>
             <p>
@@ -72,14 +72,14 @@ export default function PolitiqueDeConfidentialite() {
               <li>Numéro de téléphone (optionnel, pour la prise de rendez-vous)</li>
               <li>Message libre (optionnel)</li>
             </ul>
-            <p className="mt-3 text-sm text-[#64748B]">
+            <p className="mt-3 text-sm text-[#64748b]">
               Nous ne collectons aucune donnée de navigation, cookie de tracking ou donnée
               sensible au sens de l&apos;article 9 du RGPD.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-[#0F0F1A] mb-4">
+            <h2 className="text-xl font-bold text-white mb-4">
               3. Finalités du traitement
             </h2>
             <p>Vos données sont utilisées exclusivement pour :</p>
@@ -88,14 +88,14 @@ export default function PolitiqueDeConfidentialite() {
               <li>Planifier un appel de découverte</li>
               <li>Vous envoyer une confirmation de rendez-vous</li>
             </ul>
-            <p className="mt-3 text-sm text-[#64748B]">
+            <p className="mt-3 text-sm text-[#64748b]">
               Nous n&apos;utilisons pas vos données à des fins de marketing sans votre
               consentement explicite, et nous ne les revendons jamais à des tiers.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-[#0F0F1A] mb-4">
+            <h2 className="text-xl font-bold text-white mb-4">
               4. Base légale du traitement
             </h2>
             <p>
@@ -110,7 +110,7 @@ export default function PolitiqueDeConfidentialite() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-[#0F0F1A] mb-4">
+            <h2 className="text-xl font-bold text-white mb-4">
               5. Durée de conservation
             </h2>
             <p>
@@ -122,7 +122,7 @@ export default function PolitiqueDeConfidentialite() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-[#0F0F1A] mb-4">
+            <h2 className="text-xl font-bold text-white mb-4">
               6. Destinataires des données
             </h2>
             <p>Vos données sont accessibles uniquement à :</p>
@@ -145,13 +145,13 @@ export default function PolitiqueDeConfidentialite() {
                 </a>
               </li>
             </ul>
-            <p className="mt-3 text-sm text-[#64748B]">
+            <p className="mt-3 text-sm text-[#64748b]">
               Aucune autre transmission à des tiers n&apos;est effectuée.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-[#0F0F1A] mb-4">
+            <h2 className="text-xl font-bold text-white mb-4">
               7. Vos droits (RGPD)
             </h2>
             <p>
@@ -176,7 +176,7 @@ export default function PolitiqueDeConfidentialite() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-[#0F0F1A] mb-4">
+            <h2 className="text-xl font-bold text-white mb-4">
               8. Cookies
             </h2>
             <p>
@@ -187,7 +187,7 @@ export default function PolitiqueDeConfidentialite() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-[#0F0F1A] mb-4">
+            <h2 className="text-xl font-bold text-white mb-4">
               9. Autorité de contrôle
             </h2>
             <p>
@@ -211,7 +211,7 @@ export default function PolitiqueDeConfidentialite() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-[#0F0F1A] mb-4">
+            <h2 className="text-xl font-bold text-white mb-4">
               10. Modifications
             </h2>
             <p>
@@ -222,11 +222,11 @@ export default function PolitiqueDeConfidentialite() {
 
         </div>
 
-        <div className="mt-16 pt-8 border-t border-[#E2E8F0] flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[#64748B]">
-          <Link href="/mentions-legales" className="hover:text-[#0F0F1A] transition-colors">
+        <div className="mt-16 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[#64748b]">
+          <Link href="/mentions-legales" className="hover:text-white transition-colors">
             Mentions légales →
           </Link>
-          <Link href="/" className="hover:text-[#0F0F1A] transition-colors">
+          <Link href="/" className="hover:text-white transition-colors">
             ← Retour à l&apos;accueil
           </Link>
         </div>

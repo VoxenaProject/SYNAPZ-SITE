@@ -29,17 +29,17 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 md:top-9 left-0 right-0 z-30 transition-all duration-300 animate-slide-down ${
+        className={`fixed top-0 left-0 right-0 z-30 transition-all duration-300 animate-slide-down ${
           scrolled
-            ? "bg-white/95 md:backdrop-blur-md border-b border-[#E2E8F0] shadow-sm"
+            ? "bg-[#0c0c20]/90 backdrop-blur-md border-b border-white/[0.06] shadow-lg shadow-black/20"
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-[1100px] mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="flex items-center gap-2 group">
             <Image
-              src="/logo/synapz-logo-dark.svg"
+              src="/logo/synapz-logo-light.svg"
               alt="SYNAPZ"
               width={146}
               height={32}
@@ -53,7 +53,7 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-[#64748B] hover:text-[#0F0F1A] transition-colors text-sm font-medium"
+                className="text-[#94a3b8] hover:text-white transition-colors text-sm font-medium"
               >
                 {link.label}
               </a>
@@ -78,26 +78,26 @@ export default function Navbar() {
             aria-expanded={menuOpen}
           >
             <div
-              className={`w-6 h-0.5 bg-[#0F0F1A] mb-1.5 transition-all ${menuOpen ? "rotate-45 translate-y-2" : ""}`}
+              className={`w-6 h-0.5 bg-white mb-1.5 transition-all ${menuOpen ? "rotate-45 translate-y-2" : ""}`}
             />
             <div
-              className={`w-6 h-0.5 bg-[#0F0F1A] mb-1.5 transition-all ${menuOpen ? "opacity-0" : ""}`}
+              className={`w-6 h-0.5 bg-white mb-1.5 transition-all ${menuOpen ? "opacity-0" : ""}`}
             />
             <div
-              className={`w-6 h-0.5 bg-[#0F0F1A] transition-all ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`}
+              className={`w-6 h-0.5 bg-white transition-all ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`}
             />
           </button>
         </div>
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="md:hidden bg-white border-t border-[#E2E8F0] px-6 py-4 space-y-4 shadow-lg animate-fade-in">
+          <div className="md:hidden bg-[#0c0c20] border-t border-white/[0.06] px-6 py-4 space-y-4 shadow-lg animate-fade-in">
             {links.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="block text-[#64748B] hover:text-[#0F0F1A] py-2 text-sm font-medium"
+                className="block text-[#94a3b8] hover:text-white py-2 text-sm font-medium"
               >
                 {link.label}
               </a>

@@ -3,30 +3,30 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#E2E8F0] py-10 px-6 bg-white">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer className="border-t border-white/[0.06] py-10 px-6 bg-[#060612]">
+      <div className="max-w-[1100px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <Image
-          src="/logo/synapz-logo-dark.svg"
+          src="/logo/synapz-logo-light.svg"
           alt="SYNAPZ"
           width={128}
           height={28}
         />
-        <p className="text-[#64748B] text-sm text-center">
+        <p className="text-[#64748b] text-sm text-center">
           © 2026 SYNAPZ · TVA BE1018193756 · synapz.be
         </p>
-        <div className="flex items-center gap-6 text-sm text-[#64748B]">
-          <Link href="/blog" className="hover:text-[#0F0F1A] transition-colors">
+        <div className="flex items-center gap-6 text-sm text-[#64748b]">
+          <Link href="/blog" className="hover:text-white transition-colors">
             Blog
           </Link>
-          <Link href="/mentions-legales" className="hover:text-[#0F0F1A] transition-colors">
+          <Link href="/mentions-legales" className="hover:text-white transition-colors">
             Mentions légales
           </Link>
-          <Link href="/politique-de-confidentialite" className="hover:text-[#0F0F1A] transition-colors">
+          <Link href="/politique-de-confidentialite" className="hover:text-white transition-colors">
             Confidentialité
           </Link>
           <a
             href="mailto:hello@synapz.be"
-            className="hover:text-[#0F0F1A] transition-colors"
+            className="hover:text-white transition-colors"
           >
             hello@synapz.be
           </a>

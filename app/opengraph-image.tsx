@@ -56,7 +56,7 @@ export default function Image() {
         >
           <span>Audit gratuit</span>
           <span style={{ color: "#7C3AED" }}>|</span>
-          <span>Resultats en 72h</span>
+          <span>Resultats en 1 semaine</span>
           <span style={{ color: "#7C3AED" }}>|</span>
           <span>Satisfait ou 0 EUR</span>
         </div>

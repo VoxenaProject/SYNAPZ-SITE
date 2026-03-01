@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useReveal } from "@/lib/useReveal";
 
 const team = [
   {
@@ -10,7 +10,7 @@ const team = [
     credentials: "Co-fondateur SYNAPZ",
     linkedin: "https://www.linkedin.com/in/dejvi-prifti/",
     quote:
-      "Je construis les systèmes concrets. Si quelque chose peut être automatisé dans votre business, je l'identifie et je le livre en 72h.",
+      "Mon obsession : que chaque PME qu'on accompagne récupère au minimum 5 heures par semaine. Si on n'y arrive pas, c'est gratuit.",
     color: "#7C3AED",
   },
   {
@@ -20,45 +20,41 @@ const team = [
     credentials: "Co-fondateur SYNAPZ",
     linkedin: "https://www.linkedin.com/in/daniele-rutigliano/",
     quote:
-      "Je cartographie comment l'IA s'intègre dans votre business sans tout bouleverser. La stratégie avant la technologie.",
+      "Chaque euro investi doit rapporter 10x. Je m'assure que chaque solution qu'on déploie a un impact mesurable sur votre rentabilité.",
     color: "#06B6D4",
   },
 ];
 
 export default function Team() {
+  const sectionRef = useReveal<HTMLElement>();
+
   return (
-    <section id="equipe" className="py-28 px-6 bg-[#F5F7FF] below-fold">
-      <div className="max-w-4xl mx-auto">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+    <section
+      id="equipe"
+      ref={sectionRef}
+      className="py-32 md:py-40 px-6 bg-[#0c0c20] below-fold"
+    >
+      <div className="max-w-[1100px] mx-auto">
+        <div className="reveal text-center mb-16">
           <p className="text-[#7C3AED] text-sm font-semibold uppercase tracking-widest mb-4">
             L&apos;équipe
           </p>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#0F0F1A] mb-4">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
             Deux personnes. Pas une agence
             <br />
             <span className="gradient-text">de 200 consultants anonymes.</span>
           </h2>
-          <p className="text-[#64748B] text-lg max-w-2xl mx-auto">
+          <p className="text-[#94a3b8] text-lg max-w-2xl mx-auto">
             Quand vous bookez un call avec SYNAPZ, vous parlez à la personne
             qui va construire votre automatisation. Pas à un commercial.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-8 mb-10">
           {team.map((member, i) => (
-            <motion.div
+            <div
               key={i}
-              className="bg-white border border-[#E2E8F0] rounded-2xl p-8 hover:border-[#7C3AED]/30 hover:shadow-md transition-all shadow-sm"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 * i }}
+              className={`reveal ${i === 0 ? "reveal-d1" : "reveal-d2"} bg-[#060612] border border-white/[0.06] rounded-2xl p-8 hover:border-[#7C3AED]/25 transition-all`}
             >
               {/* Avatar */}
               <div
@@ -72,14 +68,14 @@ export default function Team() {
               </div>
 
               <div className="flex items-center gap-3 mb-1">
-                <h3 className="text-xl font-extrabold text-[#0F0F1A]">
+                <h3 className="text-xl font-extrabold text-white">
                   {member.name}
                 </h3>
                 <a
                   href={member.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#64748B] hover:text-[#0A66C2] transition-colors"
+                  className="text-[#64748b] hover:text-[#0A66C2] transition-colors"
                   aria-label={`LinkedIn de ${member.name}`}
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -90,30 +86,24 @@ export default function Team() {
               <p className="text-sm font-semibold mb-1" style={{ color: member.color }}>
                 {member.role}
               </p>
-              <p className="text-xs text-[#94A3B8] mb-4">
+              <p className="text-xs text-[#64748b] mb-4">
                 {member.credentials}
               </p>
-              <p className="text-[#64748B] text-sm leading-relaxed italic">
+              <p className="text-[#94a3b8] text-sm leading-relaxed italic">
                 &ldquo;{member.quote}&rdquo;
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <div className="inline-flex items-center gap-3 bg-white border border-[#E2E8F0] rounded-full px-6 py-3 shadow-sm">
-            <span className="text-[#7C3AED]">→</span>
-            <span className="text-[#0F0F1A] font-semibold text-sm">
+        <div className="reveal reveal-d3 text-center">
+          <div className="inline-flex items-center gap-3 bg-[#0c0c20] border border-white/[0.06] rounded-full px-6 py-3">
+            <span className="text-[#7C3AED]">&rarr;</span>
+            <span className="text-white font-semibold text-sm">
               On ne délègue pas votre projet. On le fait nous-mêmes.
             </span>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

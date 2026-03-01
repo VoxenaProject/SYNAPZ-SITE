@@ -57,23 +57,23 @@ export default async function BlogPage({
         }}
       />
 
-      <main className="min-h-screen bg-white">
+      <main className="min-h-screen bg-[#060612]">
         {/* Header */}
-        <section className="pt-32 pb-16 px-6 bg-[#F5F7FF]">
+        <section className="pt-32 pb-16 px-6 bg-[#0c0c20]">
           <div className="max-w-5xl mx-auto text-center">
             <Link
               href="/"
-              className="text-[#64748B] text-sm hover:text-[#7C3AED] transition-colors mb-4 inline-block"
+              className="text-[#64748b] text-sm hover:text-[#7C3AED] transition-colors mb-4 inline-block"
             >
               ← Retour au site
             </Link>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-[#0F0F1A] mb-4 font-[family-name:var(--font-jakarta)]">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 font-[family-name:var(--font-jakarta)]">
               Blog{" "}
               <span className="bg-gradient-to-r from-[#7C3AED] to-[#06B6D4] bg-clip-text text-transparent">
                 SYNAPZ
               </span>
             </h1>
-            <p className="text-[#64748B] text-lg max-w-2xl mx-auto">
+            <p className="text-[#94a3b8] text-lg max-w-2xl mx-auto">
               Guides, outils et stratégies pour automatiser votre PME avec
               l&apos;intelligence artificielle.
             </p>
@@ -81,14 +81,14 @@ export default async function BlogPage({
         </section>
 
         {/* Categories filter */}
-        <section className="px-6 py-6 border-b border-[#E2E8F0]">
+        <section className="px-6 py-6 border-b border-white/[0.06]">
           <div className="max-w-5xl mx-auto flex flex-wrap gap-2 justify-center">
             <Link
               href="/blog"
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 !activeCategory
                   ? "bg-[#7C3AED] text-white"
-                  : "bg-[#F5F7FF] text-[#64748B] hover:text-[#0F0F1A]"
+                  : "bg-[#12122a] text-[#64748b] hover:text-white"
               }`}
             >
               Tous
@@ -100,7 +100,7 @@ export default async function BlogPage({
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   activeCategory === cat
                     ? "bg-[#7C3AED] text-white"
-                    : "bg-[#F5F7FF] text-[#64748B] hover:text-[#0F0F1A]"
+                    : "bg-[#12122a] text-[#64748b] hover:text-white"
                 }`}
               >
                 {CATEGORY_LABELS[cat] || cat}
@@ -136,10 +136,10 @@ export default async function BlogPage({
 
             {posts.length === 0 ? (
               <div className="text-center py-20">
-                <p className="text-[#64748B] text-lg mb-4">
+                <p className="text-[#94a3b8] text-lg mb-4">
                   Aucun article pour le moment.
                 </p>
-                <p className="text-[#94A3B8] text-sm">
+                <p className="text-[#64748b] text-sm">
                   Nos premiers guides arrivent très bientôt !
                 </p>
               </div>
@@ -154,13 +154,13 @@ export default async function BlogPage({
         </section>
 
         {/* CTA */}
-        <section className="px-6 py-16 bg-[#F5F7FF]">
+        <section className="px-6 py-16 bg-[#0c0c20]">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-2xl font-extrabold text-[#0F0F1A] mb-3 font-[family-name:var(--font-jakarta)]">
+            <h2 className="text-2xl font-extrabold text-white mb-3 font-[family-name:var(--font-jakarta)]">
               Prêt à automatiser votre PME ?
             </h2>
-            <p className="text-[#64748B] mb-6">
-              On identifie vos pertes de temps en 30 minutes. Résultats en 72h.
+            <p className="text-[#94a3b8] mb-6">
+              On identifie vos pertes de temps en 30 minutes. Résultats en 1 semaine.
             </p>
             <Link
               href="/#offre"

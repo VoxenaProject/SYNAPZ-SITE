@@ -7,14 +7,14 @@ export default function ShareButtons({ title, slug }: { title: string; slug: str
 
   return (
     <div className="flex items-center gap-3 mt-8">
-      <span className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">
+      <span className="text-xs font-semibold text-[#64748b] uppercase tracking-wider">
         Partager
       </span>
       <a
         href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-9 h-9 rounded-full bg-[#F5F7FF] flex items-center justify-center text-[#64748B] hover:bg-[#7C3AED] hover:text-white transition-colors"
+        className="w-9 h-9 rounded-full bg-[#12122a] flex items-center justify-center text-[#64748b] hover:bg-[#7C3AED] hover:text-white transition-colors"
         aria-label="Partager sur LinkedIn"
       >
         <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
@@ -25,7 +25,7 @@ export default function ShareButtons({ title, slug }: { title: string; slug: str
         href={`https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-9 h-9 rounded-full bg-[#F5F7FF] flex items-center justify-center text-[#64748B] hover:bg-[#7C3AED] hover:text-white transition-colors"
+        className="w-9 h-9 rounded-full bg-[#12122a] flex items-center justify-center text-[#64748b] hover:bg-[#7C3AED] hover:text-white transition-colors"
         aria-label="Partager sur X"
       >
         <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
@@ -36,7 +36,7 @@ export default function ShareButtons({ title, slug }: { title: string; slug: str
         href={`https://wa.me/?text=${encodedTitle}%20${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-9 h-9 rounded-full bg-[#F5F7FF] flex items-center justify-center text-[#64748B] hover:bg-[#25D366] hover:text-white transition-colors"
+        className="w-9 h-9 rounded-full bg-[#12122a] flex items-center justify-center text-[#64748b] hover:bg-[#25D366] hover:text-white transition-colors"
         aria-label="Partager sur WhatsApp"
       >
         <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">

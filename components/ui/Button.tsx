@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
 interface ButtonProps {
@@ -27,7 +26,7 @@ export default function Button({
   icon,
 }: ButtonProps) {
   const base =
-    "inline-flex items-center gap-2 font-semibold rounded-lg transition-all duration-200 cursor-pointer border border-transparent";
+    "inline-flex items-center gap-2 font-semibold rounded-lg transition-all duration-200 cursor-pointer border border-transparent hover:scale-[1.02] active:scale-[0.98]";
 
   const sizes = {
     sm: "px-4 py-2 text-sm",
@@ -55,27 +54,20 @@ export default function Button({
 
   if (href) {
     return (
-      <motion.a
-        href={href}
-        className={classes}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-      >
+      <a href={href} className={classes}>
         {content}
-      </motion.a>
+      </a>
     );
   }
 
   return (
-    <motion.button
+    <button
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={classes}
-      whileHover={{ scale: disabled ? 1 : 1.02 }}
-      whileTap={{ scale: disabled ? 1 : 0.98 }}
+      className={`${classes} ${disabled ? "hover:!scale-100 active:!scale-100" : ""}`}
     >
       {content}
-    </motion.button>
+    </button>
   );
 }

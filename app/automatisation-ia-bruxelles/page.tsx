@@ -6,7 +6,7 @@ import Footer from "@/components/layout/Footer";
 export const metadata: Metadata = {
   title: "Automatisation IA à Bruxelles — Agence IA pour PME",
   description:
-    "SYNAPZ, votre agence d'automatisation IA à Bruxelles. Audit gratuit en 30 min. Résultats en 72h. Prime digitalisation Bruxelles compatible. Satisfait ou 0€.",
+    "SYNAPZ, votre agence d'automatisation IA à Bruxelles. Audit gratuit en 30 min. Résultats en 1 semaine. Prime digitalisation Bruxelles compatible. Satisfait ou 0€.",
   keywords: [
     "automatisation IA Bruxelles",
     "agence IA Bruxelles",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Automatisation IA à Bruxelles — SYNAPZ",
     description:
-      "Agence IA pour PME bruxelloises. Audit gratuit. Résultats en 72h. Prime digitalisation compatible.",
+      "Agence IA pour PME bruxelloises. Audit gratuit. Résultats en 1 semaine. Prime digitalisation compatible.",
     url: "https://synapz.be/automatisation-ia-bruxelles",
   },
 };
@@ -30,7 +30,7 @@ const localBusinessSchema = {
   "@type": "ProfessionalService",
   name: "SYNAPZ — Automatisation IA Bruxelles",
   description:
-    "Agence d'automatisation IA pour PME à Bruxelles. Audit gratuit, résultats en 72h, compatible prime digitalisation.",
+    "Agence d'automatisation IA pour PME à Bruxelles. Audit gratuit, résultats en 1 semaine, compatible prime digitalisation.",
   url: "https://synapz.be/automatisation-ia-bruxelles",
   areaServed: {
     "@type": "City",
@@ -63,20 +63,20 @@ export default function AutomatisationIABruxelles() {
       <Navbar />
       <main className="pt-24">
         {/* Hero local */}
-        <section className="py-20 px-6 bg-[#F5F7FF]">
+        <section className="py-20 px-6 bg-[#0c0c20]">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-[#7C3AED] font-semibold text-sm uppercase tracking-wider mb-4">
               Agence IA &middot; Bruxelles
             </p>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-[#0F0F1A] mb-6 leading-tight font-[family-name:var(--font-jakarta)]">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight font-[family-name:var(--font-jakarta)]">
               Automatisation IA pour les{" "}
               <span className="bg-gradient-to-r from-[#7C3AED] to-[#06B6D4] bg-clip-text text-transparent">
                 PME bruxelloises
               </span>
             </h1>
-            <p className="text-[#64748B] text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+            <p className="text-[#94a3b8] text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
               Votre PME à Bruxelles perd du temps sur des tâches répétitives ?
-              On les automatise en 72h. Audit gratuit. Compatible avec la
+              On les automatise en 1 semaine. Audit gratuit. Compatible avec la
               prime digitalisation Bruxelles.
             </p>
             <Link
@@ -85,39 +85,39 @@ export default function AutomatisationIABruxelles() {
             >
               Obtenir mon audit gratuit →
             </Link>
-            <p className="text-[#94A3B8] text-sm mt-3">
+            <p className="text-[#64748b] text-sm mt-3">
               30 min · Gratuit · Sans engagement
             </p>
           </div>
         </section>
 
         {/* Pourquoi Bruxelles */}
-        <section className="py-20 px-6 bg-white">
+        <section className="py-20 px-6 bg-[#060612]">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-extrabold text-[#0F0F1A] mb-8 font-[family-name:var(--font-jakarta)]">
+            <h2 className="text-3xl font-extrabold text-white mb-8 font-[family-name:var(--font-jakarta)]">
               Pourquoi les PME bruxelloises choisissent SYNAPZ
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-[#F5F7FF] rounded-2xl p-6">
-                <h3 className="font-bold text-[#0F0F1A] mb-2">Basés à Bruxelles</h3>
-                <p className="text-[#64748B] text-sm leading-relaxed">
+              <div className="bg-[#0c0c20] border border-white/[0.06] rounded-2xl p-6">
+                <h3 className="font-bold text-white mb-2">Basés à Bruxelles</h3>
+                <p className="text-[#94a3b8] text-sm leading-relaxed">
                   On connaît le tissu économique bruxellois. PME, indépendants,
                   Horeca — on comprend vos contraintes et votre rythme.
                 </p>
               </div>
-              <div className="bg-[#F5F7FF] rounded-2xl p-6">
-                <h3 className="font-bold text-[#0F0F1A] mb-2">Trilingue</h3>
-                <p className="text-[#64748B] text-sm leading-relaxed">
+              <div className="bg-[#0c0c20] border border-white/[0.06] rounded-2xl p-6">
+                <h3 className="font-bold text-white mb-2">Trilingue</h3>
+                <p className="text-[#94a3b8] text-sm leading-relaxed">
                   Bruxelles est multilingue. Nos solutions IA fonctionnent en
                   français, néerlandais et anglais.
                 </p>
               </div>
-              <div className="bg-[#F5F7FF] rounded-2xl p-6">
-                <h3 className="font-bold text-[#0F0F1A] mb-2">
+              <div className="bg-[#0c0c20] border border-white/[0.06] rounded-2xl p-6">
+                <h3 className="font-bold text-white mb-2">
                   Prime digitalisation compatible
                 </h3>
-                <p className="text-[#64748B] text-sm leading-relaxed">
+                <p className="text-[#94a3b8] text-sm leading-relaxed">
                   Vous pouvez bénéficier de la prime digitalisation de la
                   Région de Bruxelles-Capitale pour financer votre projet
                   d&apos;automatisation IA.{" "}
@@ -131,11 +131,11 @@ export default function AutomatisationIABruxelles() {
                   </a>
                 </p>
               </div>
-              <div className="bg-[#F5F7FF] rounded-2xl p-6">
-                <h3 className="font-bold text-[#0F0F1A] mb-2">Résultats en 72h</h3>
-                <p className="text-[#64748B] text-sm leading-relaxed">
+              <div className="bg-[#0c0c20] border border-white/[0.06] rounded-2xl p-6">
+                <h3 className="font-bold text-white mb-2">Résultats en 1 semaine</h3>
+                <p className="text-[#94a3b8] text-sm leading-relaxed">
                   Pas 3 mois de consulting. Votre première automatisation est
-                  en production en 72 heures. Satisfait ou remboursé.
+                  en production en 1 semaine. Satisfait ou remboursé.
                 </p>
               </div>
             </div>
@@ -143,9 +143,9 @@ export default function AutomatisationIABruxelles() {
         </section>
 
         {/* Secteurs */}
-        <section className="py-20 px-6 bg-[#F5F7FF]">
+        <section className="py-20 px-6 bg-[#0c0c20]">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-extrabold text-[#0F0F1A] mb-8 font-[family-name:var(--font-jakarta)]">
+            <h2 className="text-3xl font-extrabold text-white mb-8 font-[family-name:var(--font-jakarta)]">
               Secteurs qu&apos;on automatise à Bruxelles
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -162,7 +162,7 @@ export default function AutomatisationIABruxelles() {
               ].map((s) => (
                 <div
                   key={s}
-                  className="bg-white rounded-xl px-4 py-3 text-[#0F0F1A] text-sm font-medium border border-[#E2E8F0]"
+                  className="bg-[#12122a] rounded-xl px-4 py-3 text-white text-sm font-medium border border-white/[0.06]"
                 >
                   {s}
                 </div>
@@ -172,14 +172,14 @@ export default function AutomatisationIABruxelles() {
         </section>
 
         {/* CTA final */}
-        <section className="py-20 px-6 bg-[#0F0F1A]">
+        <section className="py-20 px-6 bg-[#12122a]">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-extrabold text-white mb-4 font-[family-name:var(--font-jakarta)]">
               Prêt à automatiser votre PME à Bruxelles ?
             </h2>
-            <p className="text-[#94A3B8] mb-8">
+            <p className="text-[#94a3b8] mb-8">
               Audit gratuit en 30 minutes. On identifie vos pertes de temps.
-              Première automatisation livrée en 72h.
+              Première automatisation livrée en 1 semaine.
             </p>
             <Link
               href="/#offre"
@@ -191,9 +191,9 @@ export default function AutomatisationIABruxelles() {
         </section>
 
         {/* Articles liés */}
-        <section className="py-16 px-6 bg-white">
+        <section className="py-16 px-6 bg-[#060612]">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl font-extrabold text-[#0F0F1A] mb-6 font-[family-name:var(--font-jakarta)]">
+            <h2 className="text-2xl font-extrabold text-white mb-6 font-[family-name:var(--font-jakarta)]">
               Articles sur l&apos;IA en Belgique
             </h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

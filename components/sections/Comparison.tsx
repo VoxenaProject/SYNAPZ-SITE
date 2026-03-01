@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const rows = [
   { label: "Coût d'entrée", classic: "3.000 – 10.000€", freelance: "1.500 – 5.000€", synapz: "0€" },
-  { label: "Délai avant résultats", classic: "3 – 6 mois", freelance: "1 – 3 mois", synapz: "72 heures" },
+  { label: "Délai avant résultats", classic: "3 – 6 mois", freelance: "1 – 3 mois", synapz: "1 semaine" },
   { label: "Garantie résultats", classic: false, freelance: false, synapz: true },
   { label: "Engagement", classic: "Contrat 12 mois", freelance: "Projet fixe", synapz: "Zéro engagement" },
   { label: "Parle votre langue", classic: false, freelance: false, synapz: true },

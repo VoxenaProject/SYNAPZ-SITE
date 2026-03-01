@@ -6,7 +6,7 @@ import Footer from "@/components/layout/Footer";
 export const metadata: Metadata = {
   title: "Automatisation IA en Wallonie — Agence IA pour PME",
   description:
-    "SYNAPZ automatise les PME wallonnes avec l'IA. Audit gratuit en 30 min. Résultats en 72h. Compatible chèque maturité numérique Wallonie. Satisfait ou 0€.",
+    "SYNAPZ automatise les PME wallonnes avec l'IA. Audit gratuit en 30 min. Résultats en 1 semaine. Compatible chèque maturité numérique Wallonie. Satisfait ou 0€.",
   keywords: [
     "automatisation IA Wallonie",
     "agence IA Wallonie",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Automatisation IA en Wallonie — SYNAPZ",
     description:
-      "Agence IA pour PME wallonnes. Audit gratuit. Résultats en 72h. Chèque maturité numérique compatible.",
+      "Agence IA pour PME wallonnes. Audit gratuit. Résultats en 1 semaine. Chèque maturité numérique compatible.",
     url: "https://synapz.be/automatisation-ia-wallonie",
   },
 };
@@ -33,7 +33,7 @@ const localBusinessSchema = {
   "@type": "ProfessionalService",
   name: "SYNAPZ — Automatisation IA Wallonie",
   description:
-    "Agence d'automatisation IA pour PME en Wallonie. Audit gratuit, résultats en 72h, compatible chèque maturité numérique.",
+    "Agence d'automatisation IA pour PME en Wallonie. Audit gratuit, résultats en 1 semaine, compatible chèque maturité numérique.",
   url: "https://synapz.be/automatisation-ia-wallonie",
   areaServed: [
     { "@type": "AdministrativeArea", name: "Wallonie" },
@@ -66,20 +66,20 @@ export default function AutomatisationIAWallonie() {
       <Navbar />
       <main className="pt-24">
         {/* Hero local */}
-        <section className="py-20 px-6 bg-[#F5F7FF]">
+        <section className="py-20 px-6 bg-[#0c0c20]">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-[#7C3AED] font-semibold text-sm uppercase tracking-wider mb-4">
               Agence IA &middot; Wallonie
             </p>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-[#0F0F1A] mb-6 leading-tight font-[family-name:var(--font-jakarta)]">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight font-[family-name:var(--font-jakarta)]">
               Automatisation IA pour les{" "}
               <span className="bg-gradient-to-r from-[#7C3AED] to-[#06B6D4] bg-clip-text text-transparent">
                 PME wallonnes
               </span>
             </h1>
-            <p className="text-[#64748B] text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+            <p className="text-[#94a3b8] text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
               Liège, Namur, Charleroi, Mons, Tournai — on automatise les
-              tâches répétitives de votre PME en 72h. Compatible avec le
+              tâches répétitives de votre PME en 1 semaine. Compatible avec le
               chèque maturité numérique Wallonie.
             </p>
             <Link
@@ -88,41 +88,41 @@ export default function AutomatisationIAWallonie() {
             >
               Obtenir mon audit gratuit →
             </Link>
-            <p className="text-[#94A3B8] text-sm mt-3">
+            <p className="text-[#64748b] text-sm mt-3">
               30 min · Gratuit · Sans engagement
             </p>
           </div>
         </section>
 
         {/* Pourquoi Wallonie */}
-        <section className="py-20 px-6 bg-white">
+        <section className="py-20 px-6 bg-[#060612]">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-extrabold text-[#0F0F1A] mb-8 font-[family-name:var(--font-jakarta)]">
+            <h2 className="text-3xl font-extrabold text-white mb-8 font-[family-name:var(--font-jakarta)]">
               Pourquoi les PME wallonnes nous font confiance
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-[#F5F7FF] rounded-2xl p-6">
-                <h3 className="font-bold text-[#0F0F1A] mb-2">
+              <div className="bg-[#0c0c20] border border-white/[0.06] rounded-2xl p-6">
+                <h3 className="font-bold text-white mb-2">
                   On connaît la Wallonie
                 </h3>
-                <p className="text-[#64748B] text-sm leading-relaxed">
+                <p className="text-[#94a3b8] text-sm leading-relaxed">
                   PME wallonnes, indépendants, secteur Horeca et industriel —
                   on comprend les réalités économiques de chaque province.
                 </p>
               </div>
-              <div className="bg-[#F5F7FF] rounded-2xl p-6">
-                <h3 className="font-bold text-[#0F0F1A] mb-2">100% à distance</h3>
-                <p className="text-[#64748B] text-sm leading-relaxed">
+              <div className="bg-[#0c0c20] border border-white/[0.06] rounded-2xl p-6">
+                <h3 className="font-bold text-white mb-2">100% à distance</h3>
+                <p className="text-[#94a3b8] text-sm leading-relaxed">
                   Pas besoin de se déplacer. Tout se fait en visio et en ligne.
                   Que vous soyez à Liège, Namur ou Arlon, on vous accompagne.
                 </p>
               </div>
-              <div className="bg-[#F5F7FF] rounded-2xl p-6">
-                <h3 className="font-bold text-[#0F0F1A] mb-2">
+              <div className="bg-[#0c0c20] border border-white/[0.06] rounded-2xl p-6">
+                <h3 className="font-bold text-white mb-2">
                   Chèque maturité numérique
                 </h3>
-                <p className="text-[#64748B] text-sm leading-relaxed">
+                <p className="text-[#94a3b8] text-sm leading-relaxed">
                   Le chèque maturité numérique de Digital Wallonia peut financer
                   jusqu&apos;à 75% de votre projet d&apos;automatisation IA.{" "}
                   <a
@@ -135,12 +135,12 @@ export default function AutomatisationIAWallonie() {
                   </a>
                 </p>
               </div>
-              <div className="bg-[#F5F7FF] rounded-2xl p-6">
-                <h3 className="font-bold text-[#0F0F1A] mb-2">
+              <div className="bg-[#0c0c20] border border-white/[0.06] rounded-2xl p-6">
+                <h3 className="font-bold text-white mb-2">
                   Résultats garantis
                 </h3>
-                <p className="text-[#64748B] text-sm leading-relaxed">
-                  Première automatisation livrée en 72h. Si vous ne gagnez pas
+                <p className="text-[#94a3b8] text-sm leading-relaxed">
+                  Première automatisation livrée en 1 semaine. Si vous ne gagnez pas
                   de temps, vous ne payez rien. C&apos;est notre engagement.
                 </p>
               </div>
@@ -149,9 +149,9 @@ export default function AutomatisationIAWallonie() {
         </section>
 
         {/* Villes */}
-        <section className="py-20 px-6 bg-[#F5F7FF]">
+        <section className="py-20 px-6 bg-[#0c0c20]">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-extrabold text-[#0F0F1A] mb-8 font-[family-name:var(--font-jakarta)]">
+            <h2 className="text-3xl font-extrabold text-white mb-8 font-[family-name:var(--font-jakarta)]">
               On accompagne les PME dans toute la Wallonie
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -168,7 +168,7 @@ export default function AutomatisationIAWallonie() {
               ].map((city) => (
                 <div
                   key={city}
-                  className="bg-white rounded-xl px-4 py-3 text-[#0F0F1A] text-sm font-medium border border-[#E2E8F0]"
+                  className="bg-[#12122a] rounded-xl px-4 py-3 text-white text-sm font-medium border border-white/[0.06]"
                 >
                   Automatisation IA à {city}
                 </div>
@@ -178,13 +178,13 @@ export default function AutomatisationIAWallonie() {
         </section>
 
         {/* CTA final */}
-        <section className="py-20 px-6 bg-[#0F0F1A]">
+        <section className="py-20 px-6 bg-[#12122a]">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-extrabold text-white mb-4 font-[family-name:var(--font-jakarta)]">
               Prêt à automatiser votre PME en Wallonie ?
             </h2>
-            <p className="text-[#94A3B8] mb-8">
-              Audit gratuit en 30 minutes. Première automatisation en 72h.
+            <p className="text-[#94a3b8] mb-8">
+              Audit gratuit en 30 minutes. Première automatisation en 1 semaine.
               Compatible chèque maturité numérique.
             </p>
             <Link
@@ -197,9 +197,9 @@ export default function AutomatisationIAWallonie() {
         </section>
 
         {/* Articles liés */}
-        <section className="py-16 px-6 bg-white">
+        <section className="py-16 px-6 bg-[#060612]">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl font-extrabold text-[#0F0F1A] mb-6 font-[family-name:var(--font-jakarta)]">
+            <h2 className="text-2xl font-extrabold text-white mb-6 font-[family-name:var(--font-jakarta)]">
               Articles sur l&apos;IA en Belgique
             </h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

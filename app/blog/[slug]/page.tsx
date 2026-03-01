@@ -107,25 +107,25 @@ export default async function BlogPostPage({
         slug={post.slug}
       />
 
-      <main className="min-h-screen bg-white pt-28 pb-20">
+      <main className="min-h-screen bg-[#060612] pt-28 pb-20">
         <article className="px-6">
           <div className="max-w-5xl mx-auto">
             <Breadcrumbs category={post.category} title={post.title} />
 
             {/* Article header */}
             <header className="max-w-3xl mb-10">
-              <h1 className="text-3xl md:text-4xl font-extrabold text-[#0F0F1A] mb-4 leading-tight font-[family-name:var(--font-jakarta)]">
+              <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-4 leading-tight font-[family-name:var(--font-jakarta)]">
                 {post.title}
               </h1>
-              <p className="text-[#64748B] text-lg leading-relaxed mb-6">
+              <p className="text-[#94a3b8] text-lg leading-relaxed mb-6">
                 {post.description}
               </p>
-              <div className="flex flex-wrap items-center gap-4 text-sm text-[#94A3B8]">
+              <div className="flex flex-wrap items-center gap-4 text-sm text-[#64748b]">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#7C3AED] to-[#06B6D4] flex items-center justify-center text-white font-bold text-xs">
                     {author.name.split(" ").map((n) => n[0]).join("")}
                   </div>
-                  <span className="text-[#0F0F1A] font-medium">{author.name}</span>
+                  <span className="text-white font-medium">{author.name}</span>
                 </div>
                 <span>·</span>
                 <time dateTime={post.date}>

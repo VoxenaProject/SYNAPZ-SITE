@@ -4,9 +4,11 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import ConversionLayer from "@/components/ui/ConversionLayer";
 
+const LogoBar = dynamic(() => import("@/components/sections/LogoBar"));
 const Problem = dynamic(() => import("@/components/sections/Problem"));
-const DiagnosticTeaser = dynamic(() => import("@/components/sections/DiagnosticTeaser"));
-const UseCases = dynamic(() => import("@/components/sections/UseCases"));
+const ProductShowcase = dynamic(() => import("@/components/sections/ProductShowcase"));
+const Process = dynamic(() => import("@/components/sections/Process"));
+const SocialProofMetrics = dynamic(() => import("@/components/sections/SocialProofMetrics"));
 const Offer = dynamic(() => import("@/components/sections/Offer"));
 const ROICalculator = dynamic(() => import("@/components/sections/ROICalculator"));
 const Team = dynamic(() => import("@/components/sections/Team"));
@@ -20,7 +22,7 @@ const organizationSchema = {
   url: "https://synapz.be",
   logo: "https://synapz.be/logo/synapz-logo-dark.svg",
   description:
-    "Agence IA pour PME — On automatise vos processus répétitifs avec l'intelligence artificielle. Résultats en 72h, satisfait ou remboursé.",
+    "Partenaire tech pour PME — On identifie, on livre, vous payez uniquement si satisfait. Sites web, CRM, automatisations, chatbots, SEO.",
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "sales",
@@ -35,6 +37,7 @@ const organizationSchema = {
     { "@type": "Person", name: "Dejvi Prifti" },
     { "@type": "Person", name: "Daniele Rutigliano" },
   ],
+  sameAs: ["https://www.linkedin.com/company/synapz"],
 };
 
 const faqSchema = {
@@ -70,7 +73,7 @@ const faqSchema = {
       name: "Combien de temps avant de voir des résultats ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Votre première Impulsion IA est en production en 72 heures. Pas en 3 mois. 72 heures.",
+        text: "Votre première solution IA est en production en 1 semaine. Pas en 3 mois. 1 semaine. Et vous ne payez rien tant que vous n'avez pas vu les résultats.",
       },
     },
     {
@@ -84,6 +87,45 @@ const faqSchema = {
   ],
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "SYNAPZ",
+  url: "https://synapz.be",
+  description:
+    "Agence IA pour PME en Belgique. On identifie, on livre, vous payez uniquement si satisfait.",
+  publisher: { "@type": "Organization", name: "SYNAPZ" },
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: [
+    "Automatisation IA",
+    "Développement Web",
+    "CRM",
+    "Chatbot IA",
+    "SEO",
+  ],
+  provider: {
+    "@type": "Organization",
+    name: "SYNAPZ",
+    url: "https://synapz.be",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "Belgium",
+  },
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "EUR",
+    description: "Audit IA gratuit de 30 minutes",
+  },
+  description:
+    "SYNAPZ automatise les PME avec l'IA. Sites web, CRM, automatisations, chatbots, SEO. Premier projet livré en 1 semaine. Vous payez uniquement si satisfait.",
+};
+
 export default function Home() {
   return (
     <>
@@ -95,13 +137,23 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       <ConversionLayer>
         <Navbar />
         <main>
           <Hero />
+          <LogoBar />
           <Problem />
-          <DiagnosticTeaser />
-          <UseCases />
+          <ProductShowcase />
+          <Process />
+          <SocialProofMetrics />
           <Offer />
           <ROICalculator />
           <Team />
