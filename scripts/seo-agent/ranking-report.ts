@@ -424,7 +424,7 @@ async function sendReport(html: string): Promise<void> {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "SYNAPZ SEO Agent <onboarding@resend.dev>",
+      from: "SYNAPZ SEO Agent <seo@synapz.be>",
       to: [TO_EMAIL],
       subject: `Rapport SEO SYNAPZ — Semaine du ${weekStr}`,
       html,
